@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="~/img/icons/logo 2.svg" alt="logo" />
+        </div>
+        <div id="menu-btn" class="MenuBtn MenuBtnTeach">
+            <a class="navBtn active" href="./create_test_page.html" target="main">
+                <svg width="30"
+                     height="29"
+                     viewBox="0 0 30 29"
+                     fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path class="acBtn"
+                          d="M0.737793 22.9583V29H6.67959L24.2039 11.1811L18.2621 5.13944L0.737793 22.9583ZM5.36447 25.7778H3.90675V24.2956L18.2621 9.69889L19.7199 11.1811L5.36447 25.7778ZM28.7989 4.23722L25.0912 0.467222C24.7743 0.145 24.3782 0 23.9663 0C23.5543 0 23.1582 0.161111 22.8571 0.467222L19.9575 3.41556L25.8993 9.45722L28.7989 6.50889C29.4169 5.88056 29.4169 4.86556 28.7989 4.23722Z"
+                          fill="#4CAF50" />
+                </svg>
+            </a>
+            <a class="navBtn" href="./active_teacher.html" target="main">
+                <svg width="36"
+                     height="36"
+                     viewBox="0 0 36 36"
+                     fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path class="acBtn"
+                          d="M25.9008 10.3918L14.5574 21.7353L8.37785 15.573L5.9508 18L14.5574 26.6066L28.3278 12.8361L25.9008 10.3918ZM18 0.786896C8.49834 0.786896 0.786865 8.49837 0.786865 18C0.786865 27.5017 8.49834 35.2131 18 35.2131C27.5016 35.2131 35.2131 27.5017 35.2131 18C35.2131 8.49837 27.5016 0.786896 18 0.786896ZM18 31.7705C10.3918 31.7705 4.22949 25.6082 4.22949 18C4.22949 10.3918 10.3918 4.22952 18 4.22952C25.6082 4.22952 31.7705 10.3918 31.7705 18C31.7705 25.6082 25.6082 31.7705 18 31.7705Z"
+                          fill="white" />
+                </svg>
+            </a>
+            <a class="navBtn" href="./histori_test_teacher.html" target="main">
+                <svg width="41"
+                     height="34"
+                     viewBox="0 0 41 34"
+                     fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path class="acBtn"
+                          d="M23.3186 0.573761C14.0071 0.573761 6.45679 7.9364 6.45679 17.0164H0.836182L8.12424 24.1233L8.25539 24.379L15.8245 17.0164H10.2039C10.2039 9.94606 16.068 4.22768 23.3186 4.22768C30.5692 4.22768 36.4334 9.94606 36.4334 17.0164C36.4334 24.0867 30.5692 29.8051 23.3186 29.8051C19.7027 29.8051 16.424 28.3618 14.0633 26.0416L11.4029 28.6358C14.4568 31.6138 18.6535 33.459 23.3186 33.459C32.6301 33.459 40.1804 26.0964 40.1804 17.0164C40.1804 7.9364 32.6301 0.573761 23.3186 0.573761ZM21.4451 9.70855V18.8433L29.4638 23.4838L30.8128 21.2732L24.2554 17.4731V9.70855H21.4451Z"
+                          fill="white" />
+                </svg>
+            </a>
+        </div>
+        <div class="btnExit">
+            <hr />
+            <a class="exit" asp-area="" asp-controller="Authorization" asp-action="Login">
+                <img src="~/img/icons/exit.svg" alt="" />
+            </a>
+        </div>
+    </header>
+    <main class="main">
+        <div class="main-Top">
+            <div id="back" class="back">
+                <button>
+                    <svg width="19" height="30" viewBox="0 0 19 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.525 26.475L7.075 15L18.525 3.525L15 0L0 15L15 30L18.525 26.475Z" fill="white" />
+                    </svg>
+                </button>
+            </div>
+            <div id="infoBlock" class="info-block">
+                <div class="info">
+                    <span>Разработка кода инф. систем</span>
+                </div>
+                <div class="info">
+                    <span>олимпиада</span>
+                </div>
+                <div class="info">
+                    <span>с 01.01.24 по 07.01.24</span>
+                </div>
+            </div>
+            <div class="user-Info">
+                <div class="ava">
+                    <img src="" alt="">
+                </div>
+                <div class="full-name">
+                    <span>Иванов И.И.</span>
+                </div>
+            </div>
+        </div>
+        <main name="main">
+            @RenderBody()
+        </main>
+    </main>
+    <script src="~/js/scriptMenubtn.js" asp-append-version="true"></script>
+    <script src="~/js/scriptClear.js" asp-append-version="true"></script>
+    <script src="~/js/scriptBack.js" asp-append-version="true"></script>
+    <script src="~/js/scriptbtnBackHide.js" asp-append-version="true"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+﻿<div class="create-test-page3">
+    <main>
+        <div class="main-center">
+            <div class="top test-settings">
+                <div class="left-container">
+                    <div class="top">
+                        <span> Информация о тестировании </span>
+                    </div>
+                    <div class="center">
+                        <div class="top">
+                            <div class="textBox">
+                                <p>Название</p>
+                                <textarea type="text"
+                                          placeholder="Введите название..."></textarea>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <div class="comboBox">
+                                <p>Тип</p>
+                                <select name="example">
+                                    <option value="тест">тест</option>
+                                    <option value="олимпиада">олимпиада</option>
+                                </select>
+                            </div>
+
+                            <div class="comboBox2">
+                                <p>Вывод результата</p>
+                                <select name="example">
+                                    <option value="1">по окончанию</option>
+                                    <option value="2">по прохождению</option>
+                                </select>
+                            </div>
+                            <div class="counterBox">
+                                <p>Попытки</p>
+                                <div class="counter">
+                                    <button id="btn-minus">
+                                        <img src="~/img/icons/-.svg" alt="-" />
+                                    </button>
+                                    <input id="counter-input" type="number" value="1" step="1" min="1" max="99" maxlength="2" />
+                                    <button id="btn-plus">
+                                        <img src="~/img/icons/+.svg" alt="+" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="textBox">
+                                <p>Время</p>
+                                <input type="text" placeholder="Время..." />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <button class="save-changes">Сохранить изменения</button>
+                    </div>
+                </div>
+                <div class="right-container">
+                    <div class="top">
+                        <span>Настройки оценок</span>
+                        <span class="score-counter">Всего баллов: ...</span>
+                    </div>
+                    <div class="center">
+                        <div class="item">
+                            <span class="estimation">5</span>
+                            <span>от</span>
+                            <input type="number" />
+                            <span>до ...</span>
+                        </div>
+                        <div class="item">
+                            <span class="estimation">4</span>
+                            <span>от</span>
+                            <input type="number" />
+                            <span>до ...</span>
+                        </div>
+                        <div class="item">
+                            <span class="estimation">3</span>
+                            <span>от</span>
+                            <input type="number" />
+                            <span>до ...</span>
+                        </div>
+                        <div class="item">
+                            <span class="estimation">2</span>
+                            <span>от</span>
+                            <div>
+                                <span>0</span>
+                            </div>
+                            <span>до ...</span>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <button class="save-changes">Сохранить изменения</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="left-container">
+                    <div class="top">
+                        <span>Редактирование вопросов</span>
+                        <span class="question-counter">Всего вопросов: ...</span>
+                    </div>
+                    <div class="center">
+                        <div class="table">
+                            <div class="colums">
+                                <div class="colum-1">
+                                    <span>№</span>
+                                </div>
+                                <div class="colum-2">
+                                    <span>вопрос</span>
+                                </div>
+                                <div class="colum-3">
+                                    <span>тип</span>
+                                </div>
+                            </div>
+                            <div class="rows">
+                                <div class="row row-qestion">
+                                    <div class="colum-1">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="colum-2">
+                                        <span>Чем отличается класс от структуры?</span>
+                                    </div>
+                                    <div class="colum-3">
+                                        <span>одиночный выбор</span>
+                                    </div>
+                                    <div class="colum-4">
+                                        <div class="edit">
+                                            <svg width="30"
+                                                 height="29"
+                                                 viewBox="0 0 30 29"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.737793 22.9583V29H6.67959L24.2039 11.1811L18.2621 5.13944L0.737793 22.9583ZM5.36447 25.7778H3.90675V24.2956L18.2621 9.69889L19.7199 11.1811L5.36447 25.7778ZM28.7989 4.23722L25.0912 0.467222C24.7743 0.145 24.3782 0 23.9663 0C23.5543 0 23.1582 0.161111 22.8571 0.467222L19.9575 3.41556L25.8993 9.45722L28.7989 6.50889C29.4169 5.88056 29.4169 4.86556 28.7989 4.23722Z"
+                                                      fill="#fff" />
+                                            </svg>
+                                        </div>
+                                        <div class="delete">
+                                            <svg width="20"
+                                                 height="24"
+                                                 viewBox="0 0 20 24"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M15.6666 8V21.3333H4.33325V8H15.6666ZM13.5416 0H6.45825L5.04159 1.33333H0.083252V4H19.9166V1.33333H14.9583L13.5416 0ZM18.4999 5.33333H1.49992V21.3333C1.49992 22.8 2.77492 24 4.33325 24H15.6666C17.2249 24 18.4999 22.8 18.4999 21.3333V5.33333Z"
+                                                      fill="white" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-row">
+                                    <a class="btn-add" href="./create_question.html">
+                                        <svg width="26"
+                                             height="27"
+                                             viewBox="0 0 26 27"
+                                             fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.064 26.416C11.744 26.416 11.472 26.32 11.248 26.128C11.056 25.904 10.96 25.632 10.96 25.312V15.328H1.12C0.8 15.328 0.528 15.232 0.304 15.04C0.112 14.816 0.0160002 14.544 0.0160002 14.224V12.688C0.0160002 12.368 0.112 12.112 0.304 11.92C0.528 11.696 0.8 11.584 1.12 11.584H10.96V1.888C10.96 1.568 11.056 1.312 11.248 1.12C11.472 0.895999 11.744 0.783998 12.064 0.783998H13.744C14.064 0.783998 14.32 0.895999 14.512 1.12C14.736 1.312 14.848 1.568 14.848 1.888V11.584H24.736C25.056 11.584 25.312 11.696 25.504 11.92C25.728 12.112 25.84 12.368 25.84 12.688V14.224C25.84 14.544 25.728 14.816 25.504 15.04C25.312 15.232 25.056 15.328 24.736 15.328H14.848V25.312C14.848 25.632 14.736 25.904 14.512 26.128C14.32 26.32 14.064 26.416 13.744 26.416H12.064Z"
+                                                  fill="white" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-container">
+                    <div class="top">
+                        <span>Публикация</span>
+                    </div>
+                    <div class="center">
+                        <div class="textBox">
+                            <p>Группа</p>
+                            <div class="bottom">
+                                <input type="text" placeholder="Введите группу..." />
+                                <button>Добавить</button>
+                            </div>
+                        </div>
+                        <div class="table">
+                            <p>Список групп</p>
+                            <div class="colums">
+                                <div class="colum-1">
+                                    <span>№</span>
+                                </div>
+                                <div class="colum-2">
+                                    <span>группа</span>
+                                </div>
+                            </div>
+                            <div class="rows">
+                                <div class="row row-Group">
+                                    <div class="colum-1">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="colum-2">
+                                        <span>ИС1-211-ОТ</span>
+                                    </div>
+                                    <div class="colum-3">
+                                        <div class="delete">
+                                            <svg width="17" height="3" viewBox="0 0 17 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M16.375 2.625H0.625V0.375H16.375V2.625Z" fill="white" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-Group">
+                                    <div class="colum-1">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="colum-2">
+                                        <span>ИС1-212-ОТ</span>
+                                    </div>
+                                    <div class="colum-3">
+                                        <div class="delete">
+                                            <svg width="17" height="3" viewBox="0 0 17 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M16.375 2.625H0.625V0.375H16.375V2.625Z" fill="white" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div>
+                            <a>Опубликовать</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="~/js/scriptCounter.js" asp-append-version="true"></script>
+<script src="~/js/scriptTableGroupRow.js" asp-append-version="true"></script>
+<script src="~/js/scriptTableQuestion.js" asp-append-version="true"></script>
+<script src="~/js/scriptClear.js" asp-append-version="true"></script>

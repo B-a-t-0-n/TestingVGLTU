@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<div class="container-reg">
+    <div class="container-top">
+        <div class="container-btnst">
+            <div id="rfbtn">
+                <a id="btnStudent" class="right-rfbtn rfbtn rfbtnActive">Студент</a>
+                <a id="btnTeacher" class="rfbtn">Преподаватель</a>
+            </div>
+        </div>
+        <h1>Регистрация</h1>
+    </div>
+    <div>
+        <div class="container-center">
+            <div class="container-textBox">
+                <div class="textBox">
+                    <p>Фамилия</p>
+                    <input type="text" placeholder="Введите фамилия..." />
+                </div>
+                <div class="textBox">
+                    <p>Имя</p>
+                    <input type="text" placeholder="Введите имя..." />
+                </div>
+                <div class="textBox">
+                    <p>Отчество</p>
+                    <input type="text" placeholder="Введите отчество..." />
+                </div>
+            </div>
+            <div class="container-textBox">
+                <div class="textBox">
+                    <p>Логин</p>
+                    <input type="text" placeholder="Введите логин..." />
+                </div>
+                <div class="textBox">
+                    <p>Пароль</p>
+                    <input type="password" placeholder="Введите пароль..." />
+                </div>
+                <div class="textBox">
+                    <p>Повторите пароль</p>
+                    <input type="password" placeholder="Введите пароль..." />
+                </div>
+            </div>
+            <div id="studentInput" class="container-textBox">
+                <div class="textBox">
+                    <p>Номер зачётной книжки</p>
+                    <input type="text" placeholder="Введите номер..." />
+                </div>
+                <div class="textBox">
+                    <p>Группа</p>
+                    <input type="text" placeholder="Введите группу..." />
+                </div>
+                <div class="textBox">
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <a class="button" asp-area="" asp-controller="Authorization" asp-action="Login">Зарегистрироваться</a>
+            <a class="buttonHide" asp-area="" asp-controller="Authorization" asp-action="Login">назад</a>
+        </div>
+    </div>
+</div>
+<script src="~/js/scriptRfBtn.js" asp-append-version="true"></script>
+<script src="~/js/scriptRegistration.js" asp-append-version="true"></script>

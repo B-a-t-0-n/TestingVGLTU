@@ -1,0 +1,51 @@
+﻿<div class="create-test-page2">
+    <main>
+        <div class="create-test-panel test-settings">
+            <div class="top">
+                <span>Создание тестирования</span>
+            </div>
+            <div class="center">
+                <div class="textBox">
+                    <p>Название</p>
+                    <input type="text" placeholder="Введите название..." />
+                </div>
+                <div class="comboBox">
+                    <p>Тип</p>
+                    <select name="example">
+                        <option value="тест">тест</option>
+                        <option value="олимпиада">олимпиада</option>
+                    </select>
+                </div>
+
+                <div class="comboBox2">
+                    <p>Вывод результата</p>
+                    <select name="example">
+                        <option value="1">по окончанию</option>
+                        <option value="2">по прохождению</option>
+                    </select>
+                </div>
+                <div class="counterBox">
+                    <p>Попытки</p>
+                    <div class="counter">
+                        <button id="btn-minus">
+                            <img src="~/img/icons/-.svg" alt="-" />
+                        </button>
+                        <input id="counter-input" type="number" step="1" min="1" max="99" value="1" />
+                        <button id="btn-plus">
+                            <img src="~/img/icons/+.svg" alt="+" />
+                        </button>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="textBox">
+                        <p>Время</p>
+                        <input type="text" placeholder="Время..." />
+                    </div>
+                    <a href="./create_test_page_3.html">Далее</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="~/js/scriptClear.js" asp-append-version="true"></script>
+<script src="~/js/scriptCounter.js" asp-append-version="true"></script>

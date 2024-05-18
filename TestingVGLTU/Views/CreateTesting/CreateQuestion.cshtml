@@ -1,0 +1,266 @@
+﻿<main>
+    <div class="create-question test-settings">
+        <div class="top">
+            <span>Создание вопроса</span>
+        </div>
+        <div class="center">
+            <div class="textBox">
+                <p>Текст вопроса</p>
+                <textarea type="text"
+                          placeholder="Введите текст вопроса..."></textarea>
+            </div>
+            <div class="question-properties">
+                <div class="comboBox">
+                    <p>Тип вопроса</p>
+                    <select id="type-question" name="example">
+                        <option value="1">одиночный выбор</option>
+                        <option value="2">множественный выбор</option>
+                        <option value="3">ввод числа</option>
+                        <option value="4">ввод текста</option>
+                    </select>
+                </div>
+                <div class="textBox">
+                    <p>Баллы</p>
+                    <input type="text" placeholder="Введите баллы..." />
+                </div>
+            </div>
+
+            <div class="right-answer active">
+                <div class="single-selection">
+                    <p class="name">Варианты ответов</p>
+                    <div class="table">
+                        <div class="colums">
+                            <div class="colum-1">
+                                <span>№</span>
+                            </div>
+                            <div class="colum-2">
+                                <span>Текст вариантов ответов</span>
+                            </div>
+                            <div class="colum-3">
+                                <span>Правильный ответ</span>
+                            </div>
+                        </div>
+                        <div class="rows">
+                            <div class="row row-qestion">
+                                <div class="colum-1">
+                                    <span>1</span>
+                                </div>
+                                <div class="colum-2">
+                                    <input type="text" placeholder="Введите текст...">
+                                </div>
+                                <div class="colum-3">
+                                    <input class="checkbox" type="radio">
+                                </div>
+                                <div class="colum-4">
+                                    <div class="delete">
+                                        <svg width="10" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15.6666 8V21.3333H4.33325V8H15.6666ZM13.5416 0H6.45825L5.04159 1.33333H0.083252V4H19.9166V1.33333H14.9583L13.5416 0ZM18.4999 5.33333H1.49992V21.3333C1.49992 22.8 2.77492 24 4.33325 24H15.6666C17.2249 24 18.4999 22.8 18.4999 21.3333V5.33333Z" fill="white" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-qestion">
+                                <div class="colum-1">
+                                    <span>2</span>
+                                </div>
+                                <div class="colum-2">
+                                    <input type="text" placeholder="Введите текст...">
+                                </div>
+                                <div class="colum-3">
+                                    <input class="checkbox" type="radio">
+                                </div>
+                                <div class="colum-4">
+                                    <div class="delete">
+                                        <svg width="10" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15.6666 8V21.3333H4.33325V8H15.6666ZM13.5416 0H6.45825L5.04159 1.33333H0.083252V4H19.9166V1.33333H14.9583L13.5416 0ZM18.4999 5.33333H1.49992V21.3333C1.49992 22.8 2.77492 24 4.33325 24H15.6666C17.2249 24 18.4999 22.8 18.4999 21.3333V5.33333Z" fill="white" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add-row">
+                                <a class="btn-add">
+                                    <svg width="26"
+                                         height="27"
+                                         viewBox="0 0 26 27"
+                                         fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.064 26.416C11.744 26.416 11.472 26.32 11.248 26.128C11.056 25.904 10.96 25.632 10.96 25.312V15.328H1.12C0.8 15.328 0.528 15.232 0.304 15.04C0.112 14.816 0.0160002 14.544 0.0160002 14.224V12.688C0.0160002 12.368 0.112 12.112 0.304 11.92C0.528 11.696 0.8 11.584 1.12 11.584H10.96V1.888C10.96 1.568 11.056 1.312 11.248 1.12C11.472 0.895999 11.744 0.783998 12.064 0.783998H13.744C14.064 0.783998 14.32 0.895999 14.512 1.12C14.736 1.312 14.848 1.568 14.848 1.888V11.584H24.736C25.056 11.584 25.312 11.696 25.504 11.92C25.728 12.112 25.84 12.368 25.84 12.688V14.224C25.84 14.544 25.728 14.816 25.504 15.04C25.312 15.232 25.056 15.328 24.736 15.328H14.848V25.312C14.848 25.632 14.736 25.904 14.512 26.128C14.32 26.32 14.064 26.416 13.744 26.416H12.064Z"
+                                              fill="white" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-answer">
+                <div class="multiple-choice">
+                    <p class="name">Варианты ответов</p>
+                    <div class="table">
+                        <div class="colums">
+                            <div class="colum-1">
+                                <span>№</span>
+                            </div>
+                            <div class="colum-2">
+                                <span>Текст вариантов ответов</span>
+                            </div>
+                            <div class="colum-3">
+                                <span>Правильный ответ</span>
+                            </div>
+                        </div>
+                        <div class="rows">
+                            <div class="row row-qestion">
+                                <div class="colum-1">
+                                    <span>1</span>
+                                </div>
+                                <div class="colum-2">
+                                    <input type="text" placeholder="Введите текст...">
+                                </div>
+                                <div class="colum-3">
+                                    <input class="checkbox" type="checkbox">
+                                </div>
+                                <div class="colum-4">
+                                    <div class="delete">
+                                        <svg width="10" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15.6666 8V21.3333H4.33325V8H15.6666ZM13.5416 0H6.45825L5.04159 1.33333H0.083252V4H19.9166V1.33333H14.9583L13.5416 0ZM18.4999 5.33333H1.49992V21.3333C1.49992 22.8 2.77492 24 4.33325 24H15.6666C17.2249 24 18.4999 22.8 18.4999 21.3333V5.33333Z" fill="white" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-qestion">
+                                <div class="colum-1">
+                                    <span>2</span>
+                                </div>
+                                <div class="colum-2">
+                                    <input type="text" placeholder="Введите текст...">
+                                </div>
+                                <div class="colum-3">
+                                    <input class="checkbox" type="checkbox">
+                                </div>
+                                <div class="colum-4">
+                                    <div class="delete">
+                                        <svg width="10" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15.6666 8V21.3333H4.33325V8H15.6666ZM13.5416 0H6.45825L5.04159 1.33333H0.083252V4H19.9166V1.33333H14.9583L13.5416 0ZM18.4999 5.33333H1.49992V21.3333C1.49992 22.8 2.77492 24 4.33325 24H15.6666C17.2249 24 18.4999 22.8 18.4999 21.3333V5.33333Z" fill="white" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="add-row">
+                                <a class="btn-add">
+                                    <svg width="26"
+                                         height="27"
+                                         viewBox="0 0 26 27"
+                                         fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.064 26.416C11.744 26.416 11.472 26.32 11.248 26.128C11.056 25.904 10.96 25.632 10.96 25.312V15.328H1.12C0.8 15.328 0.528 15.232 0.304 15.04C0.112 14.816 0.0160002 14.544 0.0160002 14.224V12.688C0.0160002 12.368 0.112 12.112 0.304 11.92C0.528 11.696 0.8 11.584 1.12 11.584H10.96V1.888C10.96 1.568 11.056 1.312 11.248 1.12C11.472 0.895999 11.744 0.783998 12.064 0.783998H13.744C14.064 0.783998 14.32 0.895999 14.512 1.12C14.736 1.312 14.848 1.568 14.848 1.888V11.584H24.736C25.056 11.584 25.312 11.696 25.504 11.92C25.728 12.112 25.84 12.368 25.84 12.688V14.224C25.84 14.544 25.728 14.816 25.504 15.04C25.312 15.232 25.056 15.328 24.736 15.328H14.848V25.312C14.848 25.632 14.736 25.904 14.512 26.128C14.32 26.32 14.064 26.416 13.744 26.416H12.064Z"
+                                              fill="white" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-answer ">
+                <div class="entering-number">
+                    <p class="name">Правильный ответ</p>
+                    <div class="table">
+                        <div class="colums">
+                            <div class="colum-1">
+                                <span>№</span>
+                            </div>
+                            <div class="colum-2">
+                                <span>Текст вариантов ответов</span>
+                            </div>
+                        </div>
+                        <div class="rows">
+                            <div class="row row-qestion">
+                                <div class="colum-1">
+                                    <span>1</span>
+                                </div>
+                                <div class="colum-2">
+                                    <input type="number" placeholder="Введите число...">
+                                </div>
+                                <div class="colum-4">
+                                    <div class="delete">
+                                        <svg width="10" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15.6666 8V21.3333H4.33325V8H15.6666ZM13.5416 0H6.45825L5.04159 1.33333H0.083252V4H19.9166V1.33333H14.9583L13.5416 0ZM18.4999 5.33333H1.49992V21.3333C1.49992 22.8 2.77492 24 4.33325 24H15.6666C17.2249 24 18.4999 22.8 18.4999 21.3333V5.33333Z" fill="white" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add-row">
+                                <a class="btn-add">
+                                    <svg width="26"
+                                         height="27"
+                                         viewBox="0 0 26 27"
+                                         fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.064 26.416C11.744 26.416 11.472 26.32 11.248 26.128C11.056 25.904 10.96 25.632 10.96 25.312V15.328H1.12C0.8 15.328 0.528 15.232 0.304 15.04C0.112 14.816 0.0160002 14.544 0.0160002 14.224V12.688C0.0160002 12.368 0.112 12.112 0.304 11.92C0.528 11.696 0.8 11.584 1.12 11.584H10.96V1.888C10.96 1.568 11.056 1.312 11.248 1.12C11.472 0.895999 11.744 0.783998 12.064 0.783998H13.744C14.064 0.783998 14.32 0.895999 14.512 1.12C14.736 1.312 14.848 1.568 14.848 1.888V11.584H24.736C25.056 11.584 25.312 11.696 25.504 11.92C25.728 12.112 25.84 12.368 25.84 12.688V14.224C25.84 14.544 25.728 14.816 25.504 15.04C25.312 15.232 25.056 15.328 24.736 15.328H14.848V25.312C14.848 25.632 14.736 25.904 14.512 26.128C14.32 26.32 14.064 26.416 13.744 26.416H12.064Z"
+                                              fill="white" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-answer ">
+                <div class="text-input">
+                    <p class="name">Правильный ответ</p>
+                    <div class="table">
+                        <div class="colums">
+                            <div class="colum-1">
+                                <span>№</span>
+                            </div>
+                            <div class="colum-2">
+                                <span>Текст вариантов ответов</span>
+                            </div>
+
+                        </div>
+                        <div class="rows">
+                            <div class="row row-qestion">
+                                <div class="colum-1">
+                                    <span>1</span>
+                                </div>
+                                <div class="colum-2">
+                                    <input type="text" placeholder="Введите текст...">
+                                </div>
+                                <div class="colum-4">
+                                    <div class="delete">
+                                        <svg width="10" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15.6666 8V21.3333H4.33325V8H15.6666ZM13.5416 0H6.45825L5.04159 1.33333H0.083252V4H19.9166V1.33333H14.9583L13.5416 0ZM18.4999 5.33333H1.49992V21.3333C1.49992 22.8 2.77492 24 4.33325 24H15.6666C17.2249 24 18.4999 22.8 18.4999 21.3333V5.33333Z" fill="white" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add-row">
+                                <a class="btn-add">
+                                    <svg width="26"
+                                         height="27"
+                                         viewBox="0 0 26 27"
+                                         fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.064 26.416C11.744 26.416 11.472 26.32 11.248 26.128C11.056 25.904 10.96 25.632 10.96 25.312V15.328H1.12C0.8 15.328 0.528 15.232 0.304 15.04C0.112 14.816 0.0160002 14.544 0.0160002 14.224V12.688C0.0160002 12.368 0.112 12.112 0.304 11.92C0.528 11.696 0.8 11.584 1.12 11.584H10.96V1.888C10.96 1.568 11.056 1.312 11.248 1.12C11.472 0.895999 11.744 0.783998 12.064 0.783998H13.744C14.064 0.783998 14.32 0.895999 14.512 1.12C14.736 1.312 14.848 1.568 14.848 1.888V11.584H24.736C25.056 11.584 25.312 11.696 25.504 11.92C25.728 12.112 25.84 12.368 25.84 12.688V14.224C25.84 14.544 25.728 14.816 25.504 15.04C25.312 15.232 25.056 15.328 24.736 15.328H14.848V25.312C14.848 25.632 14.736 25.904 14.512 26.128C14.32 26.32 14.064 26.416 13.744 26.416H12.064Z"
+                                              fill="white" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="create" class="bottom">
+            <a>Создать</a>
+        </div>
+    </div>
+</main>
+<script src="~/js/scriptTypeQuestion.js" asp-append-version="true"></script>
+<script src="~/js/scriptClear.js" asp-append-version="true"></script>
+<script src="~/js/scriptTableRightAnswer.js" asp-append-version="true"></script>
