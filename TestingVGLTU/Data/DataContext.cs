@@ -17,11 +17,11 @@ namespace TestingVGLTU.Data
         public DbSet<QuestionInputNumber> QuestionInputNumbers { get; set; } = null!;
         public DbSet<QuestionInputText> QuestionInputText { get; set; } = null!;
         public DbSet<ActiveTesting> ActiveTesting { get; set; }
-        //public DbSet<UserResponsesToTests> UserResponsesToTests { get; set; }
+        public DbSet<UserResponsesToTests> UserResponsesToTests { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        public DataContext(DbContextOptions<DataContext> options): base(options)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=usersdb;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

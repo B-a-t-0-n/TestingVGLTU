@@ -8,6 +8,6 @@
         public string Patronymic { get; set; } = null!;
         public string Login { get; set; } = null!;
         public string Password { get; set; } = null!;
-        //public IEnumerable<UserResponsesToTests> UserResponsesToTests { get; set; } = null!;
+        public IEnumerable<UserResponsesToTests> UserResponsesToTests { get; set; } = null!;
     }
 }

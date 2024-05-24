@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TestingVGLTU.Migrations
 {
     /// <inheritdoc />
-    public partial class create : Migration
+    public partial class add_Table : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -248,6 +248,37 @@ namespace TestingVGLTU.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "UserResponsesToTests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    ActiveTestingId = table.Column<int>(type: "int", nullable: true),
+                    QuestionId = table.Column<int>(type: "int", nullable: true),
+                    QuestionName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserResponsesToTests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserResponsesToTests_ActiveTesting_ActiveTestingId",
+                        column: x => x.ActiveTestingId,
+                        principalTable: "ActiveTesting",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_UserResponsesToTests_Questions_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "Questions",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_UserResponsesToTests_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ActiveTesting_GroupId",
                 table: "ActiveTesting",
@@ -277,14 +308,26 @@ namespace TestingVGLTU.Migrations
                 name: "IX_Testings_TypeTestingId",
                 table: "Testings",
                 column: "TypeTestingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserResponsesToTests_ActiveTestingId",
+                table: "UserResponsesToTests",
+                column: "ActiveTestingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserResponsesToTests_QuestionId",
+                table: "UserResponsesToTests",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserResponsesToTests_UserId",
+                table: "UserResponsesToTests",
+                column: "UserId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ActiveTesting");
-
             migrationBuilder.DropTable(
                 name: "QuestionInputNumbers");
 
@@ -299,6 +342,12 @@ namespace TestingVGLTU.Migrations
 
             migrationBuilder.DropTable(
                 name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "UserResponsesToTests");
+
+            migrationBuilder.DropTable(
+                name: "ActiveTesting");
 
             migrationBuilder.DropTable(
                 name: "Questions");

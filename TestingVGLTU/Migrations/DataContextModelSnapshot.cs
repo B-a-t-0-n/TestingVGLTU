@@ -181,6 +181,37 @@ namespace TestingVGLTU.Migrations
                     b.UseTptMappingStrategy();
                 });
 
+            modelBuilder.Entity("TestingVGLTU.Data.Entities.UserResponsesToTests", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("ActiveTestingId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("QuestionName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActiveTestingId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserResponsesToTests");
+                });
+
             modelBuilder.Entity("TestingVGLTU.Data.Entities.QuestionInputNumber", b =>
                 {
                     b.HasBaseType("TestingVGLTU.Data.Entities.Question");
@@ -304,6 +335,27 @@ namespace TestingVGLTU.Migrations
                     b.Navigation("TypeTesting");
                 });
 
+            modelBuilder.Entity("TestingVGLTU.Data.Entities.UserResponsesToTests", b =>
+                {
+                    b.HasOne("TestingVGLTU.Data.Entities.ActiveTesting", "ActiveTesting")
+                        .WithMany("UserResponsesToTests")
+                        .HasForeignKey("ActiveTestingId");
+
+                    b.HasOne("TestingVGLTU.Data.Entities.Question", "Question")
+                        .WithMany("UserResponsesToTests")
+                        .HasForeignKey("QuestionId");
+
+                    b.HasOne("TestingVGLTU.Data.Entities.User", "User")
+                        .WithMany("UserResponsesToTests")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("ActiveTesting");
+
+                    b.Navigation("Question");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("TestingVGLTU.Data.Entities.QuestionInputNumber", b =>
                 {
                     b.HasOne("TestingVGLTU.Data.Entities.Question", null)
@@ -366,11 +418,21 @@ namespace TestingVGLTU.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TestingVGLTU.Data.Entities.ActiveTesting", b =>
+                {
+                    b.Navigation("UserResponsesToTests");
+                });
+
             modelBuilder.Entity("TestingVGLTU.Data.Entities.Group", b =>
                 {
                     b.Navigation("ActiveTestings");
 
                     b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("TestingVGLTU.Data.Entities.Question", b =>
+                {
+                    b.Navigation("UserResponsesToTests");
                 });
 
             modelBuilder.Entity("TestingVGLTU.Data.Entities.Testing", b =>
@@ -383,6 +445,11 @@ namespace TestingVGLTU.Migrations
             modelBuilder.Entity("TestingVGLTU.Data.Entities.TypeTesting", b =>
                 {
                     b.Navigation("Testings");
+                });
+
+            modelBuilder.Entity("TestingVGLTU.Data.Entities.User", b =>
+                {
+                    b.Navigation("UserResponsesToTests");
                 });
 
             modelBuilder.Entity("TestingVGLTU.Data.Entities.Teacher", b =>

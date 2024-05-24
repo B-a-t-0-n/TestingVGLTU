@@ -8,6 +8,6 @@
         public int Scores { get; set; }
         public Testing Testing { get; set; } = null!;
         public int TestingId { get; set; }
-        //public IEnumerable<UserResponsesToTests> UserResponsesToTests { get; set; } = null!;
+        public IEnumerable<UserResponsesToTests> UserResponsesToTests { get; set; } = null!;
     }
 }
