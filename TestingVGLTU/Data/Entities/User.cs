@@ -1,4 +1,4 @@
-﻿namespace TestingVGLTU.Data
+﻿namespace TestingVGLTU.Data.Entities
 {
     public class User
     {
@@ -8,9 +8,6 @@
         public string Patronymic { get; set; } = null!;
         public string Login { get; set; } = null!;
         public string Password { get; set; } = null!;
-        public Role Role { get; set; } = null!;
-        public int RoleId { get; set; }
-        public Student? Student { get; set; }
-        public Teacher? Teacher { get; set; }
+        //public IEnumerable<UserResponsesToTests> UserResponsesToTests { get; set; } = null!;
     }
 }

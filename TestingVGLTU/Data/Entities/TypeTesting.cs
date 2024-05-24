@@ -1,4 +1,4 @@
-﻿namespace TestingVGLTU.Data
+﻿namespace TestingVGLTU.Data.Entities
 {
     public class TypeTesting
     {

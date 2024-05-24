@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TestingVGLTU.Data.Entities;
 
 namespace TestingVGLTU.Data
 {
@@ -8,11 +9,15 @@ namespace TestingVGLTU.Data
         public DbSet<Student> Students { get; set; } = null!;
         public DbSet<Teacher> Teachers { get; set; } = null!;
         public DbSet<Group> Groups { get; set; } = null!;
-        public DbSet<Role> Roles { get; set; } = null!;
         public DbSet<Testing> Testings { get; set; } = null!;
         public DbSet<TypeTesting> TypeTestings { get; set; } = null!;
         public DbSet<Question> Questions { get; set; } = null!;
-
+        public DbSet<QuestionMultipleChoice> QuestionMultipleChoices { get; set; } = null!;
+        public DbSet<QuestionSingleSelection> QuestionSingleSelections { get; set; } = null!;
+        public DbSet<QuestionInputNumber> QuestionInputNumbers { get; set; } = null!;
+        public DbSet<QuestionInputText> QuestionInputText { get; set; } = null!;
+        public DbSet<ActiveTesting> ActiveTesting { get; set; }
+        //public DbSet<UserResponsesToTests> UserResponsesToTests { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,7 +26,8 @@ namespace TestingVGLTU.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<User>().UseTptMappingStrategy();
+            modelBuilder.Entity<Question>().UseTptMappingStrategy();
         }
     }
 }

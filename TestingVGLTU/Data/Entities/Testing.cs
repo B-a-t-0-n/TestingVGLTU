@@ -1,4 +1,4 @@
-﻿namespace TestingVGLTU.Data
+﻿namespace TestingVGLTU.Data.Entities
 {
     public class Testing
     {
@@ -10,6 +10,6 @@
         public DateTime Time { get; set; }
         public IEnumerable<Question> Questions { get; set; } = null!;
         public Teacher Teacher { get; set; } = null!;
-        public int TeacherId { get; set; }
+        public IEnumerable<ActiveTesting> ActiveTestings { get; set; } = null!;
     }
 }
