@@ -1,4 +1,4 @@
-﻿namespace TestingVGLTU.Data.Entities
+﻿namespace TestingVGLTU.Models
 {
     public class QuestionMultipleChoice : Question
     {

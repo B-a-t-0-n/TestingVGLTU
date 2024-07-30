@@ -1,4 +1,6 @@
-﻿@{
+﻿@using TestingVGLTU.ViewModel
+@model RegistrationViewModel
+@{
     ViewData["Title"] = "Регистрация";
 }
 
@@ -13,52 +15,54 @@
         <h1>Регистрация</h1>
     </div>
     <div>
-        <div class="container-center">
-            <div class="container-textBox">
-                <div class="textBox">
-                    <p>Фамилия</p>
-                    <input type="text" placeholder="Введите фамилия..." />
+        <form asp-action="Registration" asp-controller="RegistrationController" method="post">
+            <div class="container-center">
+                <div class="container-textBox">
+                    <div class="textBox">
+                        <p>Фамилия</p>
+                        <input type="text" asp-for="Surname" placeholder="Введите фамилию..." />
+                    </div>
+                    <div class="textBox">
+                        <p>Имя</p>
+                        <input type="text" asp-for="Name" placeholder="Введите имя..." />
+                    </div>
+                    <div class="textBox">
+                        <p>Отчество</p>
+                        <input type="text" asp-for="Patronymic" placeholder="Введите отчество..." />
+                    </div>
                 </div>
-                <div class="textBox">
-                    <p>Имя</p>
-                    <input type="text" placeholder="Введите имя..." />
+                <div class="container-textBox">
+                    <div class="textBox">
+                        <p>Логин</p>
+                        <input type="text" asp-for="Login" placeholder="Введите логин..." />
+                    </div>
+                    <div class="textBox">
+                        <p>Пароль</p>
+                        <input type="password" asp-for="Password" placeholder="Введите пароль..." />
+                    </div>
+                    <div class="textBox">
+                        <p>Повторите пароль</p>
+                        <input type="password" asp-for="PasswordCopy" placeholder="Введите пароль..." />
+                    </div>
                 </div>
-                <div class="textBox">
-                    <p>Отчество</p>
-                    <input type="text" placeholder="Введите отчество..." />
+                <div id="studentInput" class="container-textBox">
+                    <div class="textBox">
+                        <p>Номер зачётной книжки</p>
+                        <input type="text" asp-for="NumberRecordBook" placeholder="Введите номер..." />
+                    </div>
+                    <div class="textBox">
+                        <p>Группа</p>
+                        <input type="text" asp-for="Group" placeholder="Введите группу..." />
+                    </div>
+                    <div class="textBox">
+                    </div>
                 </div>
             </div>
-            <div class="container-textBox">
-                <div class="textBox">
-                    <p>Логин</p>
-                    <input type="text" placeholder="Введите логин..." />
-                </div>
-                <div class="textBox">
-                    <p>Пароль</p>
-                    <input type="password" placeholder="Введите пароль..." />
-                </div>
-                <div class="textBox">
-                    <p>Повторите пароль</p>
-                    <input type="password" placeholder="Введите пароль..." />
-                </div>
+            <div class="btn">
+                <button class="button" asp-area="">Зарегистрироваться</button>
+                <a class="buttonHide" asp-area="" asp-controller="Authorization" asp-action="Login">назад</a>
             </div>
-            <div id="studentInput" class="container-textBox">
-                <div class="textBox">
-                    <p>Номер зачётной книжки</p>
-                    <input type="text" placeholder="Введите номер..." />
-                </div>
-                <div class="textBox">
-                    <p>Группа</p>
-                    <input type="text" placeholder="Введите группу..." />
-                </div>
-                <div class="textBox">
-                </div>
-            </div>
-        </div>
-        <div class="btn">
-            <a class="button" asp-area="" asp-controller="Authorization" asp-action="Login">Зарегистрироваться</a>
-            <a class="buttonHide" asp-area="" asp-controller="Authorization" asp-action="Login">назад</a>
-        </div>
+        </form>
     </div>
 </div>
 <script src="~/js/scriptRfBtn.js" asp-append-version="true"></script>

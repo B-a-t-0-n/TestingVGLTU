@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TestingVGLTU.Data.Entities;
+using TestingVGLTU.Models;
 
 namespace TestingVGLTU.Data
 {
