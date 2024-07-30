@@ -15,7 +15,7 @@
         <h1>Регистрация</h1>
     </div>
     <div>
-        <form asp-action="Registration" asp-controller="RegistrationController" method="post">
+        <form asp-action="Registration" asp-controller="Registration" method="post">
             <div class="container-center">
                 <div class="container-textBox">
                     <div class="textBox">
@@ -59,8 +59,8 @@
                 </div>
             </div>
             <div class="btn">
-                <button class="button" asp-area="">Зарегистрироваться</button>
-                <a class="buttonHide" asp-area="" asp-controller="Authorization" asp-action="Login">назад</a>
+                <button class="button" type='submit'>Зарегистрироваться</button>
+                <a class="buttonHide" asp-controller="Authorization" asp-action="Login">назад</a>
             </div>
         </form>
     </div>

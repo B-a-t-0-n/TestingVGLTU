@@ -26,7 +26,7 @@ namespace TestingVGLTU.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (true)
+                if (!model.IsTeacher)
                 {
                     var teacher = new Teacher()
                     {
@@ -49,7 +49,7 @@ namespace TestingVGLTU.Controllers
                     Patronymic = model.Patronymic!,
                     Password = model.Password!,
                     Login = model.Login!,
-                    NumberRecordBook = model.NumberRecordBook
+                    NumberRecordBook = (int)model.NumberRecordBook!
                 };
 
                 await _userServices.RegisterStudent(student);
