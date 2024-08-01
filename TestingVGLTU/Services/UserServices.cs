@@ -1,7 +1,7 @@
 ﻿using TestingVGLTU.Interfaces;
 using TestingVGLTU.Interfaces.Repositories;
 using TestingVGLTU.Interfaces.Services;
-using TestingVGLTU.Models;
+using TestingVGLTU.Models.Entity;
 
 namespace TestingVGLTU.Services
 {
@@ -34,14 +34,22 @@ namespace TestingVGLTU.Services
 
         public async Task<User> Login(string login, string password)
         {
-            var user = await _teacherRepository.GetByLogin(login);
+            var userTeacher = await _teacherRepository.GetByLogin(login);
+            var userStudent = await _studentRepository.GetByLogin(login);
 
-            if (_passwordHasher.Verefy(password, user.Password))
+            User? activeUser = userTeacher == null ? userStudent : userTeacher;
+
+            if (activeUser == null)
+            {
+                throw new Exception("неверный логин");
+            }
+
+            if (!_passwordHasher.Verefy(password, activeUser!.Password))
             {
                 throw new Exception("неверный пароль");
             }
 
-            return user;
+            return activeUser;
         }
     }
 }

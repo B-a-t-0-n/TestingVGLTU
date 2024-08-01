@@ -1,4 +1,4 @@
-﻿namespace TestingVGLTU.Models
+﻿namespace TestingVGLTU.Models.Entity
 {
     public class Teacher : User
     {

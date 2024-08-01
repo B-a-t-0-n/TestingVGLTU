@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using TestingVGLTU.Data;
 using TestingVGLTU.Data.Repositories;
 using TestingVGLTU.Infrastructure;
@@ -26,22 +27,23 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(config =>
 {
-    config.LoginPath = "/Auth/Login";
-    config.LogoutPath = "/Auth/Login";
-    config.AccessDeniedPath = "/Home/Error";
+    config.LoginPath = "/Authorization/Login";
+    config.AccessDeniedPath = "/Authorization/Login";
+    
 });
 
-builder.Services.AddAuthorization(config =>
+builder.Services.AddAuthorization(option =>
 {
-    config.AddPolicy("User", policy =>
+    option.AddPolicy("Student", policy =>
     {
-        policy.RequireAuthenticatedUser();
+        policy.RequireClaim(ClaimTypes.Role, "Student");
     });
-    config.AddPolicy("Admin", policy =>
+    option.AddPolicy("Teacher", policy =>
     {
-        policy.RequireClaim("IsAdmin", "True");
+        policy.RequireClaim(ClaimTypes.Role, "Teacher");
     });
 });
+
 
 var app = builder.Build();
 
@@ -54,8 +56,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
 app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

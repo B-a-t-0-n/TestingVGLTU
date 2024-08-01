@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TestingVGLTU.ViewModel
+namespace TestingVGLTU.Models.ViewModel
 {
     public class RegistrationViewModel
     {

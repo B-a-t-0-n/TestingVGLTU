@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TestingVGLTU.Interfaces.Repositories;
-using TestingVGLTU.Models;
+using TestingVGLTU.Models.Entity;
 
 namespace TestingVGLTU.Data.Repositories
 {
@@ -48,10 +48,10 @@ namespace TestingVGLTU.Data.Repositories
 
         public async Task<List<Student>> GetWithGroup() => await _context.Students.AsNoTracking().Include(s => s.Group).ToListAsync();
 
-        public async Task<Student> GetById(int id) => await _context.Students.AsNoTracking().Where(s => s.Id == id).FirstAsync();
+        public async Task<Student?> GetById(int id) => await _context.Students.AsNoTracking().Where(s => s.Id == id).FirstOrDefaultAsync();
 
-        public async Task<Student> GetByLogin(string login) => await _context.Students.AsNoTracking().Where(s => s.Login == login).FirstAsync();
-
+        public async Task<Student?> GetByLogin(string login) => await _context.Students.AsNoTracking().Where(s => s.Login == login).FirstOrDefaultAsync();
+          
         public async Task Delete(int id) => await _context.Students.Where(s => s.Id == id).ExecuteDeleteAsync();
     }
 }

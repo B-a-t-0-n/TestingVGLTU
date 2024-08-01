@@ -1,22 +1,25 @@
-﻿@{
+﻿@using TestingVGLTU.Models.ViewModel
+@model LoginViewModel
+@{
     ViewData["Title"] = "Вход";
 }
 
 <div class="container">
     <h1>Вход</h1>
-    <div>
-        <div class="textBox">
-            <p>Логин</p>
-            <input type="text" placeholder="Введите логин..." />
+    <form asp-action="Login" asp-controller="Authorization" method="post">
+        <div>
+            <div class="textBox">
+                <p>Логин</p>
+                <input type="text" asp-for="Login" placeholder="Введите логин..." />
+            </div>
+            <div class="textBox">
+                <p>Пароль</p>
+                <input type="password" asp-for="Password" placeholder="Введите пароль..." />
+            </div>
+            <div class="btn">
+                <a class="buttonHide" asp-controller="Registration" asp-action="Registration">Зарегистрироваться</a>
+                <button class="button" type="submit">Войти</button>
+            </div>
         </div>
-        <div class="textBox">
-            <p>Пароль</p>
-            <input type="password" placeholder="Введите пароль..." />
-        </div>
-        <div class="btn">
-            <a class="buttonHide" asp-area="" asp-controller="Registration" asp-action="Registration">Зарегистрироваться</a>
-            <a class="button" asp-area="" asp-controller="Home" asp-action="HomeUser">Войти</a>
-            <a class="button" asp-area="" asp-controller="Cards" asp-action="TestingEditor">Войти</a>
-        </div>
-    </div>
+    </form>
 </div>

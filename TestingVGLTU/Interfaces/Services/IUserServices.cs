@@ -1,4 +1,4 @@
-﻿using TestingVGLTU.Models;
+﻿using TestingVGLTU.Models.Entity;
 
 namespace TestingVGLTU.Interfaces.Services
 {

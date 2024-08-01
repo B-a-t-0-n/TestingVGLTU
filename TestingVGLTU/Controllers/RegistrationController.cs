@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TestingVGLTU.Interfaces.Services;
 using TestingVGLTU.Models;
+using TestingVGLTU.Models.Entity;
+using TestingVGLTU.Models.ViewModel;
 using TestingVGLTU.Services;
-using TestingVGLTU.ViewModel;
 
 namespace TestingVGLTU.Controllers
 {
