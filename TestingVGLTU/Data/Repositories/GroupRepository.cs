@@ -35,13 +35,6 @@ namespace TestingVGLTU.Data.Repositories
                 );
         }
 
-        //public async Task AddStudent(Student student, Group group) 
-        //{
-        //    var gr = await _context.Groups.FirstOrDefaultAsync(i => i.Id == group.Id);
-        //    gr!.Students.ToList().Add(student);
-        //    await _context.SaveChangesAsync();
-        //}
-
         public async Task<List<Group>> Get() => await _context.Groups.AsNoTracking().ToListAsync();
 
         public async Task<Group?> GetById(int id) => await _context.Groups.AsNoTracking().Where(s => s.Id == id).FirstOrDefaultAsync();

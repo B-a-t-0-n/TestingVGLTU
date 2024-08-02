@@ -8,7 +8,7 @@ namespace TestingVGLTU.Controllers
     {
         [HttpGet]
         [Authorize(Policy = "Student")]
-        public IActionResult HomeUser()
+        public async Task<IActionResult> HomeUser()
         {
             return View();
         }

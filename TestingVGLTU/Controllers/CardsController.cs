@@ -19,28 +19,28 @@ namespace TestingVGLTU.Controllers
 
         [HttpGet]
         [Authorize(Policy = "Teacher")]
-        public IActionResult ActiveCreator()
+        public async Task<IActionResult> ActiveCreator()
         {
             return View();
         }
 
         [HttpGet]
         [Authorize(Policy = "Student")]
-        public IActionResult ActiveUser()
+        public async Task<IActionResult> ActiveUser()
         {
             return View();
         }
 
         [HttpGet]
         [Authorize(Policy = "Teacher")]
-        public IActionResult HistoryTesting()
+        public async Task<IActionResult> HistoryTesting()
         {
             return View();
         }
 
         [HttpGet]
         [Authorize(Policy = "Student")]
-        public IActionResult MailUser()
+        public async Task<IActionResult> MailUser()
         {
             return View();
         }
