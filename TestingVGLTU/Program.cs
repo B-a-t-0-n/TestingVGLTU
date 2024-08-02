@@ -17,11 +17,11 @@ string connection = builder.Configuration.GetConnectionString("DefaultConnection
 // добавляем контекст ApplicationContext в качестве сервиса в приложение
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
 
-builder.Services.AddTransient<IStudentRepository, StudentRepository>();
+builder.Services.AddTransient<TestingVGLTU.Interfaces.Repositories.IStudentRepository, StudentRepository>();
 builder.Services.AddTransient<ITeacherRepository, TeacherRepository>();
 builder.Services.AddTransient<IGroupRepository, GroupRepository>();
 builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
-builder.Services.AddTransient<IUserServices, UserServices>();
+builder.Services.AddTransient<TestingVGLTU.Interfaces.Services.IUserServices, UserServices>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

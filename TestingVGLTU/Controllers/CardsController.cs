@@ -1,17 +1,20 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using TestingVGLTU.Interfaces.Repositories;
 using TestingVGLTU.Interfaces.Services;
+using TestingVGLTU.Models.Entity;
 
 namespace TestingVGLTU.Controllers
 {
     
     public class CardsController : Controller
     {
-        private readonly IUserServices _userServices;
+        private readonly ITeacherRepository _teacherRepository;
 
-        public CardsController(IUserServices userServices)
+        public CardsController(ITeacherRepository teacherRepository)
         {
-            _userServices = userServices;
+            _teacherRepository = teacherRepository;
         }
 
         [HttpGet]
@@ -44,9 +47,13 @@ namespace TestingVGLTU.Controllers
 
         [HttpGet]
         [Authorize(Policy = "Teacher")]
-        public IActionResult TestingEditor()
+        public async Task<IActionResult> TestingEditor()
         {
-            return View();
+            var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            Teacher? teacher = await _teacherRepository.GetById(int.Parse(id!));
+
+            return View(teacher!.Testings.ToList());
         }
     }
 }

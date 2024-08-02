@@ -8,10 +8,10 @@ namespace TestingVGLTU.Controllers
 {
     public class RegistrationController : Controller
     {
-        private readonly IUserServices _userServices;
+        private readonly Interfaces.Services.IUserServices _userServices;
         private readonly IGroupRepository _groupRepository;
 
-        public RegistrationController(IUserServices userServices, IGroupRepository groupRepository)
+        public RegistrationController(Interfaces.Services.IUserServices userServices, IGroupRepository groupRepository)
         {
             _userServices = userServices;
             _groupRepository = groupRepository;

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TestingVGLTU.Controllers
 {
-    [Authorize]
+    [Authorize(Policy = "Teacher")]
     public class CreateTestingController : Controller
     {
         public IActionResult CreateQuestion()

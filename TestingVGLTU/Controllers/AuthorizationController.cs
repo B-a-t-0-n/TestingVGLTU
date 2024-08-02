@@ -63,6 +63,8 @@ namespace TestingVGLTU.Controllers
 
                 var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
+                ViewData["FullName"] = $"{user.Surname} {user.Name[0]}.{user.Patronymic[0]}.";
+
                 return user is Teacher ? RedirectToAction("TestingEditor", "Cards") : RedirectToAction("HomeUser", "Home");
             }
             catch (Exception ex)

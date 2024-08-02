@@ -7,7 +7,7 @@
 namespace TestingVGLTU.Migrations
 {
     /// <inheritdoc />
-    public partial class option : Migration
+    public partial class Option : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

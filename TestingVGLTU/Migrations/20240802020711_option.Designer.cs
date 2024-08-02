@@ -13,7 +13,7 @@ namespace TestingVGLTU.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20240802020711_option")]
-    partial class option
+    partial class Option
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

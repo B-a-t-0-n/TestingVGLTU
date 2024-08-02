@@ -1,4 +1,6 @@
-﻿@{
+﻿@using TestingVGLTU.Models.Entity
+@model List<Testing>
+@{
     ViewData["Title"] = "Тестирования";
     Layout = "~/Views/Shared/_LayoutCreator.cshtml";
 }
@@ -17,44 +19,47 @@
                 </svg>
             </a>
         </div>
-        <div class="card card-info">
-            <div class="test-info">
-                <div class="top">
-                    <div class="type">
-                        <span>Тест</span>
+        @foreach (var testing in Model)
+        {
+            <div class="card card-info">
+                <div class="test-info">
+                    <div class="top">
+                        <div class="type">
+                            <span>@testing.TypeTesting.Name</span>
+                        </div>
+                        <div class="delete-card">
+                            <svg width="20"
+                                 height="24"
+                                 viewBox="0 0 20 24"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.6666 8V21.3333H4.33325V8H15.6666ZM13.5416 0H6.45825L5.04159 1.33333H0.083252V4H19.9166V1.33333H14.9583L13.5416 0ZM18.4999 5.33333H1.49992V21.3333C1.49992 22.8 2.77492 24 4.33325 24H15.6666C17.2249 24 18.4999 22.8 18.4999 21.3333V5.33333Z"
+                                      fill="white" />
+                            </svg>
+                        </div>
                     </div>
-                    <div class="delete-card">
-                        <svg width="20"
-                             height="24"
-                             viewBox="0 0 20 24"
-                             fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.6666 8V21.3333H4.33325V8H15.6666ZM13.5416 0H6.45825L5.04159 1.33333H0.083252V4H19.9166V1.33333H14.9583L13.5416 0ZM18.4999 5.33333H1.49992V21.3333C1.49992 22.8 2.77492 24 4.33325 24H15.6666C17.2249 24 18.4999 22.8 18.4999 21.3333V5.33333Z"
-                                  fill="white" />
-                        </svg>
+                    <div class="center">
+                        <div class="name">
+                            <span>@testing.Name</span>
+                        </div>
+                        <div class="info">
+                            <div class="item">
+                                <span>Преподаватель: @testing.Teacher.Surname @testing.Teacher.Name[0].@testing.Teacher.Patronymic[0].</span>
+                            </div>
+                            <div class="item">
+                                <span>Время: @testing.Time.Minute мин </span>
+                            </div>
+                            <div class="item">
+                                <span>Попытки: @testing.Attempts </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="center">
-                    <div class="name">
-                        <span> Проектирование и дизайн инф. систем </span>
-                    </div>
-                    <div class="info">
-                        <div class="item">
-                            <span>Преподаватель: Иванов И.И </span>
-                        </div>
-                        <div class="item">
-                            <span>Время: 45 мин </span>
-                        </div>
-                        <div class="item">
-                            <span>Попытки: 3 </span>
-                        </div>
-                    </div>
+                <div class="bottom">
+                    <a class="btn-start" asp-area="" asp-controller="CreateTesting" asp-action="TestingEditor">Перейти</a>
                 </div>
             </div>
-            <div class="bottom">
-                <a class="btn-start" asp-area="" asp-controller="CreateTesting" asp-action="TestingEditor">Перейти</a>
-            </div>
-        </div>
+        }
     </main>
 </div>
 <script src="~/js/scriptTestInfo.js" asp-append-version="true"></script>

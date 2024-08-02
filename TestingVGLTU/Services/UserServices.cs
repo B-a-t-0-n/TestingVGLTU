@@ -5,13 +5,13 @@ using TestingVGLTU.Models.Entity;
 
 namespace TestingVGLTU.Services
 {
-    public class UserServices : IUserServices
+    public class UserServices : Interfaces.Services.IUserServices
     {
         private readonly IPasswordHasher _passwordHasher;
-        private readonly IStudentRepository _studentRepository;
+        private readonly Interfaces.Repositories.IStudentRepository _studentRepository;
         private readonly ITeacherRepository _teacherRepository;
 
-        public UserServices(IStudentRepository studentRepository, ITeacherRepository teacherRepository, IPasswordHasher passwordHasher)
+        public UserServices(Interfaces.Repositories.IStudentRepository studentRepository, ITeacherRepository teacherRepository, IPasswordHasher passwordHasher)
         {
             _teacherRepository = teacherRepository;
             _studentRepository = studentRepository;
