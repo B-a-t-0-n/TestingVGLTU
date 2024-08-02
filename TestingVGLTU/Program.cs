@@ -19,6 +19,7 @@ builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(conne
 
 builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 builder.Services.AddTransient<ITeacherRepository, TeacherRepository>();
+builder.Services.AddTransient<IGroupRepository, GroupRepository>();
 builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
 builder.Services.AddTransient<IUserServices, UserServices>();
 

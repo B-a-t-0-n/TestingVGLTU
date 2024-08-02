@@ -13,7 +13,7 @@ namespace TestingVGLTU.Data.Repositories
             _context = context;
         }
 
-        public async Task Create(string Name, string Surname, string Patronymic, string Login, string Password, int NumberRecordBook, Group group)
+        public async Task Create(string Name, string Surname, string Patronymic, string Login, string Password, int NumberRecordBook, int groupId)
         {
             var student = new Student()
             {
@@ -23,7 +23,7 @@ namespace TestingVGLTU.Data.Repositories
                 Login = Login,
                 Password = Password,
                 NumberRecordBook = NumberRecordBook,
-                Group = group
+                GroupId = groupId
             };
 
             await _context.AddAsync(student);
@@ -31,6 +31,20 @@ namespace TestingVGLTU.Data.Repositories
         }
 
         public async Task Update(Student student)
+        {
+            await _context.Students
+                .Where(s => s.Id == student.Id)
+                .ExecuteUpdateAsync(i => i
+                    .SetProperty(s => s.Name, student.Name)
+                    .SetProperty(s => s.Surname, student.Surname)
+                    .SetProperty(s => s.Patronymic, student.Patronymic)
+                    .SetProperty(s => s.Login, student.Login)
+                    .SetProperty(s => s.Password, student.Password)
+                    .SetProperty(s => s.NumberRecordBook, student.NumberRecordBook)
+                    .SetProperty(s => s.Group, student.Group));
+        }
+
+        public async Task SetGroup(Student student)
         {
             await _context.Students
                 .Where(s => s.Id == student.Id)

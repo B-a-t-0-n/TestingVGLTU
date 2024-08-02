@@ -6,6 +6,8 @@ namespace TestingVGLTU.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        [HttpGet]
+        [Authorize(Policy = "Student")]
         public IActionResult HomeUser()
         {
             return View();

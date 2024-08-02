@@ -47,6 +47,6 @@ namespace TestingVGLTU.Data.Repositories
 
         public async Task<Teacher?> GetByLogin(string login) => await _context.Teachers.AsNoTracking().Where(s => s.Login == login).FirstOrDefaultAsync();
 
-        public async Task Delete(int id) => await _context.Students.Where(s => s.Id == id).ExecuteDeleteAsync();
+        public async Task Delete(int id) => await _context.Teachers.Where(s => s.Id == id).ExecuteDeleteAsync();
     }
 }

@@ -28,6 +28,16 @@ namespace TestingVGLTU.Data
         {
             modelBuilder.Entity<User>().UseTptMappingStrategy();
             modelBuilder.Entity<Question>().UseTptMappingStrategy();
+
+            modelBuilder.Entity<Student>().HasIndex(s => s.NumberRecordBook).IsUnique();
+            modelBuilder.Entity<User>().HasIndex(u => u.Login).IsUnique();
+            modelBuilder.Entity<Group>().HasIndex(g => g.Name).IsUnique();
+
+            modelBuilder.Entity<Group>().HasData(
+                new Group { Id = 1, Name = "ИС1-211-ОТ"},
+                new Group { Id = 2, Name = "ИС1-212-ОТ" },
+                new Group { Id = 3, Name = "ИС1-213-ОТ" }
+        );
         }
     }
 }

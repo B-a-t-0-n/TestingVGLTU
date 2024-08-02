@@ -33,7 +33,7 @@ namespace TestingVGLTU.Controllers
                     return View(model);
                 }
 
-                User? user = await _userServices.Login(model.Login!, model.Password!);
+                var user = await _userServices.Login(model.Login!, model.Password!);
 
                 if (user == null)
                 {
@@ -42,14 +42,19 @@ namespace TestingVGLTU.Controllers
 
                 var claims = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.Role, "Teacher"),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                     new Claim(ClaimTypes.Name, user.Login)
                 };
 
-                //if (true)
-                //{
-                //    claims.Add(new Claim(ClaimTypes.Role, "Teacher"));
-                //}
+                if (user is Teacher)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, "Teacher"));
+                }
+
+                if (user is Student)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, "Student"));
+                }
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
@@ -58,7 +63,7 @@ namespace TestingVGLTU.Controllers
 
                 var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-                return RedirectToAction("TestingEditor", "Cards");
+                return user is Teacher ? RedirectToAction("TestingEditor", "Cards") : RedirectToAction("HomeUser", "Home");
             }
             catch (Exception ex)
             {

@@ -22,7 +22,7 @@ namespace TestingVGLTU.Services
         {
             var heshedPassword = _passwordHasher.Generate(user.Password);
 
-            await _teacherRepository.Create(user.Name, user.Surname, user.Patronymic, user.Login, heshedPassword);
+            await _studentRepository.Create(user.Name, user.Surname, user.Patronymic, user.Login, heshedPassword, user.NumberRecordBook, user.GroupId);
         }
 
         public async Task RegisterTeacher(Teacher user)

@@ -4,7 +4,7 @@ namespace TestingVGLTU.Interfaces.Repositories
 {
     public interface IStudentRepository
     {
-        Task Create(string Name, string Surname, string Patronymic, string Login, string Password, int NumberRecordBook, Group group);
+        Task Create(string Name, string Surname, string Patronymic, string Login, string Password, int NumberRecordBook, int groupId);
         Task Delete(int id);
         Task<List<Student>> Get();
         Task<Student?> GetById(int id);

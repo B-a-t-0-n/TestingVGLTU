@@ -1,19 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TestingVGLTU.Interfaces.Repositories;
 using TestingVGLTU.Interfaces.Services;
-using TestingVGLTU.Models;
 using TestingVGLTU.Models.Entity;
 using TestingVGLTU.Models.ViewModel;
-using TestingVGLTU.Services;
 
 namespace TestingVGLTU.Controllers
 {
     public class RegistrationController : Controller
     {
         private readonly IUserServices _userServices;
+        private readonly IGroupRepository _groupRepository;
 
-        public RegistrationController(IUserServices userServices)
+        public RegistrationController(IUserServices userServices, IGroupRepository groupRepository)
         {
             _userServices = userServices;
+            _groupRepository = groupRepository;
         }
 
         [HttpGet]
@@ -43,6 +44,8 @@ namespace TestingVGLTU.Controllers
                     return RedirectToAction("Login", "Authorization");
                 }
 
+                var group = await _groupRepository.GetByName(model.Group!);
+
                 var student = new Student()
                 {
                     Name = model.Name!,
@@ -50,7 +53,8 @@ namespace TestingVGLTU.Controllers
                     Patronymic = model.Patronymic!,
                     Password = model.Password!,
                     Login = model.Login!,
-                    NumberRecordBook = (int)model.NumberRecordBook!
+                    NumberRecordBook = (int)model.NumberRecordBook!,
+                    GroupId = group!.Id
                 };
 
                 await _userServices.RegisterStudent(student);
