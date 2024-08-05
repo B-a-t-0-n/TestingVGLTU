@@ -5,5 +5,6 @@
         public int NumberRecordBook { get; set; }
         public Group Group { get; set; } = null!;
         public int GroupId { get; set; }
+        public IEnumerable<UserResponsesToTests> UserResponsesToTests { get; set; } = null!;
     }
 }
