@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TestingVGLTU.Interfaces.Repositories;
 using TestingVGLTU.Models.Entity;
 
 namespace TestingVGLTU.Data.Repositories
 {
-    public class QuestionMultipleChoiceRepository
+    public class QuestionMultipleChoiceRepository : IQuestionMultipleChoiceRepository
     {
         private readonly DataContext _context;
 

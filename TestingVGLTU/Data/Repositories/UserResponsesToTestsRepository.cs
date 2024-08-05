@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TestingVGLTU.Interfaces.Repositories;
 using TestingVGLTU.Models.Entity;
 
 namespace TestingVGLTU.Data.Repositories
 {
-    public class UserResponsesToTestsRepository
+    public class UserResponsesToTestsRepository : IUserResponsesToTestsRepository
     {
         private readonly DataContext _context;
 
@@ -46,7 +47,7 @@ namespace TestingVGLTU.Data.Repositories
 
         public async Task<List<UserResponsesToTests>> GetByActiveTestingId(int id) => await _context.UserResponsesToTests.Include(i => i.ActiveTesting).AsNoTracking().Where(s => s.ActiveTestingId == id).ToListAsync();
 
-        public async Task<List<UserResponsesToTests>> GetByActiveTestingIdAndStudentId(int studentId, int activeTestingId) => 
+        public async Task<List<UserResponsesToTests>> GetByActiveTestingIdAndStudentId(int studentId, int activeTestingId) =>
             await _context.UserResponsesToTests.Include(i => i.ActiveTesting)
                                                .Include(i => i.Student)
                                                .AsNoTracking().Where(s => s.ActiveTestingId == activeTestingId && s.StudentId == studentId).ToListAsync();
