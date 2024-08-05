@@ -8,13 +8,11 @@ namespace TestingVGLTU.Controllers
 {
     public class RegistrationController : Controller
     {
-        private readonly Interfaces.Services.IUserServices _userServices;
-        private readonly IGroupRepository _groupRepository;
+        private readonly ILoginServices _userServices;
 
-        public RegistrationController(Interfaces.Services.IUserServices userServices, IGroupRepository groupRepository)
+        public RegistrationController(ILoginServices userServices)
         {
             _userServices = userServices;
-            _groupRepository = groupRepository;
         }
 
         [HttpGet]
@@ -30,34 +28,12 @@ namespace TestingVGLTU.Controllers
             {
                 if (!model.IsTeacher)
                 {
-                    var teacher = new Teacher()
-                    {
-                        Name = model.Name!,
-                        Surname = model.Surname!,
-                        Patronymic = model.Patronymic!,
-                        Password = model.Password!,
-                        Login = model.Login!
-                    };
-
-                    await _userServices.RegisterTeacher(teacher);
+                    await _userServices.RegisterTeacher(model.Name, model.Surname, model.Patronymic, model.Login, model.Password);
 
                     return RedirectToAction("Login", "Authorization");
                 }
 
-                var group = await _groupRepository.GetByName(model.Group!);
-
-                var student = new Student()
-                {
-                    Name = model.Name!,
-                    Surname = model.Surname!,
-                    Patronymic = model.Patronymic!,
-                    Password = model.Password!,
-                    Login = model.Login!,
-                    NumberRecordBook = (int)model.NumberRecordBook!,
-                    GroupId = group!.Id
-                };
-
-                await _userServices.RegisterStudent(student);
+                await _userServices.RegisterStudent(model.Name, model.Surname, model.Patronymic, model.Login, model.Password, (int)model.NumberRecordBook!, model!.Group!);
 
                 return RedirectToAction("Login", "Authorization");
             }

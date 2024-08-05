@@ -53,6 +53,8 @@ namespace TestingVGLTU.Controllers
 
             Teacher? teacher = await _teacherRepository.GetById(int.Parse(id!));
 
+            ViewBag.Message = $"{teacher!.Surname} {teacher!.Name[0]}.{teacher!.Patronymic[0]}.";
+
             return View(teacher!.Testings.ToList());
         }
     }

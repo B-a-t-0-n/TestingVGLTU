@@ -21,13 +21,16 @@ builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 builder.Services.AddTransient<ITeacherRepository, TeacherRepository>();
 builder.Services.AddTransient<IGroupRepository, GroupRepository>();
 builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
-builder.Services.AddTransient<IUserServices, UserServices>();
 builder.Services.AddTransient<IActiveTestingRepository, ActiveTestingRepository>();
 builder.Services.AddTransient<IQuestionInputNumberRepository, QuestionInputNumberRepository>();
 builder.Services.AddTransient<IQuestionInputTextRepository, QuestionInputTextRepository>();
 builder.Services.AddTransient<IQuestionMultipleChoiceRepository, QuestionMultipleChoiceRepository>();
 builder.Services.AddTransient<IQuestionSingleSelectionRepository, QuestionSingleSelectionRepository>();
 builder.Services.AddTransient<IUserResponsesToTestsRepository, UserResponsesToTestsRepository>();
+builder.Services.AddTransient<ITypeTestingRepository, TypeTestingRepository>();
+builder.Services.AddTransient<ITestingRepository, TestingRepository>();
+builder.Services.AddTransient<ILoginServices, LoginServices>();
+builder.Services.AddTransient<ITestingService, TestingService>();
 
 
 // Add services to the container.

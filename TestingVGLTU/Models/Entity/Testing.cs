@@ -10,6 +10,8 @@
         public DateTime Time { get; set; }
         public IEnumerable<Question> Questions { get; set; } = null!;
         public Teacher Teacher { get; set; } = null!;
+        public int TeacherId { get; set; }
         public IEnumerable<ActiveTesting> ActiveTestings { get; set; } = null!;
+        public DateTime TimeCreate { get; set; }
     }
 }

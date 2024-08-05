@@ -13,7 +13,7 @@ namespace TestingVGLTU.Data.Repositories
             _context = context;
         }
 
-        public async Task Create(string name, int typeTestingId, string outputOfResult, uint attempts, DateTime time, Teacher teacher)
+        public async Task<Testing?> Create(string name, int typeTestingId, string outputOfResult, uint attempts, DateTime time, int teacherId)
         {
             var testing = new Testing()
             {
@@ -21,12 +21,15 @@ namespace TestingVGLTU.Data.Repositories
                 TypeTestingId = typeTestingId,
                 Attempts = attempts,
                 Time = time,
-                Teacher = teacher
+                TeacherId = teacherId,
+                TimeCreate = DateTime.Now,
                 //outputOfResult
             };
 
             await _context.Testings.AddAsync(testing);
             await _context.SaveChangesAsync();
+
+            return await _context.Testings.FirstOrDefaultAsync(t => t.TimeCreate == testing.TimeCreate && t.TeacherId == testing.TeacherId);
         }
 
         public async Task Update(Testing testing)

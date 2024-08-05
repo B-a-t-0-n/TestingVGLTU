@@ -10,15 +10,15 @@ namespace TestingVGLTU.Controllers
 {
     public class AuthorizationController : Controller
     {
-        private readonly IUserServices _userServices;
+        private readonly ILoginServices _userServices;
 
-        public AuthorizationController(IUserServices userServices)
+        public AuthorizationController(ILoginServices userServices)
         {
             _userServices = userServices;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Login()
+        public IActionResult Login()
         {
             return View();
         }
@@ -60,10 +60,6 @@ namespace TestingVGLTU.Controllers
                 var principal = new ClaimsPrincipal(identity);
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-                ViewData["FullName"] = $"{user.Surname} {user.Name[0]}.{user.Patronymic[0]}.";
 
                 return user is Teacher ? RedirectToAction("TestingEditor", "Cards") : RedirectToAction("HomeUser", "Home");
             }
