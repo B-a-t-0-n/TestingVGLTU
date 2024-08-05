@@ -1,4 +1,5 @@
-﻿using TestingVGLTU.Interfaces.Repositories;
+﻿using TestingVGLTU.Data.Repositories;
+using TestingVGLTU.Interfaces.Repositories;
 using TestingVGLTU.Interfaces.Services;
 using TestingVGLTU.Models.Entity;
 
@@ -8,11 +9,14 @@ namespace TestingVGLTU.Services
     {
         private readonly ITestingRepository _testingRepository;
         private readonly ITypeTestingRepository _typeTestingRepository;
+        private readonly ITypeOutputOfResultRepository _typeOutputOfResultRepository;
 
-        public TestingService(ITestingRepository testingRepository, ITypeTestingRepository typeTestingRepository)
+        public TestingService(ITestingRepository testingRepository, ITypeTestingRepository typeTestingRepository,
+            ITypeOutputOfResultRepository typeOutputOfResultRepository)
         {
             _testingRepository = testingRepository;
             _typeTestingRepository = typeTestingRepository;
+            _typeOutputOfResultRepository = typeOutputOfResultRepository;
         }
 
         public async Task<Testing?> Create(string Name, string type, string outputOfRezult, uint Attempts, int Time, int teacherId)
@@ -22,7 +26,12 @@ namespace TestingVGLTU.Services
             if (typeTesting == null)
                 throw new Exception("данного типа тестирования не сущевствует");
 
-            return await _testingRepository.Create(Name, typeTesting.Id, outputOfRezult, Attempts, new DateTime(0, 0, 0, 0, Time, 0), teacherId);
+            var typeOutputOfRezult = await _typeTestingRepository.GetByName(type);
+
+            if (typeOutputOfRezult == null)
+                throw new Exception("данного типа вывода результата не сущевствует");
+
+            return await _testingRepository.Create(Name, type, outputOfRezult, Attempts, new DateTime(0, 0, 0, 0, Time, 0), teacherId);
         }
 
         public async Task Update(Testing testing)

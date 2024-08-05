@@ -13,17 +13,20 @@ namespace TestingVGLTU.Data.Repositories
             _context = context;
         }
 
-        public async Task<Testing?> Create(string name, int typeTestingId, string outputOfResult, uint attempts, DateTime time, int teacherId)
+        public async Task<Testing?> Create(string name, string typeTesting, string outputOfResult, uint attempts, DateTime time, int teacherId)
         {
+            var type = await _context.TypeTestings.FirstOrDefaultAsync(i => i.Name == typeTesting);
+            var output = await _context.TypeOutputOfResults.FirstOrDefaultAsync(i => i.Name == outputOfResult);
+
             var testing = new Testing()
             {
                 Name = name,
-                TypeTestingId = typeTestingId,
+                TypeTestingId = type!.Id,
                 Attempts = attempts,
                 Time = time,
                 TeacherId = teacherId,
                 TimeCreate = DateTime.Now,
-                //outputOfResult
+                TypeOutputOfResultId = output!.Id
             };
 
             await _context.Testings.AddAsync(testing);

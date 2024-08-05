@@ -4,7 +4,7 @@ namespace TestingVGLTU.Interfaces.Repositories
 {
     public interface ITestingRepository
     {
-        Task<Testing?> Create(string name, int typeTestingId, string outputOfResult, uint attempts, DateTime time, int teacherId);
+        Task<Testing?> Create(string name, string typeTesting, string outputOfResult, uint attempts, DateTime time, int teacherId);
         Task Delete(int id);
         Task<List<Testing>> Get();
         Task<Testing?> GetById(int id);

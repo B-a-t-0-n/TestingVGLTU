@@ -1424,7 +1424,7 @@ input ::-webkit-inner-spin-button {
   width: 135px;
 }
 
-.create-test-panel .bottom a {
+.create-test-panel .bottom button {
   width: 100px;
   height: 38px;
   background-color: #358038;
@@ -1436,9 +1436,10 @@ input ::-webkit-inner-spin-button {
   font-family: Rubik;
   text-decoration: none;
   color: #fff;
+  border-width: 0px;
 }
 
-.create-test-panel .bottom a:hover {
+.create-test-panel .bottom button:hover {
   background: #358037a7;
 }
 

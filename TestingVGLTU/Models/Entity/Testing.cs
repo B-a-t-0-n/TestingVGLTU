@@ -13,5 +13,7 @@
         public int TeacherId { get; set; }
         public IEnumerable<ActiveTesting> ActiveTestings { get; set; } = null!;
         public DateTime TimeCreate { get; set; }
+        public TypeOutputOfResult TypeOutputOfResult { get; set; } = null!;
+        public int TypeOutputOfResultId { get; set; }
     }
 }

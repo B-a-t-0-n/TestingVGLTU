@@ -28,6 +28,7 @@ builder.Services.AddTransient<IQuestionMultipleChoiceRepository, QuestionMultipl
 builder.Services.AddTransient<IQuestionSingleSelectionRepository, QuestionSingleSelectionRepository>();
 builder.Services.AddTransient<IUserResponsesToTestsRepository, UserResponsesToTestsRepository>();
 builder.Services.AddTransient<ITypeTestingRepository, TypeTestingRepository>();
+builder.Services.AddTransient<ITypeOutputOfResultRepository, TypeOutputOfResultRepository>();
 builder.Services.AddTransient<ITestingRepository, TestingRepository>();
 builder.Services.AddTransient<ILoginServices, LoginServices>();
 builder.Services.AddTransient<ITestingService, TestingService>();
