@@ -13,7 +13,7 @@ namespace TestingVGLTU.Data.Repositories
             _context = context;
         }
 
-        public async Task<Testing?> Create(string name, string typeTesting, string outputOfResult, uint attempts, DateTime time, int teacherId)
+        public async Task<Testing?> Create(string name, string typeTesting, string outputOfResult, uint attempts, TimeOnly time, int teacherId)
         {
             var type = await _context.TypeTestings.FirstOrDefaultAsync(i => i.Name == typeTesting);
             var output = await _context.TypeOutputOfResults.FirstOrDefaultAsync(i => i.Name == outputOfResult);
@@ -52,6 +52,10 @@ namespace TestingVGLTU.Data.Repositories
         public async Task<List<Testing>> GetFullData() => await _context.Testings.Include(i => i.ActiveTestings).Include(i => i.Questions).AsNoTracking().ToListAsync();
 
         public async Task<Testing?> GetById(int id) => await _context.Testings.AsNoTracking().Where(s => s.Id == id).FirstOrDefaultAsync();
+
+        public async Task<List<Testing>> GetByTeacherId(int id) => await _context.Testings.Include(i => i.TypeTesting).Include(i => i.TypeOutputOfResult)
+                                                                                          .Include(i => i.Teacher).Where(i => i.TeacherId == id)
+                                                                                          .AsNoTracking().ToListAsync();
 
         public async Task<Testing?> GetFullData(int id) => await _context.Testings.Include(i => i.ActiveTestings).Include(i => i.Questions).AsNoTracking().Where(s => s.Id == id).FirstOrDefaultAsync();
 

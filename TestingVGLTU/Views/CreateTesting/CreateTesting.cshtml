@@ -1,6 +1,7 @@
 ﻿@using TestingVGLTU.Models.ViewModel
 @model CreateTestingViewModel
 @{
+    ViewData["FullName"] = ViewBag.Message;
     ViewData["Title"] = "Создание тестирования";
     Layout = "~/Views/Shared/_LayoutCreator.cshtml";
 }
@@ -21,16 +22,20 @@
                     <div class="comboBox">
                         <p>Тип</p>
                         <select name="Type" asp-for=Type>
-                            <option value="тест">тест</option>
-                            <option value="олимпиада">олимпиада</option>
+                            @foreach(var item in Model.TypeTesting!)
+                            {
+                                <option value="@item">@item</option>
+                            }
                         </select>
                     </div>
 
                     <div class="comboBox2">
                         <p>Вывод результата</p>
                         <select name="OutputOfResult" asp-for=OutputOfResult>
-                            <option value="по окончанию">по окончанию</option>
-                            <option value="по прохождению">по прохождению</option>
+                            @foreach (var item in Model.TypeOutputOfResult!)
+                            {
+                                <option value="@item">@item</option>
+                            }
                         </select>
                     </div>
                     <div class="counterBox">
@@ -39,7 +44,7 @@
                             <button type="button" id="btn-minus">
                                 <img src="~/img/icons/-.svg" alt="-" />
                             </button>
-                            <input id="counter-input" type="number" asp-for=Attempts step="1" min="1" max="99" value="1" />
+                            <input id="counter-input" type="number" asp-for=Attempts  value="1" />
                             <button type="button" id="btn-plus">
                                 <img src="~/img/icons/+.svg" alt="+" />
                             </button>
@@ -48,7 +53,7 @@
                     <div class="bottom">
                         <div class="textBox">
                             <p>Время</p>
-                            <input type="text" asp-for=Time placeholder="Время..." />
+                            <input type="number" asp-for=Time step="1" min="1"  value="1" placeholder="Время..." />
                         </div>
                         <button type="submit">Далее</button>
                     </div>

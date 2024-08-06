@@ -36,7 +36,16 @@ namespace TestingVGLTU.Controllers
 
             ViewBag.Message = $"{teacher!.Surname} {teacher!.Name[0]}.{teacher!.Patronymic[0]}.";
 
-            return View();
+            var typeTesting = await _testingService.GetTypeTestingAsync();
+            var typeOutputOfResult = await _testingService.TypeOutputOfResultsAsync();
+
+            CreateTestingViewModel model = new CreateTestingViewModel()
+            {
+                TypeTesting = typeTesting.Select(i => i.Name).ToList(),
+                TypeOutputOfResult = typeOutputOfResult.Select(i => i.Name).ToList()
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -44,15 +53,22 @@ namespace TestingVGLTU.Controllers
         {
             if(!ModelState.IsValid)
             {
+                var typeTesting = await _testingService.GetTypeTestingAsync();
+                var typeOutputOfResult = await _testingService.TypeOutputOfResultsAsync();
+
+                model.TypeTesting = typeTesting.Select(i => i.Name).ToList();
+                model.TypeOutputOfResult = typeOutputOfResult.Select(i => i.Name).ToList();
+
                 return View(model);
             }
 
             var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            var testing = await _testingService.Create(model.Name!, model.Type!, model.OutputOfResult!, model.Attempts, model.Time, int.Parse(id!));
+            var testing = await _testingService.CreateAsync(model.Name!, model.Type!, model.OutputOfResult!, model.Attempts, model.Time, int.Parse(id!));
 
             return RedirectToAction("TestingEditor", "CreateTesting");
         }
+
 
         [HttpGet]
         public async Task<IActionResult> TestingEditor()

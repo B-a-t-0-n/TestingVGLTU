@@ -19,7 +19,7 @@ namespace TestingVGLTU.Services
             _typeOutputOfResultRepository = typeOutputOfResultRepository;
         }
 
-        public async Task<Testing?> Create(string Name, string type, string outputOfRezult, uint Attempts, int Time, int teacherId)
+        public async Task<Testing?> CreateAsync(string Name, string type, string outputOfRezult, uint Attempts, int Time, int teacherId)
         {
             var typeTesting = await _typeTestingRepository.GetByName(type);
 
@@ -31,12 +31,28 @@ namespace TestingVGLTU.Services
             if (typeOutputOfRezult == null)
                 throw new Exception("данного типа вывода результата не сущевствует");
 
-            return await _testingRepository.Create(Name, type, outputOfRezult, Attempts, new DateTime(0, 0, 0, 0, Time, 0), teacherId);
+            var hours = Time / 60;
+            var minutes = Time % 60;
+
+            var timeOnly = new TimeOnly(hours, minutes);
+
+            return await _testingRepository.Create(Name, type, outputOfRezult, Attempts, timeOnly, teacherId);
         }
 
         public async Task Update(Testing testing)
         {
             await _testingRepository.Update(testing);
         }
+
+        public async Task Delete(int id)
+        {
+            await _testingRepository.Delete(id);
+        }
+
+        public async Task<List<Testing>> GetByTeacherId(int id) => await _testingRepository.GetByTeacherId(id);
+
+        public async Task<List<TypeTesting>> GetTypeTestingAsync() => await _typeTestingRepository.Get();
+
+        public async Task<List<TypeOutputOfResult>> TypeOutputOfResultsAsync() => await _typeOutputOfResultRepository.Get();
     }
 }

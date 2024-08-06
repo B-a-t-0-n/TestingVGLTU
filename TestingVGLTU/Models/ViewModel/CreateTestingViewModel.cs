@@ -19,5 +19,9 @@ namespace TestingVGLTU.Models.ViewModel
 
         [Required(ErrorMessage = "*обязательно")]
         public int Time { get; set; }
+
+        public List<string>? TypeTesting { get; set; }
+
+        public List<string>? TypeOutputOfResult { get; set; }
     }
 }
