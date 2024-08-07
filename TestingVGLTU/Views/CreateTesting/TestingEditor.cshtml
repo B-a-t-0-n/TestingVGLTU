@@ -1,4 +1,7 @@
-﻿@{
+﻿@using TestingVGLTU.Models.ViewModel
+@model TestingEditorViewModel
+@{
+    ViewData["FullName"] = ViewBag.Message;
     ViewData["Title"] = "Редактирование тестирования";
     Layout = "~/Views/Shared/_LayoutCreator.cshtml";
 }
@@ -7,7 +10,7 @@
     <main>
         <div class="main-center">
             <div class="top test-settings">
-                <div class="left-container">
+                <form class="left-container" action="/" method="post">
                     <div class="top">
                         <span> Информация о тестировании </span>
                     </div>
@@ -15,49 +18,54 @@
                         <div class="top">
                             <div class="textBox">
                                 <p>Название</p>
-                                <textarea type="text"
+                                <input type="hidden" asp-for=Id value=Id />
+                                <textarea type="text" asp-for=Name
                                           placeholder="Введите название..."></textarea>
                             </div>
                         </div>
                         <div class="bottom">
                             <div class="comboBox">
                                 <p>Тип</p>
-                                <select name="example">
-                                    <option value="тест">тест</option>
-                                    <option value="олимпиада">олимпиада</option>
+                                <select name="Type" asp-for=Type>
+                                    @foreach (var item in Model.TypeTesting!)
+                                    {
+                                        <option value="@item">@item</option>
+                                    }
                                 </select>
                             </div>
 
                             <div class="comboBox2">
                                 <p>Вывод результата</p>
-                                <select name="example">
-                                    <option value="1">по окончанию</option>
-                                    <option value="2">по прохождению</option>
+                                <select name="OutputOfResult" asp-for=OutputOfResult>
+                                    @foreach (var item in Model.TypeOutputOfResult!)
+                                    {
+                                        <option value="@item">@item</option>
+                                    }
                                 </select>
                             </div>
                             <div class="counterBox">
                                 <p>Попытки</p>
                                 <div class="counter">
-                                    <button id="btn-minus">
+                                    <button id="btn-minus" type="button">
                                         <img src="~/img/icons/-.svg" alt="-" />
                                     </button>
-                                    <input id="counter-input" type="number" value="1" step="1" min="1" max="99" maxlength="2" />
-                                    <button id="btn-plus">
+                                    <input id="counter-input" type="number" value="1" step="1" min="1" max="99" maxlength="2" asp-for=Attempts />
+                                    <button id="btn-plus" type="button">
                                         <img src="~/img/icons/+.svg" alt="+" />
                                     </button>
                                 </div>
                             </div>
                             <div class="textBox">
                                 <p>Время</p>
-                                <input type="text" placeholder="Время..." />
+                                <input type="number" placeholder="Время..." asp-for=Time />
                             </div>
                         </div>
                     </div>
                     <div class="bottom">
                         <button class="save-changes">Сохранить изменения</button>
                     </div>
-                </div>
-                <div class="right-container">
+                </form>
+                <form action="/" method="post" class="right-container">
                     <div class="top">
                         <span>Настройки оценок</span>
                         <span class="score-counter">Всего баллов: ...</span>
@@ -93,7 +101,7 @@
                     <div class="bottom">
                         <button class="save-changes">Сохранить изменения</button>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="bottom">
                 <div class="left-container">
@@ -115,39 +123,46 @@
                                 </div>
                             </div>
                             <div class="rows">
-                                <div class="row row-qestion">
-                                    <div class="colum-1">
-                                        <span>1</span>
-                                    </div>
-                                    <div class="colum-2">
-                                        <span>Чем отличается класс от структуры?</span>
-                                    </div>
-                                    <div class="colum-3">
-                                        <span>одиночный выбор</span>
-                                    </div>
-                                    <div class="colum-4">
-                                        <div class="edit">
-                                            <svg width="30"
-                                                 height="29"
-                                                 viewBox="0 0 30 29"
-                                                 fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0.737793 22.9583V29H6.67959L24.2039 11.1811L18.2621 5.13944L0.737793 22.9583ZM5.36447 25.7778H3.90675V24.2956L18.2621 9.69889L19.7199 11.1811L5.36447 25.7778ZM28.7989 4.23722L25.0912 0.467222C24.7743 0.145 24.3782 0 23.9663 0C23.5543 0 23.1582 0.161111 22.8571 0.467222L19.9575 3.41556L25.8993 9.45722L28.7989 6.50889C29.4169 5.88056 29.4169 4.86556 28.7989 4.23722Z"
-                                                      fill="#fff" />
-                                            </svg>
+                                @foreach(var item in Model.Question)
+                                {
+                                    
+                                    <div class="row row-qestion">
+                                        <div class="colum-1">
+                                            <span>@item.Number</span>
                                         </div>
-                                        <div class="delete">
-                                            <svg width="20"
-                                                 height="24"
-                                                 viewBox="0 0 20 24"
-                                                 fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M15.6666 8V21.3333H4.33325V8H15.6666ZM13.5416 0H6.45825L5.04159 1.33333H0.083252V4H19.9166V1.33333H14.9583L13.5416 0ZM18.4999 5.33333H1.49992V21.3333C1.49992 22.8 2.77492 24 4.33325 24H15.6666C17.2249 24 18.4999 22.8 18.4999 21.3333V5.33333Z"
-                                                      fill="white" />
-                                            </svg>
+                                        <div class="colum-2">
+                                            <span>@item.Text</span>
+                                        </div>
+                                        <div class="colum-3">
+                                            <span>одиночный выбор</span>
+                                        </div>
+                                        <div class="colum-4">
+                                            <form action="/" method="post">
+                                                <input type="hidden" asp-for=@item.Id value=@item.Id />
+                                                <a class="edit" asp-area="" asp-controller="CreateTesting" asp-action="CreateQuestion" asp-route-id="@item.Id">
+                                                    <svg width="30"
+                                                         height="29"
+                                                         viewBox="0 0 30 29"
+                                                         fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M0.737793 22.9583V29H6.67959L24.2039 11.1811L18.2621 5.13944L0.737793 22.9583ZM5.36447 25.7778H3.90675V24.2956L18.2621 9.69889L19.7199 11.1811L5.36447 25.7778ZM28.7989 4.23722L25.0912 0.467222C24.7743 0.145 24.3782 0 23.9663 0C23.5543 0 23.1582 0.161111 22.8571 0.467222L19.9575 3.41556L25.8993 9.45722L28.7989 6.50889C29.4169 5.88056 29.4169 4.86556 28.7989 4.23722Z"
+                                                              fill="#fff" />
+                                                    </svg>
+                                                </a>
+                                                <batton class="delete">
+                                                    <svg width="20"
+                                                         height="24"
+                                                         viewBox="0 0 20 24"
+                                                         fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M15.6666 8V21.3333H4.33325V8H15.6666ZM13.5416 0H6.45825L5.04159 1.33333H0.083252V4H19.9166V1.33333H14.9583L13.5416 0ZM18.4999 5.33333H1.49992V21.3333C1.49992 22.8 2.77492 24 4.33325 24H15.6666C17.2249 24 18.4999 22.8 18.4999 21.3333V5.33333Z"
+                                                              fill="white" />
+                                                    </svg>
+                                                </batton>
+                                            </form>
                                         </div>
                                     </div>
-                                </div>
+                                }
                                 <div class="add-row">
                                     <a class="btn-add" asp-area="" asp-controller="CreateTesting" asp-action="CreateQuestion">
                                         <svg width="26"

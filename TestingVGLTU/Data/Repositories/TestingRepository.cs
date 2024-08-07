@@ -49,7 +49,9 @@ namespace TestingVGLTU.Data.Repositories
 
         public async Task<List<Testing>> Get() => await _context.Testings.AsNoTracking().ToListAsync();
 
-        public async Task<List<Testing>> GetFullData() => await _context.Testings.Include(i => i.ActiveTestings).Include(i => i.Questions).AsNoTracking().ToListAsync();
+        public async Task<List<Testing>> GetFullData() => await _context.Testings.Include(i => i.ActiveTestings).Include(i => i.Questions)
+                                                                                 .Include(i => i.TypeTesting).Include(i => i.TypeOutputOfResult)
+                                                                                 .AsNoTracking().ToListAsync();
 
         public async Task<Testing?> GetById(int id) => await _context.Testings.AsNoTracking().Where(s => s.Id == id).FirstOrDefaultAsync();
 
@@ -57,7 +59,9 @@ namespace TestingVGLTU.Data.Repositories
                                                                                           .Include(i => i.Teacher).Where(i => i.TeacherId == id)
                                                                                           .AsNoTracking().ToListAsync();
 
-        public async Task<Testing?> GetFullData(int id) => await _context.Testings.Include(i => i.ActiveTestings).Include(i => i.Questions).AsNoTracking().Where(s => s.Id == id).FirstOrDefaultAsync();
+        public async Task<Testing?> GetFullData(int id) => await _context.Testings.Include(i => i.ActiveTestings).Include(i => i.Questions)
+                                                                                  .Include(i => i.TypeTesting).Include(i => i.TypeOutputOfResult)
+                                                                                  .AsNoTracking().Where(s => s.Id == id).FirstOrDefaultAsync();
 
         public async Task Delete(int id) => await _context.Testings.Where(s => s.Id == id).ExecuteDeleteAsync();
     }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TestingVGLTU.Data;
 
@@ -11,9 +12,11 @@ using TestingVGLTU.Data;
 namespace TestingVGLTU.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240807031432_addTestingGroups")]
+    partial class addTestingGroups
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -164,6 +167,29 @@ namespace TestingVGLTU.Migrations
                     b.HasIndex("TypeTestingId");
 
                     b.ToTable("Testings");
+                });
+
+            modelBuilder.Entity("TestingVGLTU.Models.Entity.TestingGroups", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TestingId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("TestingId");
+
+                    b.ToTable("TestingGroups");
                 });
 
             modelBuilder.Entity("TestingVGLTU.Models.Entity.TypeOutputOfResult", b =>
@@ -434,6 +460,25 @@ namespace TestingVGLTU.Migrations
                     b.Navigation("TypeTesting");
                 });
 
+            modelBuilder.Entity("TestingVGLTU.Models.Entity.TestingGroups", b =>
+                {
+                    b.HasOne("TestingVGLTU.Models.Entity.Group", "Group")
+                        .WithMany("TestingGroups")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TestingVGLTU.Models.Entity.Testing", "Testing")
+                        .WithMany("TestingGroups")
+                        .HasForeignKey("TestingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Testing");
+                });
+
             modelBuilder.Entity("TestingVGLTU.Models.Entity.UserResponsesToTests", b =>
                 {
                     b.HasOne("TestingVGLTU.Models.Entity.ActiveTesting", "ActiveTesting")
@@ -527,6 +572,8 @@ namespace TestingVGLTU.Migrations
                     b.Navigation("ActiveTestings");
 
                     b.Navigation("Students");
+
+                    b.Navigation("TestingGroups");
                 });
 
             modelBuilder.Entity("TestingVGLTU.Models.Entity.Question", b =>
@@ -539,6 +586,8 @@ namespace TestingVGLTU.Migrations
                     b.Navigation("ActiveTestings");
 
                     b.Navigation("Questions");
+
+                    b.Navigation("TestingGroups");
                 });
 
             modelBuilder.Entity("TestingVGLTU.Models.Entity.TypeOutputOfResult", b =>

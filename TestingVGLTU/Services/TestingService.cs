@@ -49,6 +49,8 @@ namespace TestingVGLTU.Services
             await _testingRepository.Delete(id);
         }
 
+        public async Task<Testing?> GetByTestingIdFullData(int id) => await _testingRepository.GetFullData(id);
+
         public async Task<List<Testing>> GetByTeacherId(int id) => await _testingRepository.GetByTeacherId(id);
 
         public async Task<List<TypeTesting>> GetTypeTestingAsync() => await _typeTestingRepository.Get();

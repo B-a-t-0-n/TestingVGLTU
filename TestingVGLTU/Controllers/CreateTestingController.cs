@@ -14,17 +14,13 @@ namespace TestingVGLTU.Controllers
     {
         private readonly ITestingService _testingService;
         private readonly ITeacherRepository _teacherRepository;
+        private readonly IGroupRepository _groupRepository;
 
-        public CreateTestingController(ITestingService testingService, ITeacherRepository teacherRepository)
+        public CreateTestingController(ITestingService testingService, ITeacherRepository teacherRepository, IGroupRepository groupRepository)
         {
             _testingService = testingService;
             _teacherRepository = teacherRepository;
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> CreateQuestion()
-        {
-            return View();
+            _groupRepository = groupRepository;
         }
 
         [HttpGet]
@@ -66,13 +62,40 @@ namespace TestingVGLTU.Controllers
 
             var testing = await _testingService.CreateAsync(model.Name!, model.Type!, model.OutputOfResult!, model.Attempts, model.Time, int.Parse(id!));
 
-            return RedirectToAction("TestingEditor", "CreateTesting");
+            return RedirectToActionPermanent("TestingEditor", "CreateTesting", new { id = testing!.Id });
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> TestingEditor()
+        public async Task<IActionResult> TestingEditor(int id)
         {
+            var testing = await _testingService.GetByTestingIdFullData(id);
+
+            var typeTesting = await _testingService.GetTypeTestingAsync();
+            var typeOutputOfResult = await _testingService.TypeOutputOfResultsAsync();
+            var groups = await _groupRepository.Get();
+
+            var model = new TestingEditorViewModel()
+            {
+                Id = id,
+                Name = testing!.Name,
+                Attempts = testing!.Attempts,
+                Time = testing.Time.Minute + testing.Time.Hour * 60,
+                OutputOfResult = testing!.TypeOutputOfResult.Name,
+                Type = testing!.TypeTesting.Name,
+                Groups = groups,
+                Question = testing!.Questions.ToList(),
+                TypeOutputOfResult = typeOutputOfResult.Select(i => i.Name).ToList(),
+                TypeTesting = typeTesting.Select(i => i.Name).ToList(),
+            };
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateQuestion(int id)
+        {
+
             return View();
         }
     }

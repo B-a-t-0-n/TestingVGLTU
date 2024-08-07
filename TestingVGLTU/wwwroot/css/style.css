@@ -2094,14 +2094,19 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 
-.create-question .bottom button{
-  width: 142px;
-  height: 44px;
-  border-radius: 10px;
-  border-width: 0px;
-  background-color: #358038;
-  font-family: Rubik;
-  font-size: 20px;
+.create-question .bottom a {
+    width: 142px;
+    height: 44px;
+    border-radius: 10px;
+    border-width: 0px;
+    background-color: #358038;
+    font-family: Rubik;
+    font-size: 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
 }
 
 .create-question .bottom{
@@ -2109,7 +2114,7 @@ input[type="number"]::-webkit-inner-spin-button {
   flex-direction: row-reverse;
 }
 
-.create-question .bottom button:hover{
+.create-question .bottom a:hover {
   background: #358037a7;
 }
 

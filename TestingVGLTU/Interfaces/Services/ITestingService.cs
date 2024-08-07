@@ -9,6 +9,7 @@ namespace TestingVGLTU.Interfaces.Services
         Task<List<Testing>> GetByTeacherId(int id);
         Task<List<TypeTesting>> GetTypeTestingAsync();
         Task<List<TypeOutputOfResult>> TypeOutputOfResultsAsync();
+        Task<Testing?> GetByTestingIdFullData(int id);
         Task Update(Testing testing);
     }
 }
