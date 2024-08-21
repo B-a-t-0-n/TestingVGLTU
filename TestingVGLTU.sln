@@ -5,6 +5,12 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingVGLTU", "TestingVGLTU\TestingVGLTU.csproj", "{9BDFF70A-BE01-4C74-9153-1B8B3A101A58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingVGLTU.Domain", "TestingVGLTU.Domain\TestingVGLTU.Domain.csproj", "{BE00A1A8-D896-4191-A703-E564EE70D93F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingVGLTU.Application", "TestingVGLTU.Application\TestingVGLTU.Application.csproj", "{F53DD536-DF9A-4137-8666-954E585854E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingVGLTU.Infrastructure", "TestingVGLTU.Infrastructure\TestingVGLTU.Infrastructure.csproj", "{2592A2EB-8C3C-42EC-B6E9-CA60C236540A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{9BDFF70A-BE01-4C74-9153-1B8B3A101A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BDFF70A-BE01-4C74-9153-1B8B3A101A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BDFF70A-BE01-4C74-9153-1B8B3A101A58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE00A1A8-D896-4191-A703-E564EE70D93F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE00A1A8-D896-4191-A703-E564EE70D93F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE00A1A8-D896-4191-A703-E564EE70D93F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE00A1A8-D896-4191-A703-E564EE70D93F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F53DD536-DF9A-4137-8666-954E585854E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53DD536-DF9A-4137-8666-954E585854E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53DD536-DF9A-4137-8666-954E585854E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53DD536-DF9A-4137-8666-954E585854E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2592A2EB-8C3C-42EC-B6E9-CA60C236540A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2592A2EB-8C3C-42EC-B6E9-CA60C236540A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2592A2EB-8C3C-42EC-B6E9-CA60C236540A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2592A2EB-8C3C-42EC-B6E9-CA60C236540A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

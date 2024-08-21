@@ -21,4 +21,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TestingVGLTU.Application\TestingVGLTU.Application.csproj" />
+    <ProjectReference Include="..\TestingVGLTU.Domain\TestingVGLTU.Domain.csproj" />
+    <ProjectReference Include="..\TestingVGLTU.Infrastructure\TestingVGLTU.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
