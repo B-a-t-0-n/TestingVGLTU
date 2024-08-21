@@ -65,7 +65,6 @@ namespace TestingVGLTU.Controllers
             return RedirectToActionPermanent("TestingEditor", "CreateTesting", new { id = testing!.Id });
         }
 
-
         [HttpGet]
         public async Task<IActionResult> TestingEditor(int id)
         {
@@ -84,7 +83,7 @@ namespace TestingVGLTU.Controllers
                 OutputOfResult = testing!.TypeOutputOfResult.Name,
                 Type = testing!.TypeTesting.Name,
                 Groups = groups,
-                Question = testing!.Questions.ToList(),
+                //Question = testing!.Questions.ToList()
                 TypeOutputOfResult = typeOutputOfResult.Select(i => i.Name).ToList(),
                 TypeTesting = typeTesting.Select(i => i.Name).ToList(),
             };
@@ -95,6 +94,14 @@ namespace TestingVGLTU.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateQuestion(int id)
         {
+            var question = await _testingService.GetQuestionByIdFullData(id);
+            
+            if (question == null)
+            {
+                return View();
+            }
+
+
 
             return View();
         }

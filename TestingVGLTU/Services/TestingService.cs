@@ -1,5 +1,4 @@
-﻿using TestingVGLTU.Data.Repositories;
-using TestingVGLTU.Interfaces.Repositories;
+﻿using TestingVGLTU.Interfaces.Repositories;
 using TestingVGLTU.Interfaces.Services;
 using TestingVGLTU.Models.Entity;
 
@@ -10,13 +9,23 @@ namespace TestingVGLTU.Services
         private readonly ITestingRepository _testingRepository;
         private readonly ITypeTestingRepository _typeTestingRepository;
         private readonly ITypeOutputOfResultRepository _typeOutputOfResultRepository;
+        private readonly IQuestionInputNumberRepository _questionInputNumberRepository;
+        private readonly IQuestionInputTextRepository _questionInputTextRepository;
+        private readonly IQuestionSingleSelectionRepository _questionSingleSelectionRepository;
+        private readonly IQuestionMultipleChoiceRepository _questionMultipleChoiceRepository;
 
         public TestingService(ITestingRepository testingRepository, ITypeTestingRepository typeTestingRepository,
-            ITypeOutputOfResultRepository typeOutputOfResultRepository)
+            ITypeOutputOfResultRepository typeOutputOfResultRepository, IQuestionInputNumberRepository questionInputNumberRepository,
+            IQuestionInputTextRepository questionInputTextRepository, IQuestionMultipleChoiceRepository questionMultipleChoiceRepository, 
+            IQuestionSingleSelectionRepository questionSingleSelectionRepository)
         {
             _testingRepository = testingRepository;
             _typeTestingRepository = typeTestingRepository;
             _typeOutputOfResultRepository = typeOutputOfResultRepository;
+            _questionInputNumberRepository = questionInputNumberRepository;
+            _questionInputTextRepository = questionInputTextRepository; 
+            _questionMultipleChoiceRepository = questionMultipleChoiceRepository;
+            _questionSingleSelectionRepository = questionSingleSelectionRepository;
         }
 
         public async Task<Testing?> CreateAsync(string Name, string type, string outputOfRezult, uint Attempts, int Time, int teacherId)
@@ -56,5 +65,30 @@ namespace TestingVGLTU.Services
         public async Task<List<TypeTesting>> GetTypeTestingAsync() => await _typeTestingRepository.Get();
 
         public async Task<List<TypeOutputOfResult>> TypeOutputOfResultsAsync() => await _typeOutputOfResultRepository.Get();
+
+        public async Task<Question?> GetQuestionByIdFullData(int id)
+        {
+            var questionIN = await _questionInputNumberRepository.GetById(id);
+
+            if (questionIN != null)
+                return questionIN;
+
+            var questionIT = await _questionInputTextRepository.GetById(id);
+
+            if (questionIT != null)
+                return questionIT;
+
+            var questionMC = await _questionMultipleChoiceRepository.GetById(id);
+
+            if (questionMC != null)
+                return questionMC;
+
+            var questionSS = await _questionSingleSelectionRepository.GetById(id);
+
+            if (questionSS != null)
+                return questionSS;
+
+            return null;
+        }
     }
 }
