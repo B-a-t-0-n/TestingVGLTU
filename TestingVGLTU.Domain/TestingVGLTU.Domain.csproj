@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CSharpFunctionalExtensions" Version="2.42.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Shared\IDs\" />
+    <Folder Include="TestingMenegment\ValueObjects\" />
+  </ItemGroup>
+
 </Project>
