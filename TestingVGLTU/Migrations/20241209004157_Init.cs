@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace TestingVGLTU.Migrations
 {
     /// <inheritdoc />
-    public partial class add_Table : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,11 +19,24 @@ namespace TestingVGLTU.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Groups", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TypeOutputOfResults",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TypeOutputOfResults", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -30,7 +45,7 @@ namespace TestingVGLTU.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,7 +61,7 @@ namespace TestingVGLTU.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Patronymic = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Login = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Login = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -105,8 +120,13 @@ namespace TestingVGLTU.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TypeTestingId = table.Column<int>(type: "int", nullable: false),
                     Attempts = table.Column<long>(type: "bigint", nullable: false),
-                    Time = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TeacherId = table.Column<int>(type: "int", nullable: false)
+                    Time = table.Column<TimeOnly>(type: "time", nullable: false),
+                    TeacherId = table.Column<int>(type: "int", nullable: false),
+                    TimeCreate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TypeOutputOfResultId = table.Column<int>(type: "int", nullable: false),
+                    ScoresFor5 = table.Column<int>(type: "int", nullable: true),
+                    ScoresFor4 = table.Column<int>(type: "int", nullable: true),
+                    ScoresFor3 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -115,6 +135,12 @@ namespace TestingVGLTU.Migrations
                         name: "FK_Testings_Teachers_TeacherId",
                         column: x => x.TeacherId,
                         principalTable: "Teachers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Testings_TypeOutputOfResults_TypeOutputOfResultId",
+                        column: x => x.TypeOutputOfResultId,
+                        principalTable: "TypeOutputOfResults",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -254,7 +280,7 @@ namespace TestingVGLTU.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: true),
+                    StudentId = table.Column<int>(type: "int", nullable: true),
                     ActiveTestingId = table.Column<int>(type: "int", nullable: true),
                     QuestionId = table.Column<int>(type: "int", nullable: true),
                     QuestionName = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -273,10 +299,38 @@ namespace TestingVGLTU.Migrations
                         principalTable: "Questions",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_UserResponsesToTests_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
+                        name: "FK_UserResponsesToTests_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Groups",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "ИС1-211-ОТ" },
+                    { 2, "ИС1-212-ОТ" },
+                    { 3, "ИС1-213-ОТ" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TypeOutputOfResults",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "По окончанию" },
+                    { 2, "По завершению тестирования" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TypeTestings",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Олимпиада" },
+                    { 2, "Тест" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -290,6 +344,12 @@ namespace TestingVGLTU.Migrations
                 column: "TestingId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Groups_Name",
+                table: "Groups",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Questions_TestingId",
                 table: "Questions",
                 column: "TestingId");
@@ -300,14 +360,38 @@ namespace TestingVGLTU.Migrations
                 column: "GroupId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Students_NumberRecordBook",
+                table: "Students",
+                column: "NumberRecordBook",
+                unique: true,
+                filter: "[NumberRecordBook] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Testings_TeacherId",
                 table: "Testings",
                 column: "TeacherId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Testings_TypeOutputOfResultId",
+                table: "Testings",
+                column: "TypeOutputOfResultId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Testings_TypeTestingId",
                 table: "Testings",
                 column: "TypeTestingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TypeOutputOfResults_Name",
+                table: "TypeOutputOfResults",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TypeTestings_Name",
+                table: "TypeTestings",
+                column: "Name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserResponsesToTests_ActiveTestingId",
@@ -320,9 +404,15 @@ namespace TestingVGLTU.Migrations
                 column: "QuestionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserResponsesToTests_UserId",
+                name: "IX_UserResponsesToTests_StudentId",
                 table: "UserResponsesToTests",
-                column: "UserId");
+                column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Login",
+                table: "Users",
+                column: "Login",
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -341,9 +431,6 @@ namespace TestingVGLTU.Migrations
                 name: "QuestionSingleSelections");
 
             migrationBuilder.DropTable(
-                name: "Students");
-
-            migrationBuilder.DropTable(
                 name: "UserResponsesToTests");
 
             migrationBuilder.DropTable(
@@ -353,13 +440,19 @@ namespace TestingVGLTU.Migrations
                 name: "Questions");
 
             migrationBuilder.DropTable(
-                name: "Groups");
+                name: "Students");
 
             migrationBuilder.DropTable(
                 name: "Testings");
 
             migrationBuilder.DropTable(
+                name: "Groups");
+
+            migrationBuilder.DropTable(
                 name: "Teachers");
+
+            migrationBuilder.DropTable(
+                name: "TypeOutputOfResults");
 
             migrationBuilder.DropTable(
                 name: "TypeTestings");
