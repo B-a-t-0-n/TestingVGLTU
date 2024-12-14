@@ -30,6 +30,7 @@
         {
             panel1 = new Panel();
             panel4 = new Panel();
+            labelErrorInfo = new Label();
             label3 = new Label();
             label2 = new Label();
             textBoxPassword = new TextBox();
@@ -59,6 +60,7 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(labelErrorInfo);
             panel4.Controls.Add(label3);
             panel4.Controls.Add(label2);
             panel4.Controls.Add(textBoxPassword);
@@ -68,6 +70,16 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(497, 282);
             panel4.TabIndex = 2;
+            // 
+            // labelErrorInfo
+            // 
+            labelErrorInfo.AutoSize = true;
+            labelErrorInfo.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            labelErrorInfo.ForeColor = Color.FromArgb(255, 128, 128);
+            labelErrorInfo.Location = new Point(30, 232);
+            labelErrorInfo.Name = "labelErrorInfo";
+            labelErrorInfo.Size = new Size(0, 30);
+            labelErrorInfo.TabIndex = 17;
             // 
             // label3
             // 
@@ -154,6 +166,7 @@
             buttonSignIn.TabIndex = 1;
             buttonSignIn.Text = "Войти";
             buttonSignIn.UseVisualStyleBackColor = false;
+            buttonSignIn.Click += buttonSignIn_Click;
             // 
             // panel2
             // 
@@ -207,5 +220,6 @@
         private TextBox textBoxPassword;
         private Label label2;
         private Label label3;
+        private Label labelErrorInfo;
     }
 }
