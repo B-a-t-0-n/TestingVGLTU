@@ -1,4 +1,6 @@
-﻿namespace TestingVGLTU.WinForms.Forms.AuthorizationAndRegistration
+﻿using TestingVGLTU.WinForms.WinformsElements;
+
+namespace TestingVGLTU.WinForms.Forms.AuthorizationAndRegistration
 {
     partial class RegistrationForm
     {
@@ -30,10 +32,10 @@
         {
             panel1 = new Panel();
             panel4 = new Panel();
-            label9 = new Label();
-            label10 = new Label();
+            comboBoxCustomGroup = new ComboBoxCustom();
+            labelNameTextBoxNumberBook = new Label();
+            labelNameTextBoxGroup = new Label();
             textBoxNumberBook = new TextBox();
-            textBoxGroup = new TextBox();
             label5 = new Label();
             textBoxPatronomic = new TextBox();
             label6 = new Label();
@@ -51,12 +53,16 @@
             buttonRegister = new Button();
             buttonBack = new Button();
             panel2 = new Panel();
+            panel6 = new Panel();
+            labelTeacherReg = new Label();
+            labelStudentReg = new Label();
             panel5 = new Panel();
             labelPageInfo = new Label();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
+            panel6.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -73,10 +79,10 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(label9);
-            panel4.Controls.Add(label10);
+            panel4.Controls.Add(comboBoxCustomGroup);
+            panel4.Controls.Add(labelNameTextBoxNumberBook);
+            panel4.Controls.Add(labelNameTextBoxGroup);
             panel4.Controls.Add(textBoxNumberBook);
-            panel4.Controls.Add(textBoxGroup);
             panel4.Controls.Add(label5);
             panel4.Controls.Add(textBoxPatronomic);
             panel4.Controls.Add(label6);
@@ -95,27 +101,47 @@
             panel4.Size = new Size(1254, 389);
             panel4.TabIndex = 2;
             // 
-            // label9
+            // comboBoxCustomGroup
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label9.ForeColor = Color.White;
-            label9.Location = new Point(888, 161);
-            label9.Name = "label9";
-            label9.Size = new Size(289, 32);
-            label9.TabIndex = 15;
-            label9.Text = "Номер зачётной книжки";
+            comboBoxCustomGroup.BackColor = Color.FromArgb(84, 84, 84);
+            comboBoxCustomGroup.BorderColor = Color.FromArgb(84, 84, 84);
+            comboBoxCustomGroup.BorderSize = 0;
+            comboBoxCustomGroup.FlatStyle = FlatStyle.Flat;
+            comboBoxCustomGroup.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            comboBoxCustomGroup.ForeColor = Color.White;
+            comboBoxCustomGroup.FormattingEnabled = true;
+            comboBoxCustomGroup.IconColor = Color.FromArgb(76, 175, 80);
+            comboBoxCustomGroup.ListBackColor = Color.FromArgb(84, 84, 84);
+            comboBoxCustomGroup.ListTextColor = Color.White;
+            comboBoxCustomGroup.Location = new Point(888, 89);
+            comboBoxCustomGroup.MinimumSize = new Size(200, 0);
+            comboBoxCustomGroup.Name = "comboBoxCustomGroup";
+            comboBoxCustomGroup.Size = new Size(312, 40);
+            comboBoxCustomGroup.TabIndex = 16;
+            comboBoxCustomGroup.Texts = "";
+            comboBoxCustomGroup.OnSelectedIndexChanged += comboBoxCustomGroup_OnSelectedIndexChanged;
             // 
-            // label10
+            // labelNameTextBoxNumberBook
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label10.ForeColor = Color.White;
-            label10.Location = new Point(888, 54);
-            label10.Name = "label10";
-            label10.Size = new Size(91, 32);
-            label10.TabIndex = 14;
-            label10.Text = "Группа";
+            labelNameTextBoxNumberBook.AutoSize = true;
+            labelNameTextBoxNumberBook.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelNameTextBoxNumberBook.ForeColor = Color.White;
+            labelNameTextBoxNumberBook.Location = new Point(888, 161);
+            labelNameTextBoxNumberBook.Name = "labelNameTextBoxNumberBook";
+            labelNameTextBoxNumberBook.Size = new Size(289, 32);
+            labelNameTextBoxNumberBook.TabIndex = 15;
+            labelNameTextBoxNumberBook.Text = "Номер зачётной книжки";
+            // 
+            // labelNameTextBoxGroup
+            // 
+            labelNameTextBoxGroup.AutoSize = true;
+            labelNameTextBoxGroup.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelNameTextBoxGroup.ForeColor = Color.White;
+            labelNameTextBoxGroup.Location = new Point(888, 54);
+            labelNameTextBoxGroup.Name = "labelNameTextBoxGroup";
+            labelNameTextBoxGroup.Size = new Size(91, 32);
+            labelNameTextBoxGroup.TabIndex = 14;
+            labelNameTextBoxGroup.Text = "Группа";
             // 
             // textBoxNumberBook
             // 
@@ -127,17 +153,7 @@
             textBoxNumberBook.Name = "textBoxNumberBook";
             textBoxNumberBook.Size = new Size(312, 39);
             textBoxNumberBook.TabIndex = 13;
-            // 
-            // textBoxGroup
-            // 
-            textBoxGroup.BackColor = Color.FromArgb(84, 84, 84);
-            textBoxGroup.BorderStyle = BorderStyle.FixedSingle;
-            textBoxGroup.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxGroup.ForeColor = Color.White;
-            textBoxGroup.Location = new Point(888, 89);
-            textBoxGroup.Name = "textBoxGroup";
-            textBoxGroup.Size = new Size(312, 39);
-            textBoxGroup.TabIndex = 12;
+            textBoxNumberBook.KeyPress += TextBoxNum_KeyPress;
             // 
             // label5
             // 
@@ -287,8 +303,8 @@
             // labelErrorInfo
             // 
             labelErrorInfo.AutoSize = true;
-            labelErrorInfo.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelErrorInfo.ForeColor = Color.Red;
+            labelErrorInfo.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            labelErrorInfo.ForeColor = Color.FromArgb(255, 128, 128);
             labelErrorInfo.Location = new Point(30, 6);
             labelErrorInfo.Name = "labelErrorInfo";
             labelErrorInfo.Size = new Size(0, 30);
@@ -308,6 +324,7 @@
             buttonRegister.TabIndex = 2;
             buttonRegister.Text = "Зарегестрироваться";
             buttonRegister.UseVisualStyleBackColor = false;
+            buttonRegister.Click += buttonRegister_Click;
             // 
             // buttonBack
             // 
@@ -327,6 +344,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(panel6);
             panel2.Controls.Add(panel5);
             panel2.Controls.Add(labelPageInfo);
             panel2.Dock = DockStyle.Top;
@@ -334,6 +352,43 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1254, 56);
             panel2.TabIndex = 0;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.FromArgb(84, 84, 84);
+            panel6.Controls.Add(labelTeacherReg);
+            panel6.Controls.Add(labelStudentReg);
+            panel6.Dock = DockStyle.Right;
+            panel6.Location = new Point(946, 0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(308, 56);
+            panel6.TabIndex = 5;
+            // 
+            // labelTeacherReg
+            // 
+            labelTeacherReg.AutoSize = true;
+            labelTeacherReg.Cursor = Cursors.Hand;
+            labelTeacherReg.Font = new Font("Segoe UI", 15F, FontStyle.Underline, GraphicsUnit.Point, 204);
+            labelTeacherReg.ForeColor = Color.White;
+            labelTeacherReg.Location = new Point(134, 13);
+            labelTeacherReg.Name = "labelTeacherReg";
+            labelTeacherReg.Size = new Size(153, 28);
+            labelTeacherReg.TabIndex = 1;
+            labelTeacherReg.Text = "Преподаватель";
+            labelTeacherReg.Click += labelTeacherReg_Click;
+            // 
+            // labelStudentReg
+            // 
+            labelStudentReg.AutoSize = true;
+            labelStudentReg.Cursor = Cursors.Hand;
+            labelStudentReg.Font = new Font("Segoe UI", 15F, FontStyle.Underline, GraphicsUnit.Point, 204);
+            labelStudentReg.ForeColor = Color.FromArgb(76, 175, 80);
+            labelStudentReg.Location = new Point(33, 13);
+            labelStudentReg.Name = "labelStudentReg";
+            labelStudentReg.Size = new Size(83, 28);
+            labelStudentReg.TabIndex = 0;
+            labelStudentReg.Text = "Студент";
+            labelStudentReg.Click += labelStudentReg_Click;
             // 
             // panel5
             // 
@@ -370,6 +425,8 @@
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -389,10 +446,9 @@
         private Label label4;
         private TextBox textBoxRepeatPassword;
         private Panel panel5;
-        private Label label9;
-        private Label label10;
+        private Label labelNameTextBoxNumberBook;
+        private Label labelNameTextBoxGroup;
         private TextBox textBoxNumberBook;
-        private TextBox textBoxGroup;
         private Label label5;
         private TextBox textBoxPatronomic;
         private Label label6;
@@ -400,5 +456,9 @@
         private TextBox textBoxSurname;
         private TextBox textBoxName;
         private Label labelErrorInfo;
+        private Panel panel6;
+        private Label labelStudentReg;
+        private Label labelTeacherReg;
+        private ComboBoxCustom comboBoxCustomGroup;
     }
 }
