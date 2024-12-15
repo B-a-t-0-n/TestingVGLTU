@@ -174,7 +174,7 @@ namespace TestingVGLTU.WinForms.Forms.AuthorizationAndRegistration
             }
             else
             {
-                var teacher = new Teacher()
+                var teacher = new Models.Entity.Teacher()
                 {
                     Name = name,
                     Surname = surname,

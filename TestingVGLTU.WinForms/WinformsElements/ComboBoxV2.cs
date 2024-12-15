@@ -19,7 +19,7 @@ namespace TestingVGLTU.WinForms.WinformsElements
         private Label lblText;
         private Button btnIcon;
         //Events
-        public event EventHandler OnSelectedIndexChanged;//Default event
+        public event EventHandler? OnSelectedIndexChanged;//Default event
 
         public ComboBoxCustom()
         {
@@ -32,8 +32,8 @@ namespace TestingVGLTU.WinForms.WinformsElements
             cmbList.BackColor = listBackColor;
             cmbList.Font = new Font(this.Font.Name, 10F);
             cmbList.ForeColor = listTextColor;
-            cmbList.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);//Default event
-            cmbList.TextChanged += new EventHandler(ComboBox_TextChanged);//Refresh text
+            cmbList.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged!);//Default event
+            cmbList.TextChanged += new EventHandler(ComboBox_TextChanged!);//Refresh text
                                                                           //Button: Icon
             btnIcon.Dock = DockStyle.Right;
             btnIcon.FlatStyle = FlatStyle.Flat;
@@ -41,8 +41,8 @@ namespace TestingVGLTU.WinForms.WinformsElements
             btnIcon.BackColor = backColor;
             btnIcon.Size = new Size(30, 30);
             btnIcon.Cursor = Cursors.Hand;
-            btnIcon.Click += new EventHandler(Icon_Click);//Open dropdown list
-            btnIcon.Paint += new PaintEventHandler(Icon_Paint);//Draw icon
+            btnIcon.Click += new EventHandler(Icon_Click)!;//Open dropdown list
+            btnIcon.Paint += new PaintEventHandler(Icon_Paint!);//Draw icon
                                                                //Label: Text
             lblText.Dock = DockStyle.Fill;
             lblText.AutoSize = false;
@@ -51,9 +51,9 @@ namespace TestingVGLTU.WinForms.WinformsElements
             lblText.Padding = new Padding(8, 0, 0, 0);
             lblText.Font = new Font(this.Font.Name, 10F);
             //->Attach label events to user control event
-            lblText.Click += new EventHandler(Surface_Click);//Select combo box
-            lblText.MouseEnter += new EventHandler(Surface_MouseEnter);
-            lblText.MouseLeave += new EventHandler(Surface_MouseLeave);
+            lblText.Click += new EventHandler(Surface_Click!);//Select combo box
+            lblText.MouseEnter += new EventHandler(Surface_MouseEnter!);
+            lblText.MouseLeave += new EventHandler(Surface_MouseLeave!);
             //User Control
             this.Controls.Add(lblText);//2
             this.Controls.Add(btnIcon);//1

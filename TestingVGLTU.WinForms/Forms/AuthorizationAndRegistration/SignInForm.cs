@@ -62,7 +62,7 @@ namespace TestingVGLTU.WinForms.Forms.AuthorizationAndRegistration
                 return null;
             }
 
-            if(_passwordHasher.Verefy(password, user.Password))
+            if(!_passwordHasher.Verefy(password, user.Password))
             {
                 labelErrorInfo.Text = "неверный пароль";
                 return null;

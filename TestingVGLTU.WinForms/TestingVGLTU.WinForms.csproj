@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Forms\Teacher\" />
     <Folder Include="Forms\Student\" />
   </ItemGroup>
 

@@ -41,7 +41,7 @@
             panelTop = new Panel();
             panel2 = new Panel();
             panel4 = new Panel();
-            label1 = new Label();
+            labelFullNameUser = new Label();
             buttonBack = new Button();
             panelCenter = new Panel();
             panelLeft.SuspendLayout();
@@ -93,7 +93,9 @@
             buttonHome.Name = "buttonHome";
             buttonHome.Size = new Size(82, 60);
             buttonHome.TabIndex = 0;
+            buttonHome.Tag = "Home";
             buttonHome.UseVisualStyleBackColor = false;
+            buttonHome.Click += buttonHome_Click;
             // 
             // buttonMail
             // 
@@ -107,7 +109,9 @@
             buttonMail.Name = "buttonMail";
             buttonMail.Size = new Size(82, 60);
             buttonMail.TabIndex = 1;
+            buttonMail.Tag = "Mail";
             buttonMail.UseVisualStyleBackColor = false;
+            buttonMail.Click += buttonMail_Click;
             // 
             // buttonActiveStudent
             // 
@@ -121,7 +125,9 @@
             buttonActiveStudent.Name = "buttonActiveStudent";
             buttonActiveStudent.Size = new Size(82, 60);
             buttonActiveStudent.TabIndex = 2;
+            buttonActiveStudent.Tag = "Active";
             buttonActiveStudent.UseVisualStyleBackColor = false;
+            buttonActiveStudent.Click += buttonActiveStudent_Click;
             // 
             // buttonCreateTesting
             // 
@@ -135,7 +141,9 @@
             buttonCreateTesting.Name = "buttonCreateTesting";
             buttonCreateTesting.Size = new Size(82, 60);
             buttonCreateTesting.TabIndex = 3;
+            buttonCreateTesting.Tag = "Create";
             buttonCreateTesting.UseVisualStyleBackColor = false;
+            buttonCreateTesting.Click += buttonCreateTesting_Click;
             // 
             // buttonActiveTeacher
             // 
@@ -149,7 +157,9 @@
             buttonActiveTeacher.Name = "buttonActiveTeacher";
             buttonActiveTeacher.Size = new Size(82, 60);
             buttonActiveTeacher.TabIndex = 4;
+            buttonActiveTeacher.Tag = "ActiveTeacher";
             buttonActiveTeacher.UseVisualStyleBackColor = false;
+            buttonActiveTeacher.Click += buttonActiveTeacher_Click;
             // 
             // panel1
             // 
@@ -195,14 +205,14 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(82, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(1185, 65);
+            panelTop.Size = new Size(1302, 65);
             panelTop.TabIndex = 1;
             // 
             // panel2
             // 
             panel2.Controls.Add(panel4);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(917, 0);
+            panel2.Location = new Point(1034, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(268, 65);
             panel2.TabIndex = 1;
@@ -210,22 +220,22 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(84, 84, 84);
-            panel4.Controls.Add(label1);
+            panel4.Controls.Add(labelFullNameUser);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
             panel4.Size = new Size(268, 50);
             panel4.TabIndex = 3;
             // 
-            // label1
+            // labelFullNameUser
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 18.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(3, 5);
-            label1.Name = "label1";
-            label1.Size = new Size(0, 35);
-            label1.TabIndex = 0;
+            labelFullNameUser.AutoSize = true;
+            labelFullNameUser.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelFullNameUser.ForeColor = Color.White;
+            labelFullNameUser.Location = new Point(3, 5);
+            labelFullNameUser.Name = "labelFullNameUser";
+            labelFullNameUser.Size = new Size(0, 32);
+            labelFullNameUser.TabIndex = 0;
             // 
             // buttonBack
             // 
@@ -242,13 +252,14 @@
             buttonBack.Size = new Size(65, 65);
             buttonBack.TabIndex = 0;
             buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
             // 
             // panelCenter
             // 
             panelCenter.Dock = DockStyle.Fill;
             panelCenter.Location = new Point(82, 65);
             panelCenter.Name = "panelCenter";
-            panelCenter.Size = new Size(1185, 586);
+            panelCenter.Size = new Size(1302, 586);
             panelCenter.TabIndex = 2;
             // 
             // MainForm
@@ -256,7 +267,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(41, 41, 41);
-            ClientSize = new Size(1267, 651);
+            ClientSize = new Size(1384, 651);
             Controls.Add(panelCenter);
             Controls.Add(panelTop);
             Controls.Add(panelLeft);
@@ -292,6 +303,6 @@
         private Button buttonBack;
         private Panel panel2;
         private Panel panel4;
-        private Label label1;
+        private Label labelFullNameUser;
     }
 }
