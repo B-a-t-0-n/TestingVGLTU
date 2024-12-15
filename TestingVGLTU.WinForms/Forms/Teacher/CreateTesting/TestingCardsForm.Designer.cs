@@ -70,6 +70,7 @@
             buttonAddTesting.Size = new Size(68, 68);
             buttonAddTesting.TabIndex = 0;
             buttonAddTesting.UseVisualStyleBackColor = false;
+            buttonAddTesting.Click += buttonAddTesting_Click;
             // 
             // TestingCardsForm
             // 
@@ -80,6 +81,7 @@
             Controls.Add(flowLayoutPanelCards);
             Name = "TestingCardsForm";
             Text = "TestingCardsForm";
+            Load += TestingCardsForm_Load;
             flowLayoutPanelCards.ResumeLayout(false);
             panelCardAddTesting.ResumeLayout(false);
             ResumeLayout(false);

@@ -6,7 +6,7 @@ namespace TestingVGLTU.WinForms.Forms.Shared
 {
     public partial class MainForm : Form
     {
-        private Form _activeForm;
+        private Form _activeForm = new Form();
 
         public User User { get; set; }
 
@@ -21,12 +21,16 @@ namespace TestingVGLTU.WinForms.Forms.Shared
                 buttonActiveStudent.Visible = false;
                 buttonHome.Visible = false;
                 buttonMail.Visible = false;
+ 
+                OpenChildForm(new TestingCardsForm());
             }
             if (User is Student)
             {
                 buttonActiveTeacher.Visible = false;
                 buttonCreateTesting.Visible = false;
             }
+
+            buttonBack.Visible = false;
 
             labelFullNameUser.Text = $"{User.Surname} {User.Name[0]}. {User.Patronymic[0]}.";
         }
@@ -67,7 +71,7 @@ namespace TestingVGLTU.WinForms.Forms.Shared
 
         }
 
-        private void OpenChildForm(Form childForm)
+        public void OpenChildForm(Form childForm)
         {
             if (_activeForm != null)
             {
