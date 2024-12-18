@@ -55,7 +55,7 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting
             {
                 var card = new TestingCard();
 
-                card.AttemptsLeft = $"Попытки: {testing.Attempts}";
+                card.AttemptsLeft = $"{testing.Attempts}";
                 card.Location = new Point(432, 20);
                 card.Margin = new Padding(10, 20, 10, 3);
                 card.MaximumSize = new Size(392, 238);
@@ -63,9 +63,9 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting
                 card.Tag = $"{testing.Id}";
                 card.Size = new Size(392, 238);
                 card.TabIndex = 2;
-                card.TeacherName = $"Преподаватель: {testing.Teacher.Surname} {testing.Teacher.Name}. {testing.Teacher.Patronymic}.";
+                card.TeacherName = $"{testing.Teacher.Surname} {testing.Teacher.Name[0]}. {testing.Teacher.Patronymic[0]}.";
                 card.TestingName = $"{testing.Name}";
-                card.TimeRemaining = $"Время: {testing.Time.Minute + testing.Time.Hour * 60} мин";
+                card.TimeRemaining = $"{testing.Time.Minute + testing.Time.Hour * 60}";
                 card.TypeTesting = $"{testing.TypeTesting.Name}";
 
                 cards.Add(card);

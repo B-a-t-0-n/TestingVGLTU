@@ -137,6 +137,7 @@
             textBoxTime.Name = "textBoxTime";
             textBoxTime.Size = new Size(135, 28);
             textBoxTime.TabIndex = 0;
+            textBoxTime.KeyPress += TextBoxNum_KeyPress;
             // 
             // panel17
             // 
@@ -161,6 +162,7 @@
             buttonNext.TabIndex = 0;
             buttonNext.Text = "Далее";
             buttonNext.UseVisualStyleBackColor = false;
+            buttonNext.Click += buttonNext_Click;
             // 
             // panel2
             // 
@@ -191,7 +193,6 @@
             labelAttemps.Size = new Size(89, 25);
             labelAttemps.TabIndex = 1;
             labelAttemps.Text = "Попытки";
-            labelAttemps.Click += label1_Click;
             // 
             // textBoxAttemps
             // 
@@ -204,6 +205,7 @@
             textBoxAttemps.Name = "textBoxAttemps";
             textBoxAttemps.Size = new Size(119, 28);
             textBoxAttemps.TabIndex = 0;
+            textBoxAttemps.KeyPress += TextBoxNum_KeyPress;
             // 
             // panel4
             // 
@@ -221,7 +223,7 @@
             panel5.Dock = DockStyle.Left;
             panel5.Location = new Point(0, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(247, 54);
+            panel5.Size = new Size(376, 54);
             panel5.TabIndex = 1;
             // 
             // comboBoxCustomTypeOutputOfResult
@@ -240,9 +242,10 @@
             comboBoxCustomTypeOutputOfResult.Location = new Point(0, 25);
             comboBoxCustomTypeOutputOfResult.MinimumSize = new Size(200, 0);
             comboBoxCustomTypeOutputOfResult.Name = "comboBoxCustomTypeOutputOfResult";
-            comboBoxCustomTypeOutputOfResult.Size = new Size(247, 29);
+            comboBoxCustomTypeOutputOfResult.Size = new Size(376, 29);
             comboBoxCustomTypeOutputOfResult.TabIndex = 18;
             comboBoxCustomTypeOutputOfResult.Texts = "";
+            comboBoxCustomTypeOutputOfResult.OnSelectedIndexChanged += comboBoxCustomGroup_OnSelectedIndexChanged;
             // 
             // labelTypeOutputOfResult
             // 
@@ -271,7 +274,7 @@
             panel7.Dock = DockStyle.Left;
             panel7.Location = new Point(0, 0);
             panel7.Name = "panel7";
-            panel7.Size = new Size(247, 54);
+            panel7.Size = new Size(277, 54);
             panel7.TabIndex = 1;
             // 
             // comboBoxCustomGroupType
@@ -290,9 +293,10 @@
             comboBoxCustomGroupType.Location = new Point(0, 25);
             comboBoxCustomGroupType.MinimumSize = new Size(200, 0);
             comboBoxCustomGroupType.Name = "comboBoxCustomGroupType";
-            comboBoxCustomGroupType.Size = new Size(247, 29);
+            comboBoxCustomGroupType.Size = new Size(277, 29);
             comboBoxCustomGroupType.TabIndex = 17;
             comboBoxCustomGroupType.Texts = "";
+            comboBoxCustomGroupType.OnSelectedIndexChanged += comboBoxCustomGroup_OnSelectedIndexChanged;
             // 
             // labelType
             // 
@@ -376,6 +380,7 @@
             Controls.Add(panel1);
             Name = "CreateTestingForm";
             Text = "CreateTestingForm";
+            Load += CreateTestingForm_Load;
             panel1.ResumeLayout(false);
             flowLayoutPanel.ResumeLayout(false);
             panel15.ResumeLayout(false);

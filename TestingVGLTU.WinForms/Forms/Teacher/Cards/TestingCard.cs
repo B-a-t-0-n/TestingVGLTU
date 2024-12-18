@@ -247,7 +247,7 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.Cards
         public string TimeRemaining
         {
             get { return labelTimeTesting.Text; }
-            set { labelTimeTesting.Text = $"Время: {value}"; }
+            set { labelTimeTesting.Text = $"Время: {value} мин"; }
         }
 
         [Category("Data")]
