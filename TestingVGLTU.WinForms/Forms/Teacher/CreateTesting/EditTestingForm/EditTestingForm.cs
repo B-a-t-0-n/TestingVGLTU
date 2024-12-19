@@ -13,7 +13,7 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting
 {
     public partial class EditTestingAndPublicationForm : Form
     {
-        public EditTestingAndPublicationForm()
+        public EditTestingAndPublicationForm(int testingId)
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
-﻿namespace TestingVGLTU.WinForms.Forms.Teacher
+﻿namespace TestingVGLTU.WinForms.Forms.Student.Testing
 {
-    partial class ActiveTestingForm
+    partial class TestingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ActiveTestingForm";
+            panel1 = new Panel();
+            SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.None;
+            panel1.Location = new Point(26, 65);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1150, 549);
+            panel1.TabIndex = 0;
+            // 
+            // TestingForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(41, 41, 41);
+            ClientSize = new Size(1199, 688);
+            Controls.Add(panel1);
+            Name = "TestingForm";
+            Text = "TestingForm";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel panel1;
     }
 }

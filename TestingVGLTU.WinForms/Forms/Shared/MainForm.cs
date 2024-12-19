@@ -24,7 +24,7 @@ namespace TestingVGLTU.WinForms.Forms.Shared
  
                 OpenChildForm(new TestingCardsForm());
             }
-            if (User is Student)
+            if (User is Models.Entity.Student)
             {
                 buttonActiveTeacher.Visible = false;
                 buttonCreateTesting.Visible = false;

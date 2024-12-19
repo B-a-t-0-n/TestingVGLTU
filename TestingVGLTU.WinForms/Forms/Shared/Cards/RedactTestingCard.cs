@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace TestingVGLTU.WinForms.Forms.Teacher.Cards
+namespace TestingVGLTU.WinForms.Forms.Shared.Cards
 {
     public partial class RedactTestingCard : UserControl
     {

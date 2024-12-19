@@ -2,7 +2,7 @@
 using TestingVGLTU.Models.Entity;
 using TestingVGLTU.WinForms.Data;
 using TestingVGLTU.WinForms.Forms.Shared;
-using TestingVGLTU.WinForms.Forms.Teacher.Cards;
+using TestingVGLTU.WinForms.Forms.Shared.Cards;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting

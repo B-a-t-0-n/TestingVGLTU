@@ -75,6 +75,13 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting
                 if (testing == null)
                     return;
 
+                using DataContext dataContext = new DataContext();
+
+                dataContext.Testings.Add(testing);
+                dataContext.SaveChanges();
+
+                var mainForm = (MainForm)ParentForm!;
+                mainForm.OpenChildForm(new EditTestingAndPublicationForm(testing.Id));
 
             }
             catch (Exception ex)
@@ -104,7 +111,7 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting
                 return null;
             }
 
-            var mainForm = Parent as MainForm;
+            var mainForm = ParentForm as MainForm;
 
             var hours = time / 60;
             var minutes = time % 60;

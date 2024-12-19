@@ -159,7 +159,7 @@ namespace TestingVGLTU.WinForms.Forms.AuthorizationAndRegistration
                     return;
                 }
 
-                var student = new Student()
+                var student = new Models.Entity.Student()
                 {
                     Name = name,
                     Surname = surname,
