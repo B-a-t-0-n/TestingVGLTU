@@ -378,6 +378,7 @@
             BackColor = Color.FromArgb(41, 41, 41);
             ClientSize = new Size(1133, 802);
             Controls.Add(panel1);
+            ForeColor = Color.Coral;
             Name = "CreateTestingForm";
             Text = "CreateTestingForm";
             Load += CreateTestingForm_Load;

@@ -48,12 +48,12 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting
             await LoadData();
         }
 
-        private List<TestingCard> GetTestingCards(Testing[] testings)
+        private List<RedactTestingCard> GetTestingCards(Testing[] testings)
         {
-            var cards = new List<TestingCard>();
+            var cards = new List<RedactTestingCard>();
             foreach (var testing in testings)
             {
-                var card = new TestingCard();
+                var card = new RedactTestingCard();
 
                 card.AttemptsLeft = $"{testing.Attempts}";
                 card.Location = new Point(432, 20);

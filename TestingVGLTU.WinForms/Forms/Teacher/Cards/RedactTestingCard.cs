@@ -2,9 +2,9 @@
 
 namespace TestingVGLTU.WinForms.Forms.Teacher.Cards
 {
-    public partial class TestingCard : UserControl
+    public partial class RedactTestingCard : UserControl
     {
-        public TestingCard()
+        public RedactTestingCard()
         {
             InitializeComponent();
         }
