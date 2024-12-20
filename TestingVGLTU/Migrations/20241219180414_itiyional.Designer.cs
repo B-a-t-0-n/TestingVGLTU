@@ -5,22 +5,22 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TestingVGLTU.WinForms.Data;
+using TestingVGLTU.Data;
 
 #nullable disable
 
-namespace TestingVGLTU.WinForms.Migrations
+namespace TestingVGLTU.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20241219173949_PPP")]
-    partial class PPP
+    [Migration("20241219180414_itiyional")]
+    partial class itiyional
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.0")
+                .HasAnnotation("ProductVersion", "8.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -306,7 +306,7 @@ namespace TestingVGLTU.WinForms.Migrations
                 {
                     b.HasBaseType("TestingVGLTU.Models.Entity.Question");
 
-                    b.PrimitiveCollection<string>("CorrectAnswers")
+                    b.Property<string>("CorrectAnswers")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -317,7 +317,7 @@ namespace TestingVGLTU.WinForms.Migrations
                 {
                     b.HasBaseType("TestingVGLTU.Models.Entity.Question");
 
-                    b.PrimitiveCollection<string>("CorrectAnswers")
+                    b.Property<string>("CorrectAnswers")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -328,11 +328,11 @@ namespace TestingVGLTU.WinForms.Migrations
                 {
                     b.HasBaseType("TestingVGLTU.Models.Entity.Question");
 
-                    b.PrimitiveCollection<string>("AnswerOptions")
+                    b.Property<string>("AnswerOptions")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.PrimitiveCollection<string>("CorrectAnswers")
+                    b.Property<string>("CorrectAnswers")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -343,7 +343,7 @@ namespace TestingVGLTU.WinForms.Migrations
                 {
                     b.HasBaseType("TestingVGLTU.Models.Entity.Question");
 
-                    b.PrimitiveCollection<string>("AnswerOptions")
+                    b.Property<string>("AnswerOptions")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

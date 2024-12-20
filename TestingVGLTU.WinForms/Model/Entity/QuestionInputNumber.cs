@@ -2,6 +2,6 @@
 {
     public class QuestionInputNumber : Question
     {
-        public double[] CorrectAnswers { get; set; } = null!;
+        public string CorrectAnswers { get; set; } = null!;
     }
 }

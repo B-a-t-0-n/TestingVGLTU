@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            panel5 = new Panel();
+            buttonCraeate = new Button();
+            flowLayoutPanelQuestion = new FlowLayoutPanel();
             panel2 = new Panel();
             label6 = new Label();
             panel9 = new Panel();
@@ -44,44 +46,68 @@
             panel3 = new Panel();
             label2 = new Label();
             panel4 = new Panel();
-            label1 = new Label();
-            flowLayoutPanel2 = new FlowLayoutPanel();
-            answerInputRow1 = new TableElement.AnswerInputRow();
-            answerTestRow1 = new TableElement.AnswerTestRow();
-            addAnswerRow1 = new TableElement.AddAnswerRow();
+            labelTableColumAnswer = new Label();
+            flowLayoutPanelAnswers = new FlowLayoutPanel();
             panel1.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            panel5.SuspendLayout();
+            flowLayoutPanelQuestion.SuspendLayout();
             panel2.SuspendLayout();
             panel9.SuspendLayout();
             panel7.SuspendLayout();
             panel16.SuspendLayout();
             panel3.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.FromArgb(64, 64, 64);
-            panel1.Controls.Add(flowLayoutPanel1);
-            panel1.Location = new Point(158, 81);
+            panel1.Controls.Add(panel5);
+            panel1.Controls.Add(flowLayoutPanelQuestion);
+            panel1.Location = new Point(160, 63);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(790, 546);
+            panel1.Size = new Size(790, 587);
             panel1.TabIndex = 0;
             // 
-            // flowLayoutPanel1
+            // panel5
             // 
-            flowLayoutPanel1.Controls.Add(panel2);
-            flowLayoutPanel1.Controls.Add(panel9);
-            flowLayoutPanel1.Controls.Add(panel7);
-            flowLayoutPanel1.Controls.Add(panel16);
-            flowLayoutPanel1.Controls.Add(panel3);
-            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
-            flowLayoutPanel1.Location = new Point(27, 15);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(736, 510);
-            flowLayoutPanel1.TabIndex = 0;
+            panel5.Controls.Add(buttonCraeate);
+            panel5.Location = new Point(27, 525);
+            panel5.Margin = new Padding(0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(736, 48);
+            panel5.TabIndex = 1;
+            // 
+            // buttonCraeate
+            // 
+            buttonCraeate.BackColor = Color.FromArgb(53, 128, 56);
+            buttonCraeate.Cursor = Cursors.Hand;
+            buttonCraeate.Dock = DockStyle.Right;
+            buttonCraeate.FlatAppearance.BorderSize = 0;
+            buttonCraeate.FlatStyle = FlatStyle.Flat;
+            buttonCraeate.Font = new Font("Segoe UI", 14.25F);
+            buttonCraeate.ForeColor = Color.White;
+            buttonCraeate.Location = new Point(613, 0);
+            buttonCraeate.Name = "buttonCraeate";
+            buttonCraeate.Size = new Size(123, 48);
+            buttonCraeate.TabIndex = 0;
+            buttonCraeate.Text = "Создать";
+            buttonCraeate.UseVisualStyleBackColor = false;
+            buttonCraeate.Click += buttonCraeate_Click;
+            // 
+            // flowLayoutPanelQuestion
+            // 
+            flowLayoutPanelQuestion.Controls.Add(panel2);
+            flowLayoutPanelQuestion.Controls.Add(panel9);
+            flowLayoutPanelQuestion.Controls.Add(panel7);
+            flowLayoutPanelQuestion.Controls.Add(panel16);
+            flowLayoutPanelQuestion.Controls.Add(panel3);
+            flowLayoutPanelQuestion.Controls.Add(flowLayoutPanelAnswers);
+            flowLayoutPanelQuestion.Location = new Point(27, 15);
+            flowLayoutPanelQuestion.Name = "flowLayoutPanelQuestion";
+            flowLayoutPanelQuestion.Size = new Size(736, 512);
+            flowLayoutPanelQuestion.TabIndex = 0;
             // 
             // panel2
             // 
@@ -167,6 +193,7 @@
             comboBoxCustomType.Size = new Size(293, 29);
             comboBoxCustomType.TabIndex = 17;
             comboBoxCustomType.Texts = "";
+            comboBoxCustomType.OnSelectedIndexChanged += comboBoxCustomType_OnSelectedIndexChanged;
             // 
             // labelType
             // 
@@ -218,7 +245,7 @@
             // 
             panel3.Controls.Add(label2);
             panel3.Controls.Add(panel4);
-            panel3.Controls.Add(label1);
+            panel3.Controls.Add(labelTableColumAnswer);
             panel3.Location = new Point(0, 211);
             panel3.Margin = new Padding(0, 10, 0, 0);
             panel3.Name = "panel3";
@@ -245,57 +272,27 @@
             panel4.Size = new Size(736, 2);
             panel4.TabIndex = 3;
             // 
-            // label1
+            // labelTableColumAnswer
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(156, 2);
-            label1.Name = "label1";
-            label1.Size = new Size(169, 25);
-            label1.TabIndex = 2;
-            label1.Text = "варианты ответов";
+            labelTableColumAnswer.AutoSize = true;
+            labelTableColumAnswer.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelTableColumAnswer.ForeColor = Color.White;
+            labelTableColumAnswer.Location = new Point(156, 2);
+            labelTableColumAnswer.Name = "labelTableColumAnswer";
+            labelTableColumAnswer.Size = new Size(169, 25);
+            labelTableColumAnswer.TabIndex = 2;
+            labelTableColumAnswer.Text = "варианты ответов";
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelAnswers
             // 
-            flowLayoutPanel2.AutoScroll = true;
-            flowLayoutPanel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel2.Controls.Add(answerInputRow1);
-            flowLayoutPanel2.Controls.Add(answerTestRow1);
-            flowLayoutPanel2.Controls.Add(addAnswerRow1);
-            flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel2.Location = new Point(0, 253);
-            flowLayoutPanel2.Margin = new Padding(0, 10, 0, 0);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(736, 257);
-            flowLayoutPanel2.TabIndex = 7;
-            // 
-            // answerInputRow1
-            // 
-            answerInputRow1.Answer = "";
-            answerInputRow1.Location = new Point(0, 10);
-            answerInputRow1.Margin = new Padding(0, 10, 0, 0);
-            answerInputRow1.Name = "answerInputRow1";
-            answerInputRow1.Size = new Size(736, 44);
-            answerInputRow1.TabIndex = 0;
-            // 
-            // answerTestRow1
-            // 
-            answerTestRow1.Answer = "";
-            answerTestRow1.Location = new Point(0, 64);
-            answerTestRow1.Margin = new Padding(0, 10, 0, 0);
-            answerTestRow1.Name = "answerTestRow1";
-            answerTestRow1.RightAnswer = false;
-            answerTestRow1.Size = new Size(736, 44);
-            answerTestRow1.TabIndex = 1;
-            // 
-            // addAnswerRow1
-            // 
-            addAnswerRow1.Location = new Point(0, 118);
-            addAnswerRow1.Margin = new Padding(0, 10, 0, 0);
-            addAnswerRow1.Name = "addAnswerRow1";
-            addAnswerRow1.Size = new Size(736, 44);
-            addAnswerRow1.TabIndex = 2;
+            flowLayoutPanelAnswers.AutoScroll = true;
+            flowLayoutPanelAnswers.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelAnswers.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanelAnswers.Location = new Point(0, 253);
+            flowLayoutPanelAnswers.Margin = new Padding(0, 10, 0, 0);
+            flowLayoutPanelAnswers.Name = "flowLayoutPanelAnswers";
+            flowLayoutPanelAnswers.Size = new Size(736, 257);
+            flowLayoutPanelAnswers.TabIndex = 7;
             // 
             // EditQuestionForm
             // 
@@ -306,8 +303,10 @@
             Controls.Add(panel1);
             Name = "EditQuestionForm";
             Text = "EditQuestionForm";
+            Load += EditQuestionForm_Load;
             panel1.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            flowLayoutPanelQuestion.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel9.ResumeLayout(false);
@@ -318,14 +317,13 @@
             panel16.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowLayoutPanelQuestion;
         private Panel panel2;
         private Label label6;
         private Panel panel9;
@@ -340,10 +338,9 @@
         private Panel panel3;
         private Label label2;
         private Panel panel4;
-        private Label label1;
-        private FlowLayoutPanel flowLayoutPanel2;
-        private TableElement.AnswerInputRow answerInputRow1;
-        private TableElement.AnswerTestRow answerTestRow1;
-        private TableElement.AddAnswerRow addAnswerRow1;
+        private Label labelTableColumAnswer;
+        private FlowLayoutPanel flowLayoutPanelAnswers;
+        private Panel panel5;
+        private Button buttonCraeate;
     }
 }

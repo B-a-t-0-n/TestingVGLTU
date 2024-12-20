@@ -62,7 +62,7 @@
             panelLeft.Dock = DockStyle.Left;
             panelLeft.Location = new Point(0, 0);
             panelLeft.Name = "panelLeft";
-            panelLeft.Size = new Size(82, 651);
+            panelLeft.Size = new Size(82, 892);
             panelLeft.TabIndex = 0;
             // 
             // flowLayoutPanelNawButtons
@@ -78,7 +78,7 @@
             flowLayoutPanelNawButtons.Location = new Point(0, 88);
             flowLayoutPanelNawButtons.Margin = new Padding(3, 3, 5, 3);
             flowLayoutPanelNawButtons.Name = "flowLayoutPanelNawButtons";
-            flowLayoutPanelNawButtons.Size = new Size(82, 506);
+            flowLayoutPanelNawButtons.Size = new Size(82, 747);
             flowLayoutPanelNawButtons.TabIndex = 2;
             // 
             // buttonHome
@@ -191,7 +191,7 @@
             buttonExit.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             buttonExit.ForeColor = Color.White;
             buttonExit.Image = Properties.Resources.Vector;
-            buttonExit.Location = new Point(0, 600);
+            buttonExit.Location = new Point(0, 841);
             buttonExit.Name = "buttonExit";
             buttonExit.Size = new Size(82, 51);
             buttonExit.TabIndex = 0;
@@ -205,14 +205,14 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(82, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(1302, 65);
+            panelTop.Size = new Size(1391, 65);
             panelTop.TabIndex = 1;
             // 
             // panel2
             // 
             panel2.Controls.Add(panel4);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(1034, 0);
+            panel2.Location = new Point(1123, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(268, 65);
             panel2.TabIndex = 1;
@@ -259,7 +259,7 @@
             panelCenter.Dock = DockStyle.Fill;
             panelCenter.Location = new Point(82, 65);
             panelCenter.Name = "panelCenter";
-            panelCenter.Size = new Size(1302, 586);
+            panelCenter.Size = new Size(1391, 827);
             panelCenter.TabIndex = 2;
             // 
             // MainForm
@@ -267,11 +267,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(41, 41, 41);
-            ClientSize = new Size(1384, 651);
+            ClientSize = new Size(1473, 892);
             Controls.Add(panelCenter);
             Controls.Add(panelTop);
             Controls.Add(panelLeft);
-            MinimumSize = new Size(1283, 690);
+            MinimumSize = new Size(1489, 931);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainForm";

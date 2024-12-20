@@ -27,16 +27,6 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting
             flowLayoutPanelCards.Controls.AddRange(cards.ToArray());
         }
 
-        private void testingCard1_DeleteClicked(object sender, EventArgs e)
-        {
-            MessageBox.Show("кнопка удалить");
-        }
-
-        private void testingCard1_GoOverClicked(object sender, EventArgs e)
-        {
-            MessageBox.Show("111");
-        }
-
         private void buttonAddTesting_Click(object sender, EventArgs e)
         {
             var mainForm = (MainForm)ParentForm!;
@@ -67,11 +57,44 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting
                 card.TestingName = $"{testing.Name}";
                 card.TimeRemaining = $"{testing.Time.Minute + testing.Time.Hour * 60}";
                 card.TypeTesting = $"{testing.TypeTesting.Name}";
+                card.GoOverClicked += Card_GoOverClicked;
+                card.DeleteClicked += Card_DeleteClicked;
 
                 cards.Add(card);
             }
 
             return cards;
+        }
+
+        private async void Card_DeleteClicked(object? sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Вы действительно хотите удалить?",
+                "Сообщение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.No)
+                return;
+
+            var card = (RedactTestingCard)sender!;
+
+            var dataContext = new DataContext();
+
+            var testingId = int.Parse(card.Tag!.ToString()!);
+            var testing = await dataContext.Testings.FirstOrDefaultAsync(t => t.Id == testingId);
+            dataContext.Testings.Remove(testing!);
+            
+            await dataContext.SaveChangesAsync();
+            card.Visible = false;
+        }
+
+        private void Card_GoOverClicked(object? sender, EventArgs e)
+        {
+            var card = (RedactTestingCard) sender!;
+            var mainForm = (MainForm)ParentForm!;
+            mainForm.OpenChildForm(new EditTestingAndPublicationForm(int.Parse(card.Tag!.ToString()!)));
         }
     }
 }

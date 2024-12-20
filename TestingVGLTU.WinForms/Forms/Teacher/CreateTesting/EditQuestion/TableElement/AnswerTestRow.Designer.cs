@@ -82,6 +82,7 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting.EditQuestion.TableEl
             buttonDelete.Size = new Size(44, 44);
             buttonDelete.TabIndex = 0;
             buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += buttonDelete_Click;
             // 
             // AnswerTestRow
             // 
@@ -108,7 +109,7 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting.EditQuestion.TableEl
 
         [Category("Data")]
         [Description("правильный?")]
-        public bool RightAnswer
+        public bool IsRightAnswer
         {
             get { return checkBox.Checked; }
             set { checkBox.Checked = value; }
@@ -118,5 +119,23 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting.EditQuestion.TableEl
         private TextBox textBoxAnswer;
         private CheckBox checkBox;
         private Button buttonDelete;
+
+        [Category("Action")]
+        [Description("Кнопка удаления")]
+        public event EventHandler GoDeleteClicked;
+
+        protected virtual void OnDeleteClicked(EventArgs e)
+        {
+            EventHandler handler = GoDeleteClicked;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            OnDeleteClicked(e);
+        }
     }
 }

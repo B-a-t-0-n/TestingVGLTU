@@ -2,6 +2,6 @@
 {
     public class QuestionInputText : Question
     {
-        public string[] CorrectAnswers { get; set; } = null!;
+        public string CorrectAnswers { get; set; } = null!;
     }
 }

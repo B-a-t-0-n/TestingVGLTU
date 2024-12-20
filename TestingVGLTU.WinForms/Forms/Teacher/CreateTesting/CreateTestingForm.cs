@@ -69,16 +69,11 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting
                 var testing = await CreateTesting(textBoxName.Text,
                     uint.Parse(textBoxAttemps.Text),
                     int.Parse(textBoxTime.Text),
-                    type!.Id,
-                    typeOutPut!.Id
+                    typeOutPut!.Id,
+                    type!.Id
                     );
                 if (testing == null)
                     return;
-
-                using DataContext dataContext = new DataContext();
-
-                dataContext.Testings.Add(testing);
-                dataContext.SaveChanges();
 
                 var mainForm = (MainForm)ParentForm!;
                 mainForm.OpenChildForm(new EditTestingAndPublicationForm(testing.Id));
@@ -118,17 +113,6 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting
 
             var timeOnly = new TimeOnly(hours, minutes);
 
-            var testing = new Testing()
-            {
-                Name = name,
-                TeacherId = mainForm!.User.Id,
-                Attempts = attemps,
-                Time = timeOnly,
-                TimeCreate = DateTime.Now,
-                TypeOutputOfResultId = typeOutputOfResultId,
-                TypeTestingId = typeTestingId,
-            };
-
             var dataContext = new DataContext();
 
             if (!dataContext.TypeTestings.Any(i => i.Id == typeTestingId))
@@ -143,7 +127,18 @@ namespace TestingVGLTU.WinForms.Forms.Teacher.CreateTesting
                 return null;
             }
 
-            await dataContext.AddAsync(testing);
+            var testing = new Testing()
+            {
+                Name = name,
+                TeacherId = mainForm!.User.Id,
+                Attempts = attemps,
+                Time = timeOnly,
+                TimeCreate = DateTime.Now,
+                TypeOutputOfResultId = typeOutputOfResultId,
+                TypeTestingId = typeTestingId,
+            };
+
+            await dataContext.Testings.AddAsync(testing);
             await dataContext.SaveChangesAsync();
 
             return testing;
