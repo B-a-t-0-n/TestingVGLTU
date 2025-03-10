@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using TestingVGLTU.Models.Entity;
+using TestingVGLTU.WinForms.Forms.Student;
+using TestingVGLTU.WinForms.Forms.Teacher;
 using TestingVGLTU.WinForms.Forms.Teacher.CreateTesting;
 
 namespace TestingVGLTU.WinForms.Forms.Shared
@@ -26,6 +28,7 @@ namespace TestingVGLTU.WinForms.Forms.Shared
             }
             if (User is Models.Entity.Student)
             {
+                buttonHome.Visible = false;
                 buttonActiveTeacher.Visible = false;
                 buttonCreateTesting.Visible = false;
             }
@@ -48,12 +51,12 @@ namespace TestingVGLTU.WinForms.Forms.Shared
 
         private void buttonMail_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new MailStudentForm());
         }
 
         private void buttonActiveStudent_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new ActiveStudentform());
         }
 
         private void buttonCreateTesting_Click(object sender, EventArgs e)
@@ -63,7 +66,7 @@ namespace TestingVGLTU.WinForms.Forms.Shared
 
         private void buttonActiveTeacher_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new ActiveTestingForm());
         }
 
         private void buttonBack_Click(object sender, EventArgs e)

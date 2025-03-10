@@ -29,17 +29,27 @@
         private void InitializeComponent()
         {
             flowLayoutPanelCards = new FlowLayoutPanel();
+            activeTestingCardTeacher1 = new Cards.ActiveTestingCardTeacher();
+            flowLayoutPanelCards.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanelCards
             // 
             flowLayoutPanelCards.AutoScroll = true;
+            flowLayoutPanelCards.Controls.Add(activeTestingCardTeacher1);
             flowLayoutPanelCards.Dock = DockStyle.Fill;
             flowLayoutPanelCards.Location = new Point(0, 0);
             flowLayoutPanelCards.Name = "flowLayoutPanelCards";
             flowLayoutPanelCards.Padding = new Padding(10, 0, 0, 0);
             flowLayoutPanelCards.Size = new Size(1267, 598);
             flowLayoutPanelCards.TabIndex = 1;
+            // 
+            // activeTestingCardTeacher1
+            // 
+            activeTestingCardTeacher1.Location = new Point(13, 3);
+            activeTestingCardTeacher1.Name = "activeTestingCardTeacher1";
+            activeTestingCardTeacher1.Size = new Size(392, 238);
+            activeTestingCardTeacher1.TabIndex = 0;
             // 
             // ActiveTestingForm
             // 
@@ -50,11 +60,13 @@
             Controls.Add(flowLayoutPanelCards);
             Name = "ActiveTestingForm";
             Text = "ActiveTestingForm";
+            flowLayoutPanelCards.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private FlowLayoutPanel flowLayoutPanelCards;
+        private Cards.ActiveTestingCardTeacher activeTestingCardTeacher1;
     }
 }
