@@ -22,7 +22,7 @@
                     <div class="comboBox">
                         <p>Тип</p>
                         <select name="Type" asp-for=Type>
-                            @foreach(var item in Model.TypeTesting!)
+                            @foreach(var item in Model.TypeTesting ?? new())
                             {
                                 <option value="@item">@item</option>
                             }
@@ -32,7 +32,7 @@
                     <div class="comboBox2">
                         <p>Вывод результата</p>
                         <select name="OutputOfResult" asp-for=OutputOfResult>
-                            @foreach (var item in Model.TypeOutputOfResult!)
+                            @foreach (var item in Model.TypeOutputOfResult ?? new())
                             {
                                 <option value="@item">@item</option>
                             }
