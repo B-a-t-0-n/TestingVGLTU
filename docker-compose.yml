@@ -1,0 +1,6 @@
+services:
+  testingvgltu:
+    image: ${DOCKER_REGISTRY-}testingvgltu
+    build:
+      context: .
+      dockerfile: TestingVGLTU/Dockerfile

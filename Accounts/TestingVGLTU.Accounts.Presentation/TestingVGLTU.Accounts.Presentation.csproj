@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\TestingVGLTU.Framework\TestingVGLTU.Framework.csproj" />
+    <ProjectReference Include="..\TestingVGLTU.Accounts.Application\TestingVGLTU.Accounts.Application.csproj" />
+    <ProjectReference Include="..\TestingVGLTU.Accounts.Contracts\TestingVGLTU.Accounts.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
