@@ -1,40 +1,11 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
-using TestingVGLTU.Data;
-using TestingVGLTU.Data.Repositories;
 using TestingVGLTU.Infrastructure;
-using TestingVGLTU.Interfaces;
-using TestingVGLTU.Interfaces.Repositories;
-using TestingVGLTU.Interfaces.Services;
-using TestingVGLTU.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// получаем строку подключения из файла конфигурации
-string connection = builder.Configuration.GetConnectionString("DefaultConnection")!;
+builder.Services.AddInfrastructure(builder.Configuration);
 
-// добавляем контекст ApplicationContext в качестве сервиса в приложение
-builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
-
-builder.Services.AddTransient<IStudentRepository, StudentRepository>();
-builder.Services.AddTransient<ITeacherRepository, TeacherRepository>();
-builder.Services.AddTransient<IGroupRepository, GroupRepository>();
-builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
-builder.Services.AddTransient<IActiveTestingRepository, ActiveTestingRepository>();
-builder.Services.AddTransient<IQuestionInputNumberRepository, QuestionInputNumberRepository>();
-builder.Services.AddTransient<IQuestionInputTextRepository, QuestionInputTextRepository>();
-builder.Services.AddTransient<IQuestionMultipleChoiceRepository, QuestionMultipleChoiceRepository>();
-builder.Services.AddTransient<IQuestionSingleSelectionRepository, QuestionSingleSelectionRepository>();
-builder.Services.AddTransient<IUserResponsesToTestsRepository, UserResponsesToTestsRepository>();
-builder.Services.AddTransient<ITypeTestingRepository, TypeTestingRepository>();
-builder.Services.AddTransient<ITypeOutputOfResultRepository, TypeOutputOfResultRepository>();
-builder.Services.AddTransient<ITestingRepository, TestingRepository>();
-builder.Services.AddTransient<ILoginServices, LoginServices>();
-builder.Services.AddTransient<ITestingService, TestingService>();
-
-
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(config =>
@@ -59,7 +30,6 @@ builder.Services.AddAuthorization(option =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

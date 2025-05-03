@@ -1,4 +1,4 @@
-﻿using TestingVGLTU.LayoutTestings.Domain.ValueObjects;
+﻿using TestingVGLTU.SharedKernel.ValueObjects;
 using TestingVGLTU.SharedKernel.ValueObjects.IDs;
 
 namespace TestingVGLTU.ActiveTestings.Domain.Entity;
@@ -12,7 +12,7 @@ public class History : SharedKernel.Entity<HistoryId>
     private History(
         HistoryId id,
         ActiveTestingId activeTestingId,
-        StudentId studentId,
+        UserId studentId,
         bool isComplite,
         DateTime time,
         Attemps attemp) : base(id)
@@ -24,22 +24,22 @@ public class History : SharedKernel.Entity<HistoryId>
         Attemp = attemp;
     }
 
-    public ActiveTestingId ActiveTestingId { get; set; } = default!;
+    public ActiveTestingId ActiveTestingId { get; private set; } = default!;
 
-    public StudentId StudentId { get; set; } = default!;
+    public UserId StudentId { get; private set; } = default!;
 
-    public bool IsComplite { get; set; }
+    public bool IsComplite { get; private set; }
 
-    public DateTime Time { get; set; }
+    public DateTime Time { get; private set; }
 
-    public Attemps Attemp { get; set; } = default!;
+    public Attemps Attemp { get; private set; } = default!;
 
     public IReadOnlyList<UserResponse> UserResponses => _userResponses;
 
     public static History Create(
         HistoryId id,
         ActiveTestingId activeTestingId,
-        StudentId studentId,
+        UserId studentId,
         bool isComplite,
         DateTime time,
         Attemps attemp)

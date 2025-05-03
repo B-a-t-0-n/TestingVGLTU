@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace TestingVGLTU.Controllers
+namespace TestingVGLTU.Controllers;
+
+[Authorize]
+public class HomeController : Controller
 {
-    [Authorize]
-    public class HomeController : Controller
+    [HttpGet]
+    [Authorize(Policy = "Student")]
+    public async Task<IActionResult> HomeUser()
     {
-        [HttpGet]
-        [Authorize(Policy = "Student")]
-        public async Task<IActionResult> HomeUser()
-        {
-            return View();
-        }
+        return View();
     }
 }

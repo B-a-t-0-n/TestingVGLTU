@@ -6,6 +6,8 @@ namespace TestingVGLTU.LayoutTestings.Domain.Entity.Questions;
 
 public class QuestionSingleSelection : Question
 {
+    private List<Answer> _answerOptions = new();
+
     //EF Core
     private QuestionSingleSelection(QuestionId id) : base(id) { }
 
@@ -14,13 +16,18 @@ public class QuestionSingleSelection : Question
         Text text,
         SerialNumber serialNumber,
         Scores scores,
-        Answer[] answerOptions,
-        Answer rightAnswer) : base(id, text, serialNumber, scores)
+        IEnumerable<Answer> answerOptions,
+        Answer rightAnswer) : base(id, text, scores)
     {
-        AnswerOptions = answerOptions;
+        _answerOptions = answerOptions.ToList();
         RightAnswer = rightAnswer;
+        SetSerialNumber(serialNumber);
     }
 
-    public Answer[] AnswerOptions { get; set; } = null!;
-    public Answer RightAnswer { get; set; } = null!;
+    public IReadOnlyList<Answer> AnswerOptions => _answerOptions;
+    public Answer RightAnswer { get; private set; } = null!;
+
+    public void SetRightAnswer(Answer rightAnswer) => RightAnswer = rightAnswer;
+
+    public void SetAnswerOptions(IEnumerable<Answer> answerOptions) => _answerOptions = answerOptions.ToList();
 }

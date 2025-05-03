@@ -6,6 +6,10 @@ namespace TestingVGLTU.LayoutTestings.Domain.Entity.Questions;
 
 public class QuestionMultipleChoice : Question
 {
+    private List<Answer> _correctAnswers = new();
+
+    private List<Answer> _answerOptions = new();
+
     //EF Core
     private QuestionMultipleChoice(QuestionId id) : base(id) { }
 
@@ -14,13 +18,20 @@ public class QuestionMultipleChoice : Question
         Text text,
         SerialNumber serialNumber,
         Scores scores,
-        Answer[] answerOptions,
-        Answer[] correctAnswers) : base(id, text, serialNumber, scores)
+        IEnumerable<Answer> correctAnswers,
+        IEnumerable<Answer> answerOptions) : base(id, text, scores)
     {
-        AnswerOptions = answerOptions;
-        CorrectAnswers = correctAnswers;
+        _correctAnswers = correctAnswers.ToList();
+        _answerOptions = answerOptions.ToList();
+        SetSerialNumber(serialNumber);
     }
 
-    public Answer[] AnswerOptions { get; set; } = null!;
-    public Answer[] CorrectAnswers { get; set; } = null!;
+    public IReadOnlyList<Answer> CorrectAnswers => _correctAnswers;
+
+    public IReadOnlyList<Answer> AnswerOptions => _answerOptions;
+
+    public void SetCorrectAnswers(IEnumerable<Answer> correctAnswers) => _correctAnswers = correctAnswers.ToList();
+
+    public void SetAnswerOptions(IEnumerable<Answer> answerOptions) => _answerOptions = answerOptions.ToList();
+
 }

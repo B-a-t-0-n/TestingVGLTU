@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                             <div class="rows">
-                                @foreach(var item in Model.Question ?? new())
+                                @foreach(var item in new List<dynamic>())
                                 {
                                     <div class="row row-qestion">
                                         <div class="colum-1">
@@ -137,7 +137,7 @@
                                         </div>
                                         <div class="colum-4">
                                             <form action="/" method="post">
-                                                <input type="hidden" asp-for=@item.Id value=@item.Id />
+                                                <input type="hidden" asp-for=@item value=@item.Id />
                                                 <a class="edit" asp-area="" asp-controller="CreateTesting" asp-action="CreateQuestion" asp-route-id="@item.Id">
                                                     <svg width="30"
                                                          height="29"

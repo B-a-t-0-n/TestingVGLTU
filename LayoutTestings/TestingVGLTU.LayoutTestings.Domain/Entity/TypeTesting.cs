@@ -17,9 +17,9 @@ public class TypeTesting : SharedKernel.Entity<TypeTestingId>
         Ratio = ratio;
     }
 
-    public Title Title { get; set; } = default!;
+    public Title Title { get; private set; } = default!;
 
-    public decimal Ratio { get; set; } = default!;
+    public decimal Ratio { get; private set; } = default!;
 
     public static TypeTesting Create(
         TypeTestingId id,
@@ -27,5 +27,13 @@ public class TypeTesting : SharedKernel.Entity<TypeTestingId>
         decimal ratio)
     {
         return new TypeTesting(id, title, ratio);
+    }
+
+    public void UpdateInfo(
+        Title title,
+        decimal ratio)
+    {
+        Title = title;
+        Ratio = ratio;
     }
 }

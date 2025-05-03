@@ -16,7 +16,7 @@ public class Group : SharedKernel.Entity<GroupId>
         Name = name;
     }
 
-    public Title Name { get; set; } = default!;
+    public Title Name { get; private set; } = default!;
 
     public IReadOnlyList<Student> Students => _students;
 }

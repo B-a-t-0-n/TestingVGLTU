@@ -20,9 +20,9 @@ public class User : SharedKernel.Entity<UserId>
         Password = password;
     }
 
-    public FullName Name { get; set; } = default!;
-    public Login Login { get; set; } = default!;
-    public Password Password { get; set; } = default!;
+    public FullName Name { get; private set; } = default!;
+    public Login Login { get; private set; } = default!;
+    public Password Password { get; private set; } = default!;
 
     public static User Create(UserId id, FullName fullName, Login login, Password password)
     {

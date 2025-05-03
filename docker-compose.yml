@@ -1,6 +1,50 @@
-services:
-  testingvgltu:
-    image: ${DOCKER_REGISTRY-}testingvgltu
-    build:
-      context: .
-      dockerfile: TestingVGLTU/Dockerfile
+services:  
+ postgres:  
+   container_name: postgres_TestingVGLTU  
+   image: postgres  
+   restart: always  
+   environment:  
+     POSTGRES_DB: TestingVGLTU  
+     POSTGRES_USER: postgres  
+     POSTGRES_PASSWORD: postgres  
+   ports:  
+     - 5435:5432  
+   volumes:  
+     - postgres-data:/var/lib/postgresql/data  
+ pgadmin:  
+   container_name: pgadmin_TestingVGLTU 
+   image: dpage/pgadmin4:9.1
+   environment:  
+     PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com  
+     PGADMIN_DEFAULT_PASSWORD: password  
+     PGADMIN_CONFIG_SERVER_MODE: 'False'  
+     PGADMIN_SERVER_1_HOST: postgres  
+     PGADMIN_SERVER_1_PORT: 5432  
+     PGADMIN_SERVER_1_USERNAME: postgres  
+     PGADMIN_SERVER_1_PASSWORD: postgres  
+     PGADMIN_SERVER_1_NAME: TestingVGLTU  
+     PGADMIN_SERVER_1_REGISTER: 'True'  
+   ports:  
+     - 5051:80  
+   volumes:  
+     - pgadmin:/var/lib/pgadmin  
+   depends_on:  
+     - postgres  
+ seq:  
+   image: datalust/seq:latest  
+   container_name: seq_TestingVGLTU  
+   restart: always  
+   environment:  
+     - ACCEPT_EULA=Y  
+   ports:  
+     - 5342:5342  
+     - 8082:80  
+ testingvgltu:  
+   image: ${DOCKER_REGISTRY-}testingvgltu  
+   build:  
+     context: .  
+     dockerfile: TestingVGLTU/Dockerfile  
+
+volumes:  
+ postgres-data:  
+ pgadmin:

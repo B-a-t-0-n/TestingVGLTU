@@ -17,13 +17,13 @@ public class UserResponse : SharedKernel.Entity<UserResponseId>
         IsCorrect = isCorrect;
     }
 
-    public HistoryId HistoryId { get; set; } = default!;
+    public HistoryId HistoryId { get; private set; } = default!;
 
-    public QuestionId QuestionId { get; set; } = default!;
+    public QuestionId QuestionId { get; private set; } = default!;
 
-    public string Response { get; set; } = default!;
+    public string Response { get; private set; } = default!;
     
-    public bool? IsCorrect { get; set; }
+    public bool? IsCorrect { get; private set; }
     
     public static UserResponse Create(
         UserResponseId id,

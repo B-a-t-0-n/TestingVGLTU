@@ -24,15 +24,15 @@ public class ActiveTesting : SharedKernel.Entity<ActiveTestingId>
         GroupId = groupId;
     }
 
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; private set; }
 
-    public DateTime? EndDate { get; set; }
+    public DateTime? EndDate { get; private set; }
 
-    public bool IsComplite { get; set; }
+    public bool IsComplite { get; private set; }
 
-    public LayoutTestingId LayoutTestingId { get; set; } = default!;
+    public LayoutTestingId LayoutTestingId { get; private set; } = default!;
 
-    public GroupId GroupId { get; set; } = default!;
+    public GroupId GroupId { get; private set; } = default!;
 
     public IReadOnlyList<History> History => _history;
 

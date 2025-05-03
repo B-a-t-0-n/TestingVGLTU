@@ -6,6 +6,8 @@ namespace TestingVGLTU.LayoutTestings.Domain.Entity.Questions;
 
 public class QuestionInputNumber : Question
 {
+    private List<Answer> _correctAnswers = new();
+
     //EF Core
     private QuestionInputNumber(QuestionId id) : base(id) { }
 
@@ -14,10 +16,13 @@ public class QuestionInputNumber : Question
         Text text,
         SerialNumber serialNumber,
         Scores scores,
-        Answer[] correctAnswers) : base(id, text, serialNumber, scores)
+        IEnumerable<Answer> correctAnswers) : base(id, text, scores)
     {
-        CorrectAnswers = correctAnswers;
+        _correctAnswers = correctAnswers.ToList();
+        SetSerialNumber(serialNumber);
     }
 
-    public Answer[] CorrectAnswers { get; set; } = null!;
+    public IReadOnlyList<Answer> CorrectAnswers => _correctAnswers;
+
+    public void SetCorrectAnswers(IEnumerable<Answer> correctAnswers) => _correctAnswers = correctAnswers.ToList();
 }

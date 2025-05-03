@@ -1,7 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
-using TestingVGLTU.SharedKernel;
 
-namespace TestingVGLTU.LayoutTestings.Domain.ValueObjects;
+namespace TestingVGLTU.SharedKernel.ValueObjects;
 
 public class Attemps : ValueObject
 {

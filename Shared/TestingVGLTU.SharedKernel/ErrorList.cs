@@ -1,5 +1,4 @@
-﻿using CSharpFunctionalExtensions;
-using System.Collections;
+﻿using System.Collections;
 
 namespace TestingVGLTU.SharedKernel;
 

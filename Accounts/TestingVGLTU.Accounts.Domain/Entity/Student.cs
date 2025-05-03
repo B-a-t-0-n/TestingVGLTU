@@ -16,5 +16,5 @@ public class Student : User
     {
     }
 
-    public GroupId GroupId { get; set; } = default!;
+    public GroupId GroupId { get; private set; } = default!;
 }
