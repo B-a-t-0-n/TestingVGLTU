@@ -8,7 +8,7 @@ public class Teacher : User
 {
     //EF Core
     private Teacher(UserId id) : base(id) { }
-    public Teacher(
+    internal Teacher(
         UserId id,
         FullName name,
         Login login,

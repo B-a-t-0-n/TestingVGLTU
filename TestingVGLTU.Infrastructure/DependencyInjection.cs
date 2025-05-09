@@ -27,7 +27,7 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         services.AddScoped(_ =>
-            new WriteDbContext(configuration.GetConnectionString(Constants.DATABASE)!));
+            new TestingDbContext(configuration.GetConnectionString(Constants.DATABASE)!));
 
         return services;
     }

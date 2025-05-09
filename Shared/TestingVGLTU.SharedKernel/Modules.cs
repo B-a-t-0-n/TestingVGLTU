@@ -2,9 +2,7 @@
 
 public enum Modules
 {
-    Volunteers,
-    Species,
+    LayoutTestings,
     Accounts,
-    VolunteerRequests,
-    Disscusions
+    ActiveTestings,
 }

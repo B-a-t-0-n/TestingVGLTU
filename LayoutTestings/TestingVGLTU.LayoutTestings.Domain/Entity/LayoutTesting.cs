@@ -86,6 +86,88 @@ public class LayoutTesting : SharedKernel.Entity<LayoutTestingId>
         return Result.Success<Error>();
     }
 
+    public UnitResult<Error> UpdateMainInfoQuestion(QuestionId questionId, Text text, Scores scores)
+    {
+        var question = _questions.FirstOrDefault(p => p.Id == questionId);
+        if(question is null)
+            return Errors.General.NotFound(questionId);
+
+        question.UpdateMainInfo(text, scores);
+
+        return Result.Success<Error>();
+    }
+
+    public UnitResult<Error> UpdateAnsversQuestionInputNumber(QuestionId questionId, IEnumerable<Answer> correctAnswers)
+    {
+        var questionToUpdate = _questions.FirstOrDefault(p => p.Id == questionId);
+        if (questionToUpdate is null)
+            return Errors.General.NotFound(questionId);
+
+        if (questionToUpdate is not QuestionInputNumber)
+            return Errors.General.NotFound(questionId);
+
+        var questionInputNumber = (QuestionInputNumber)questionToUpdate;
+
+        questionInputNumber.SetCorrectAnswers(correctAnswers);
+
+        return Result.Success<Error>();
+    }
+
+    public UnitResult<Error> UpdateAnswersQuestionSingleSelection(QuestionId questionId, IEnumerable<Answer> answerOptions, Answer rightAnswer)
+    {
+        var questionToUpdate = _questions.FirstOrDefault(p => p.Id == questionId);
+        if (questionToUpdate is null)
+            return Errors.General.NotFound(questionId);
+
+        if (questionToUpdate is not QuestionSingleSelection)
+            return Errors.General.NotFound(questionId);
+
+        var questionSingleSelection = (QuestionSingleSelection)questionToUpdate;
+
+        questionSingleSelection.SetAnswerOptions(answerOptions);
+        questionSingleSelection.SetRightAnswer(rightAnswer);
+
+        return Result.Success<Error>();
+    }
+
+    public UnitResult<Error> UpdateAnswersQuestionMultipleChoice(
+        QuestionId questionId,
+        IEnumerable<Answer> answerOptions,
+        IEnumerable<Answer> correctAnswers)
+    {
+        var questionToUpdate = _questions.FirstOrDefault(p => p.Id == questionId);
+        if (questionToUpdate is null)
+            return Errors.General.NotFound(questionId);
+
+        if (questionToUpdate is not QuestionMultipleChoice)
+            return Errors.General.NotFound(questionId);
+
+        var questionMultipleChoice = (QuestionMultipleChoice)questionToUpdate;
+
+        questionMultipleChoice.SetAnswerOptions(answerOptions);
+        questionMultipleChoice.SetCorrectAnswers(correctAnswers);
+
+
+        return Result.Success<Error>();
+    }
+
+    public UnitResult<Error> UpdateAnsversQuestionInputText(QuestionId questionId, IEnumerable<Answer> correctAnswers)
+    {
+        var questionToUpdate = _questions.FirstOrDefault(p => p.Id == questionId);
+        if (questionToUpdate is null)
+            return Errors.General.NotFound(questionId);
+
+        if (questionToUpdate is not QuestionInputText)
+            return Errors.General.NotFound(questionId);
+
+        var questionInputText = (QuestionInputText)questionToUpdate;
+
+        questionInputText.SetCorrectAnswers(correctAnswers);
+
+        return Result.Success<Error>();
+    }
+
+
     public void UpdateInfo(
         Title title,
         Attemps attemps,

@@ -8,12 +8,14 @@ public class Student : User
 {
     //EF Core
     private Student(UserId id) : base(id) { }
-    public Student(
+    internal Student(
         UserId id,
         FullName name,
         Login login,
-        Password passwordHash) : base(id, name, login, passwordHash)
+        Password passwordHash,
+        GroupId groupId) : base(id, name, login, passwordHash)
     {
+        GroupId = groupId;
     }
 
     public GroupId GroupId { get; private set; } = default!;

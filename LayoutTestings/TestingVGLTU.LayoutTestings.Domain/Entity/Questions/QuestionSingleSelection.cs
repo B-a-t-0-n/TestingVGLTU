@@ -11,23 +11,21 @@ public class QuestionSingleSelection : Question
     //EF Core
     private QuestionSingleSelection(QuestionId id) : base(id) { }
 
-    public QuestionSingleSelection(
+    internal QuestionSingleSelection(
         QuestionId id,
         Text text,
-        SerialNumber serialNumber,
         Scores scores,
         IEnumerable<Answer> answerOptions,
         Answer rightAnswer) : base(id, text, scores)
     {
         _answerOptions = answerOptions.ToList();
         RightAnswer = rightAnswer;
-        SetSerialNumber(serialNumber);
     }
 
     public IReadOnlyList<Answer> AnswerOptions => _answerOptions;
     public Answer RightAnswer { get; private set; } = null!;
 
-    public void SetRightAnswer(Answer rightAnswer) => RightAnswer = rightAnswer;
+    internal void SetRightAnswer(Answer rightAnswer) => RightAnswer = rightAnswer;
 
-    public void SetAnswerOptions(IEnumerable<Answer> answerOptions) => _answerOptions = answerOptions.ToList();
+    internal void SetAnswerOptions(IEnumerable<Answer> answerOptions) => _answerOptions = answerOptions.ToList();
 }

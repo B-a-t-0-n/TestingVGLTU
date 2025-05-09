@@ -26,12 +26,42 @@ public class Question : SharedKernel.Entity<QuestionId>
 
     public Scores Scores { get; private set; } = default!;
 
-    public static Question Create(
+    public static Question CreateQuestionInputNumber(
         QuestionId Id,
         Text text,
-        Scores scores)
+        Scores scores,
+        IEnumerable<Answer> correctAnswers)
     {
-        return new Question(Id, text, scores);
+        return new QuestionInputNumber(Id, text, scores, correctAnswers);
+    }
+
+    public static Question CreateQuestionMultipleChoice(
+        QuestionId Id,
+        Text text,
+        Scores scores,
+        IEnumerable<Answer> correctAnswers,
+        IEnumerable<Answer> answerOptions)
+    {
+        return new QuestionMultipleChoice(Id, text, scores, correctAnswers, answerOptions);
+    }
+
+    public static Question CreateQuestionSingleSelection(
+        QuestionId Id,
+        Text text,
+        Scores scores,
+        IEnumerable<Answer> answerOptions,
+        Answer rightAnswer)
+    {
+        return new QuestionSingleSelection(Id, text, scores, answerOptions, rightAnswer);
+    }
+
+    public static Question CreateQuestionInputText(
+        QuestionId Id,
+        Text text,
+        Scores scores,
+        IEnumerable<Answer> correctAnswers)
+    {
+        return new QuestionInputText(Id, text, scores, correctAnswers);
     }
 
     internal void UpdateMainInfo(

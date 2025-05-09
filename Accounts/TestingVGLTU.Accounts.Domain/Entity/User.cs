@@ -24,8 +24,17 @@ public class User : SharedKernel.Entity<UserId>
     public Login Login { get; private set; } = default!;
     public Password Password { get; private set; } = default!;
 
-    public static User Create(UserId id, FullName fullName, Login login, Password password)
-    {
-        return new User(id, fullName, login, password);
-    }
+    public static User CreateStudent(
+        UserId id,
+        FullName fullName,
+        Login login,
+        Password password,
+        GroupId groupId) => new Student(id, fullName, login, password, groupId);
+
+    public static User CreateTeacher(
+        UserId id,
+        FullName fullName,
+        Login login,
+        Password password) => new Teacher(id, fullName, login, password);
+
 }

@@ -11,18 +11,16 @@ public class QuestionInputNumber : Question
     //EF Core
     private QuestionInputNumber(QuestionId id) : base(id) { }
 
-    public QuestionInputNumber(
+    internal QuestionInputNumber(
         QuestionId id,
         Text text,
-        SerialNumber serialNumber,
         Scores scores,
         IEnumerable<Answer> correctAnswers) : base(id, text, scores)
     {
         _correctAnswers = correctAnswers.ToList();
-        SetSerialNumber(serialNumber);
     }
 
     public IReadOnlyList<Answer> CorrectAnswers => _correctAnswers;
 
-    public void SetCorrectAnswers(IEnumerable<Answer> correctAnswers) => _correctAnswers = correctAnswers.ToList();
+    internal void SetCorrectAnswers(IEnumerable<Answer> correctAnswers) => _correctAnswers = correctAnswers.ToList();
 }
