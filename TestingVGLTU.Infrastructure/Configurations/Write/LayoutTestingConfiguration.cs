@@ -51,11 +51,6 @@ public class LayoutTestingConfiguration : IEntityTypeConfiguration<LayoutTesting
         builder.Property(p => p.Time)
                 .HasColumnName("time");
 
-        builder.HasMany(v => v.Questions)
-            .WithOne()
-            .IsRequired()
-            .HasForeignKey("layout_testing_id");
-
         builder.HasOne(v => v.TypeTesting)
             .WithMany()
             .IsRequired()

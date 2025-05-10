@@ -26,6 +26,18 @@ public class Question : SharedKernel.Entity<QuestionId>
 
     public Scores Scores { get; private set; } = default!;
 
+    public QuestionInputNumber? QuestionInputNumber { get; private set; }
+
+    public QuestionInputText? QuestionInputText { get; private set; }
+    
+    public QuestionMultipleChoice? QuestionMultipleChoice { get; private set; }
+    
+    public QuestionSingleSelection? QuestionSingleSelection { get; private set; }
+
+    public LayoutTesting LayoutTesting { get; private set; } = default!;
+
+    public LayoutTestingId LayoutTestingId { get; private set; }
+
     public static Question CreateQuestionInputNumber(
         QuestionId Id,
         Text text,

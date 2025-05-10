@@ -20,7 +20,7 @@ public class QuestionConfiguration : IEntityTypeConfiguration<Question>
 
         builder.ComplexProperty(p => p.Scores, pb =>
         {
-            pb.IsRequired(); 
+            pb.IsRequired();
 
             pb.Property(n => n.Value)
                 .HasColumnName("scores");
@@ -41,6 +41,31 @@ public class QuestionConfiguration : IEntityTypeConfiguration<Question>
             pb.Property(n => n.Value)
                 .HasColumnName("text");
         });
+
+
+        builder.HasOne(q => q.LayoutTesting)
+            .WithMany(l => l.Questions)
+            .HasForeignKey(q => q.LayoutTestingId);
+
+        builder.HasOne(p => p.QuestionInputNumber)
+            .WithOne()
+            .HasForeignKey<QuestionInputNumber>(q => q.Id)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(p => p.QuestionInputText)
+            .WithOne()
+            .HasForeignKey<QuestionInputText>(q => q.Id)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(p => p.QuestionMultipleChoice)
+            .WithOne()
+            .HasForeignKey<QuestionMultipleChoice>(q => q.Id)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(p => p.QuestionSingleSelection)
+            .WithOne()
+            .HasForeignKey<QuestionSingleSelection>(q => q.Id)
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.UseTptMappingStrategy();
     }

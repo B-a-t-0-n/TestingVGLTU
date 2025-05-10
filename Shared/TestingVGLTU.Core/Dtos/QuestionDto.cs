@@ -9,7 +9,7 @@ public class QuestionDto
 
     public QuestionInputNumberDto? QuestionInputNumber { get; set; }
     public QuestionInputTextDto? QuestionInputText { get; set; }
-    public QuestionSingleSelectionDto? QuestionInputSingleSelection { get; set; }
-    public QuestionMultipleChoiceDto? QuestionInputMultipleChoice { get; set; }
+    public QuestionSingleSelectionDto? QuestionSingleSelection { get; set; }
+    public QuestionMultipleChoiceDto? QuestionMultipleChoice { get; set; }
 
 }

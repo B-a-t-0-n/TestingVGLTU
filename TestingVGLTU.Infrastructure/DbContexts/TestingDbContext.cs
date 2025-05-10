@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TestingVGLTU.Accounts.Domain.Entity;
 using TestingVGLTU.ActiveTestings.Domain.Entity;
-using TestingVGLTU.Core.Extentions;
 using TestingVGLTU.LayoutTestings.Domain.Entity;
 using TestingVGLTU.LayoutTestings.Domain.Entity.Questions;
 

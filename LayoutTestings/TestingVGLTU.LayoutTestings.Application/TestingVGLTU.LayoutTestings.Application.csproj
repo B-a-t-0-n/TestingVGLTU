@@ -11,8 +11,4 @@
     <ProjectReference Include="..\TestingVGLTU.LayoutTestings.Domain\TestingVGLTU.LayoutTestings.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Queries\Questions\GetQuestionsWithPaginationFiltration\" />
-  </ItemGroup>
-
 </Project>
