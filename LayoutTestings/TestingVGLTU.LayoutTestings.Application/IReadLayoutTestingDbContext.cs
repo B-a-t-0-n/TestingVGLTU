@@ -9,13 +9,5 @@ public interface IReadLayoutTestingDbContext
 
     IQueryable<Question> Questions { get; }
 
-    IQueryable<QuestionInputNumber> QuestionInputNumbers { get; }
-
-    IQueryable<QuestionInputText> QuestionInputTexts { get; }
-
-    IQueryable<QuestionSingleSelection> QuestionSingleSelections { get; }
-
-    IQueryable<QuestionMultipleChoice> QuestionMultipleChoices { get; }
-
     IQueryable<TypeTesting> TypeTestings { get; }
 }

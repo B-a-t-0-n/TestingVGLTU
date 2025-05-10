@@ -1,45 +1,50 @@
-﻿//using CSharpFunctionalExtensions;
-//using Microsoft.Extensions.Logging;
-//using TestingVGLTU.Accounts.Application.Command.Login.Command;
-//using TestingVGLTU.Core.Abstractions;
-//using TestingVGLTU.SharedKernel;
+﻿using CSharpFunctionalExtensions;
+using FluentValidation;
+using Microsoft.Extensions.Logging;
+using TestingVGLTU.Core.Abstractions;
+using TestingVGLTU.SharedKernel;
+using TestingVGLTU.Core.Extentions;
+using TestingVGLTU.Accounts.Domain.Entity;
+using TestingVGLTU.Accounts.Application.Providers;
 
-//namespace TestingVGLTU.Accounts.Application.Command.Login;
+namespace TestingVGLTU.Accounts.Application.Command.Login;
 
-//public class LoginHandler : ICommandHandler<LoginResponse, LoginCommand>
-//{
-//    private readonly UserManager<User> _userManager;
-//    private readonly ILogger<LoginHandler> _logger;
-//    private readonly ITokenProvider _tokenProvider;
+public class LoginHandler : ICommandHandler<User, LoginCommand>
+{
+    private readonly IAccountRepository _accountRepository;
+    private readonly ILogger<LoginHandler> _logger;
+    private readonly IValidator<LoginCommand> _validator;
+    private readonly IPasswordHasherProvider _passwordHasherProvider;
 
-//    public LoginHandler(
-//        UserManager<User> userManager,
-//        ILogger<LoginHandler> logger,
-//        ITokenProvider tokenProvider)
-//    {
-//        _userManager = userManager;
-//        _logger = logger;
-//        _tokenProvider = tokenProvider;
-//    }
+    public LoginHandler(
+        IAccountRepository accountRepository,
+        ILogger<LoginHandler> logger,
+        IValidator<LoginCommand> validator,
+        IPasswordHasherProvider passwordHasherProvider)
+    {
+        _accountRepository = accountRepository;
+        _logger = logger;
+        _validator = validator;
+        _passwordHasherProvider = passwordHasherProvider;
+    }
 
-//    public async Task<Result<bool, ErrorList>> Login(LoginCommand command, CancellationToken cancellation = default)
-//    {
-//        var user = await _userManager.FindByEmailAsync(command.Email);
-//        if (user == null)
-//        {
-//            return Errors.General.NotFound().ToErrorList();
-//        }
+    public async Task<Result<User, ErrorList>> Handle(LoginCommand command, CancellationToken cancellationToken = default)
+    {
+        var validationResult = await _validator.ValidateAsync(command, cancellationToken);
+        if (validationResult.IsValid == false)
+        {
+            return validationResult.ToErrorList();
+        }
 
-//        var passwordValid = await _userManager.CheckPasswordAsync(user, command.Password);
-//        if (!passwordValid)
-//        {
-//            return Errors.User.InvalidCredentials().ToErrorList();
-//        }
+        var userResult = await _accountRepository.GetByLogin(command.login);
+        if (userResult.IsFailure)
+            return userResult.Error.ToErrorList();
 
-//        var token = _tokenProvider.GenerateAccessToken(user);
-//        var refrashToken = await _tokenProvider.GenerateRefreshToken(user, token.Jti, cancellation);
+        if (_passwordHasherProvider.Verefy(command.password, userResult.Value.Password.Value ?? "") == false)
+            return Errors.General.NotFound().ToErrorList();
 
-//        _logger.LogInformation("User logged in");
+        _logger.LogInformation("login user with id {userId}", userResult.Value.Id);
 
-//        return new LoginResponse(token.AccessToken, refrashToken);
-//    }
+        return userResult.Value;
+    }
+}

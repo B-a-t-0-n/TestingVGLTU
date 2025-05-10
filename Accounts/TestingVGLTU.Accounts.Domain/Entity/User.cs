@@ -15,14 +15,17 @@ public class User : SharedKernel.Entity<UserId>
         Login login,
         Password password) : base(id)
     {
-        Name = name;
+        FullName = name;
         Login = login;
         Password = password;
     }
 
-    public FullName Name { get; private set; } = default!;
+    public FullName FullName { get; private set; } = default!;
     public Login Login { get; private set; } = default!;
     public Password Password { get; private set; } = default!;
+
+    public Student? Student { get; private set; }
+    public Teacher? Teacher { get; private set; }
 
     public static User CreateStudent(
         UserId id,

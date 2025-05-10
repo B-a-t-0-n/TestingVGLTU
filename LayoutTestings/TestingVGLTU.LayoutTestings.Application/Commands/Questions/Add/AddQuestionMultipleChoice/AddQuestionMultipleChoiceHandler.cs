@@ -1,6 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
 using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TestingVGLTU.Core.Abstractions;
 using TestingVGLTU.Core.Extentions;
@@ -23,7 +22,7 @@ public class AddQuestionMultipleChoiceHandler : ICommandHandler<Guid, AddQuestio
         ILayoutTestingRepository volunteerRepository,
         ILogger<AddQuestionMultipleChoiceHandler> logger,
         IValidator<AddQuestionMultipleChoiceCommand> validator,
-        [FromKeyedServices(Modules.LayoutTestings)] IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork)
     {
         _volunteerRepository = volunteerRepository;
         _logger = logger;

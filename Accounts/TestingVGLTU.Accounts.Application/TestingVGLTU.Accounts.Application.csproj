@@ -11,10 +11,4 @@
     <ProjectReference Include="..\TestingVGLTU.Accounts.Domain\TestingVGLTU.Accounts.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Command\RegisterTeacher\" />
-    <Folder Include="Command\RegisterStudent\" />
-    <Folder Include="Queries\" />
-  </ItemGroup>
-
 </Project>

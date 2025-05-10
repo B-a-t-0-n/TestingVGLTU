@@ -1,6 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
 using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TestingVGLTU.Core.Abstractions;
 using TestingVGLTU.Core.Extentions;
@@ -20,7 +19,7 @@ public class RemoveQuestionHandler : ICommandHandler<RemoveQuestionCommand>
         ILayoutTestingRepository layoutTestingRepository,
         IValidator<RemoveQuestionCommand> validator,
         ILogger<RemoveQuestionHandler> logger,
-        [FromKeyedServices(Modules.LayoutTestings)] IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
         _layoutTestingRepository = layoutTestingRepository;

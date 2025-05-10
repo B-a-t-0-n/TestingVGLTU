@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using TestingVGLTU.SharedKernel.ValueObjects.IDs;
 using TestingVGLTU.Accounts.Domain.Entity;
 using TestingVGLTU.SharedKernel;
+using TestingVGLTU.LayoutTestings.Domain.Entity.Questions;
 
 namespace TestingVGLTU.Infrastructure.Configurations.Write;
 
@@ -19,7 +20,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
                 id => id.Value,
                 value => UserId.Create(value));
 
-        builder.ComplexProperty(v => v.Name, fnb =>
+        builder.ComplexProperty(v => v.FullName, fnb =>
         {
             fnb.Property(f => f.Surname)
                 .IsRequired(true)
@@ -54,6 +55,16 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
                 .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH)
                 .HasColumnName("Login");
         });
+
+        builder.HasOne(p => p.Student)
+            .WithOne()
+            .HasForeignKey<Student>(q => q.Id)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(p => p.Teacher)
+            .WithOne()
+            .HasForeignKey<Teacher>(q => q.Id)
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.UseTptMappingStrategy();
     }

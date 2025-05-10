@@ -11,5 +11,4 @@ public class QuestionDto
     public QuestionInputTextDto? QuestionInputText { get; set; }
     public QuestionSingleSelectionDto? QuestionSingleSelection { get; set; }
     public QuestionMultipleChoiceDto? QuestionMultipleChoice { get; set; }
-
 }

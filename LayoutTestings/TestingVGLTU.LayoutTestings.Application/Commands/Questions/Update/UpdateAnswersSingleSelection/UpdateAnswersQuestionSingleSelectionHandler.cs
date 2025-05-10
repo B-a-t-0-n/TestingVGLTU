@@ -1,6 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
 using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TestingVGLTU.Core.Abstractions;
 using TestingVGLTU.Core.Extentions;
@@ -21,7 +20,7 @@ public class UpdateAnswersQuestionSingleSelectionHandler : ICommandHandler<Guid,
         ILayoutTestingRepository volunteerRepository,
         ILogger<UpdateAnswersQuestionSingleSelectionHandler> logger,
         IValidator<UpdateAnswersQuestionSingleSelectionCommand> validator,
-        [FromKeyedServices(Modules.LayoutTestings)] IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork)
     {
         _volunteerRepository = volunteerRepository;
         _logger = logger;

@@ -1,6 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
 using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TestingVGLTU.Core.Abstractions;
 using TestingVGLTU.LayoutTestings.Domain.ValueObjects;
@@ -22,7 +21,7 @@ public class UpdateLayoutTestingHandler : ICommandHandler<Guid, UpdateLayoutTest
         ILayoutTestingRepository volunteerRepository,
         ILogger<UpdateLayoutTestingHandler> logger,
         IValidator<UpdateLayoutTestingCommand> validator,
-        [FromKeyedServices(Modules.LayoutTestings)] IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork)
     {
         _volunteerRepository = volunteerRepository;
         _logger = logger;

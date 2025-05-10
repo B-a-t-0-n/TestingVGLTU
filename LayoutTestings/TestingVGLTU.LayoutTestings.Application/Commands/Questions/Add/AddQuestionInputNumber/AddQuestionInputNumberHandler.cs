@@ -1,6 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
 using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TestingVGLTU.Core.Abstractions;
 using TestingVGLTU.LayoutTestings.Domain.ValueObjects;
@@ -23,7 +22,7 @@ public class AddQuestionInputNumberHandler : ICommandHandler<Guid, AddQuestionIn
         ILayoutTestingRepository volunteerRepository,
         ILogger<AddQuestionInputNumberHandler> logger,
         IValidator<AddQuestionInputNumberCommand> validator,
-        [FromKeyedServices(Modules.LayoutTestings)] IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork)
     {
         _volunteerRepository = volunteerRepository;
         _logger = logger;

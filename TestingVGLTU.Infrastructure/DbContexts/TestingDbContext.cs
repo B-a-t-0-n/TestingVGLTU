@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TestingVGLTU.Accounts.Application;
 using TestingVGLTU.Accounts.Domain.Entity;
 using TestingVGLTU.ActiveTestings.Domain.Entity;
+using TestingVGLTU.LayoutTestings.Application;
 using TestingVGLTU.LayoutTestings.Domain.Entity;
 using TestingVGLTU.LayoutTestings.Domain.Entity.Questions;
 
 namespace TestingVGLTU.Infrastructure.DbContexts;
 
-public class TestingDbContext : DbContext
+public class TestingDbContext : DbContext, IReadLayoutTestingDbContext, IReadAccountDbContext
 {
     private readonly string _connectionString;
 
@@ -29,6 +31,14 @@ public class TestingDbContext : DbContext
     public DbSet<History> Histories => Set<History>();
 
     public DbSet<UserResponse> UserResponses => Set<UserResponse>();
+
+    IQueryable<LayoutTesting> IReadLayoutTestingDbContext.LayoutTestings => LayoutTestings;
+
+    IQueryable<Question> IReadLayoutTestingDbContext.Questions => Questions;
+
+    IQueryable<TypeTesting> IReadLayoutTestingDbContext.TypeTestings => TypeTestings;
+
+    IQueryable<User> IReadAccountDbContext.Users => Users;
 
     public TestingDbContext(string connectionString)
     {
