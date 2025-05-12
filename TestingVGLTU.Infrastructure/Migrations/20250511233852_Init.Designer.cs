@@ -13,7 +13,7 @@ using TestingVGLTU.Infrastructure.DbContexts;
 namespace TestingVGLTU.Infrastructure.Migrations
 {
     [DbContext(typeof(TestingDbContext))]
-    [Migration("20250510180247_Init")]
+    [Migration("20250511233852_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -22,7 +22,7 @@ namespace TestingVGLTU.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("TestingVGLTU")
-                .HasAnnotation("ProductVersion", "9.0.4")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -52,17 +52,7 @@ namespace TestingVGLTU.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
-                    b.ComplexProperty<Dictionary<string, object>>("Login", "TestingVGLTU.Accounts.Domain.Entity.User.Login#Login", b1 =>
-                        {
-                            b1.IsRequired();
-
-                            b1.Property<string>("Value")
-                                .HasMaxLength(100)
-                                .HasColumnType("character varying(100)")
-                                .HasColumnName("Login");
-                        });
-
-                    b.ComplexProperty<Dictionary<string, object>>("Name", "TestingVGLTU.Accounts.Domain.Entity.User.Name#FullName", b1 =>
+                    b.ComplexProperty<Dictionary<string, object>>("FullName", "TestingVGLTU.Accounts.Domain.Entity.User.FullName#FullName", b1 =>
                         {
                             b1.IsRequired();
 
@@ -82,6 +72,16 @@ namespace TestingVGLTU.Infrastructure.Migrations
                                 .HasMaxLength(100)
                                 .HasColumnType("character varying(100)")
                                 .HasColumnName("surname");
+                        });
+
+                    b.ComplexProperty<Dictionary<string, object>>("Login", "TestingVGLTU.Accounts.Domain.Entity.User.Login#Login", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<string>("Value")
+                                .HasMaxLength(100)
+                                .HasColumnType("character varying(100)")
+                                .HasColumnName("Login");
                         });
 
                     b.ComplexProperty<Dictionary<string, object>>("Password", "TestingVGLTU.Accounts.Domain.Entity.User.Password#Password", b1 =>
@@ -335,14 +335,14 @@ namespace TestingVGLTU.Infrastructure.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.ToTable("students", "TestingVGLTU");
+                    b.ToTable("Student", "TestingVGLTU");
                 });
 
             modelBuilder.Entity("TestingVGLTU.Accounts.Domain.Entity.Teacher", b =>
                 {
                     b.HasBaseType("TestingVGLTU.Accounts.Domain.Entity.User");
 
-                    b.ToTable("teachers", "TestingVGLTU");
+                    b.ToTable("Teacher", "TestingVGLTU");
                 });
 
             modelBuilder.Entity("TestingVGLTU.LayoutTestings.Domain.Entity.Questions.QuestionInputNumber", b =>

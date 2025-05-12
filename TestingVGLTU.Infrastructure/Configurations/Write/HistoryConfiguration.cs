@@ -42,10 +42,5 @@ public class HistoryConfiguration : IEntityTypeConfiguration<History>
             .WithMany()
             .IsRequired()
             .HasForeignKey(v => v.StudentId);
-
-        builder.Property(p => p.StudentId)
-            .HasConversion(
-                id => id.Value,
-                value => UserId.Create(value));
     }
 }

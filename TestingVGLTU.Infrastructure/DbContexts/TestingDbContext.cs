@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using TestingVGLTU.Accounts.Application;
 using TestingVGLTU.Accounts.Domain.Entity;
 using TestingVGLTU.ActiveTestings.Domain.Entity;
@@ -19,10 +20,6 @@ public class TestingDbContext : DbContext, IReadLayoutTestingDbContext, IReadAcc
     public DbSet<Question> Questions => Set<Question>();
 
     public DbSet<User> Users => Set<User>();
-
-    public DbSet<Student> Students => Set<Student>();
-
-    public DbSet<Teacher> Teachers => Set<Teacher>();
 
     public DbSet<Group> Groups => Set<Group>();
 
@@ -48,6 +45,8 @@ public class TestingDbContext : DbContext, IReadLayoutTestingDbContext, IReadAcc
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseNpgsql(_connectionString);
+        optionsBuilder.EnableSensitiveDataLogging();
+        optionsBuilder.UseLoggerFactory(CreateLogerFactory());
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -57,5 +56,10 @@ public class TestingDbContext : DbContext, IReadLayoutTestingDbContext, IReadAcc
         modelBuilder.ApplyConfigurationsFromAssembly(
             typeof(TestingDbContext).Assembly,
             type => type.FullName?.Contains("Configurations.Write") ?? false);
+
+        
     }
+
+    private ILoggerFactory CreateLogerFactory() => LoggerFactory.Create(builder => { builder.AddConsole(); });
+
 }

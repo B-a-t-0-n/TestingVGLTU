@@ -15,6 +15,18 @@
         <h1>Регистрация</h1>
     </div>
     <div>
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <script>
+
+                let errorMessage = "";
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    @:errorMessage += "@error.ErrorMessage\n";
+                }
+                alert(errorMessage);
+            </script>
+        }
         <form asp-action="Registration" asp-controller="Registration" method="post">
             <div class="container-center">
                 <div class="container-textBox">

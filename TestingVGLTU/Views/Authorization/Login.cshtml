@@ -1,25 +1,36 @@
-﻿@using TestingVGLTU.Models.ViewModel
-@model LoginViewModel
-@{
-    ViewData["Title"] = "Вход";
-}
+﻿@using TestingVGLTU.Models.ViewModel  
+@model LoginViewModel  
+@{  
+  ViewData["Title"] = "Вход";  
+}  
 
-<div class="container">
-    <h1>Вход</h1>
-    <form asp-action="Login" asp-controller="Authorization" method="post">
-        <div>
-            <div class="textBox">
-                <p>Логин</p>
-                <input type="text" asp-for="Login" placeholder="Введите логин..." />
-            </div>
-            <div class="textBox">
-                <p>Пароль</p>
-                <input type="password" asp-for="Password" placeholder="Введите пароль..." />
-            </div>
-            <div class="btn">
-                <a class="buttonHide" asp-controller="Registration" asp-action="Registration">Зарегистрироваться</a>
-                <button class="button" type="submit">Войти</button>
-            </div>
-        </div>
-    </form>
+<div class="container">  
+  <h1>Вход</h1>  
+  <form asp-action="Login" asp-controller="Authorization" method="post">  
+      <div>  
+          @if (!ViewData.ModelState.IsValid)  
+          {  
+              <script>  
+                  let errorMessage = "";  
+                  @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))  
+                  {  
+                      @:errorMessage += "@error.ErrorMessage\n";  
+                  }  
+                  alert(errorMessage);  
+              </script>  
+          }  
+          <div class="textBox">  
+              <p>Логин</p>  
+              <input type="text" asp-for="Login" placeholder="Введите логин..." />  
+          </div>  
+          <div class="textBox">  
+              <p>Пароль</p>  
+              <input type="password" asp-for="Password" placeholder="Введите пароль..." />  
+          </div>  
+          <div class="btn">  
+              <a class="buttonHide" asp-controller="Registration" asp-action="Registration">Зарегистрироваться</a>  
+              <button class="button" type="submit">Войти</button>  
+          </div>  
+      </div>  
+  </form>  
 </div>

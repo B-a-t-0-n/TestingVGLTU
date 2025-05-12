@@ -15,4 +15,5 @@ public class Teacher : User
         Password passwordHash) : base(id, name, login, passwordHash)
     {
     }
+
 }

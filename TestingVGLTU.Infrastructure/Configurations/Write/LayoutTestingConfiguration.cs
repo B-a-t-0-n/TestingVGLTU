@@ -60,10 +60,5 @@ public class LayoutTestingConfiguration : IEntityTypeConfiguration<LayoutTesting
             .WithMany()
             .IsRequired()
             .HasForeignKey(v => v.TeacherId);
-
-        builder.Property(p => p.TeacherId)
-            .HasConversion(
-                id => id.Value,
-                value => UserId.Create(value));
     }
 }

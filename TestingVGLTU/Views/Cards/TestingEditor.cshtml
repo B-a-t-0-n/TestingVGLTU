@@ -19,16 +19,16 @@
                 </svg>
             </a>
         </div>
-        @foreach (var testing in Model)
+        @foreach (var testing in new int[1000])
         {
             <div class="card card-info">
                 <div class="test-info">
                     <div class="top">
                         <div class="type">
-                            <span>@testing.TypeTesting.Name</span>
+                            <span>ZZZZZZZZZZZZ</span>
                         </div>
                         <form asp-action="DeleteTesting" asp-controller="Cards" method="post">
-                            <input type="hidden" name="testingId" value="@testing.Id"/>
+                            <input type="hidden" name="testingId" value="ZZZZZZ"/>
                             <button class="delete-card" type="submit">
                                 <svg width="20"
                                      height="24"
@@ -44,23 +44,23 @@
                     </div>
                     <div class="center">
                         <div class="name">
-                            <span>@testing.Name</span>
+                            <span>ZZZZZZZ</span>
                         </div>
                         <div class="info">
                             <div class="item">
-                                <span>Преподаватель: @testing.Teacher.Surname @testing.Teacher.Name[0].@testing.Teacher.Patronymic[0].</span>
+                                <span>Преподаватель: ZZZZZZZZZZ</span>
                             </div>
                             <div class="item">
-                                <span>Время: @(testing.Time.Minute + testing.Time.Hour * 60)  мин </span>
+                                <span>Время: 10  мин </span>
                             </div>
                             <div class="item">
-                                <span>Попытки: @testing.Attempts </span>
+                                <span>Попытки: 10 </span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="bottom">
-                    <a class="btn-start" asp-area="" asp-controller="CreateTesting" asp-action="TestingEditor" asp-route-id="@testing.Id">Перейти</a>
+                    <a class="btn-start" asp-area="" asp-controller="CreateTesting" asp-action="TestingEditor" asp-route-id="1">Перейти</a>
                 </div>
             </div>
         }

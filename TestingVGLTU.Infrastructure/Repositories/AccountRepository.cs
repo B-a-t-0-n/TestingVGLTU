@@ -8,10 +8,10 @@ using TestingVGLTU.SharedKernel.ValueObjects.IDs;
 
 namespace TestingVGLTU.Infrastructure.Repositories;
 
-public class UserRepository : IAccountRepository
+public class AccountRepository : IAccountRepository
 {
     private readonly TestingDbContext _testingDbContext;
-    public UserRepository(TestingDbContext testingDbContext)
+    public AccountRepository(TestingDbContext testingDbContext)
     {
         _testingDbContext = testingDbContext;
     }
@@ -44,9 +44,9 @@ public class UserRepository : IAccountRepository
     public async Task<Result<User, Error>> GetByLogin(string login, CancellationToken cancellationToken = default)
     {
         var user = await _testingDbContext.Users
-            .Include(u => u.Student)
-            .Include(u => u.Teacher)
-            .FirstOrDefaultAsync(p => p.Login.Value!.ToLower() == login.ToLower(), cancellationToken);
+                .Include(u => u.Student)
+                .Include(u => u.Teacher)
+                .FirstOrDefaultAsync(p => p.Login.Value!.ToLower() == login.ToLower(), cancellationToken);
 
         if (user is null)
             return Errors.General.NotFound(login);

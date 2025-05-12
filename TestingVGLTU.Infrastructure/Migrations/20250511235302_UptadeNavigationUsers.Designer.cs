@@ -13,8 +13,8 @@ using TestingVGLTU.Infrastructure.DbContexts;
 namespace TestingVGLTU.Infrastructure.Migrations
 {
     [DbContext(typeof(TestingDbContext))]
-    [Migration("20250510212439_UpdateUsers")]
-    partial class UpdateUsers
+    [Migration("20250511235302_UptadeNavigationUsers")]
+    partial class UptadeNavigationUsers
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,7 +22,7 @@ namespace TestingVGLTU.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("TestingVGLTU")
-                .HasAnnotation("ProductVersion", "9.0.4")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);

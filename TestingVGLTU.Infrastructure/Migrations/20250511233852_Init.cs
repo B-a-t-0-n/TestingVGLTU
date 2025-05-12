@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -46,10 +47,10 @@ namespace TestingVGLTU.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Login = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     patronymic = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     surname = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Login = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     password = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
@@ -58,7 +59,7 @@ namespace TestingVGLTU.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "students",
+                name: "Student",
                 schema: "TestingVGLTU",
                 columns: table => new
                 {
@@ -67,16 +68,16 @@ namespace TestingVGLTU.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_students", x => x.Id);
+                    table.PrimaryKey("PK_Student", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_students_groups_GroupId",
+                        name: "FK_Student_groups_GroupId",
                         column: x => x.GroupId,
                         principalSchema: "TestingVGLTU",
                         principalTable: "groups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_students_users_Id",
+                        name: "FK_Student_users_Id",
                         column: x => x.Id,
                         principalSchema: "TestingVGLTU",
                         principalTable: "users",
@@ -85,7 +86,7 @@ namespace TestingVGLTU.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "teachers",
+                name: "Teacher",
                 schema: "TestingVGLTU",
                 columns: table => new
                 {
@@ -93,9 +94,9 @@ namespace TestingVGLTU.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_teachers", x => x.Id);
+                    table.PrimaryKey("PK_Teacher", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_teachers_users_Id",
+                        name: "FK_Teacher_users_Id",
                         column: x => x.Id,
                         principalSchema: "TestingVGLTU",
                         principalTable: "users",
@@ -121,10 +122,10 @@ namespace TestingVGLTU.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_layouts_testings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_layouts_testings_teachers_TeacherId",
+                        name: "FK_layouts_testings_Teacher_TeacherId",
                         column: x => x.TeacherId,
                         principalSchema: "TestingVGLTU",
-                        principalTable: "teachers",
+                        principalTable: "Teacher",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -206,17 +207,17 @@ namespace TestingVGLTU.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_history", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_history_Student_StudentId",
+                        column: x => x.StudentId,
+                        principalSchema: "TestingVGLTU",
+                        principalTable: "Student",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_history_active_testing_ActiveTestingId",
                         column: x => x.ActiveTestingId,
                         principalSchema: "TestingVGLTU",
                         principalTable: "active_testing",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_history_students_StudentId",
-                        column: x => x.StudentId,
-                        principalSchema: "TestingVGLTU",
-                        principalTable: "students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -376,9 +377,9 @@ namespace TestingVGLTU.Infrastructure.Migrations
                 column: "LayoutTestingId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_students_GroupId",
+                name: "IX_Student_GroupId",
                 schema: "TestingVGLTU",
-                table: "students",
+                table: "Student",
                 column: "GroupId");
 
             migrationBuilder.CreateIndex(
@@ -426,15 +427,11 @@ namespace TestingVGLTU.Infrastructure.Migrations
                 schema: "TestingVGLTU");
 
             migrationBuilder.DropTable(
+                name: "Student",
+                schema: "TestingVGLTU");
+
+            migrationBuilder.DropTable(
                 name: "active_testing",
-                schema: "TestingVGLTU");
-
-            migrationBuilder.DropTable(
-                name: "students",
-                schema: "TestingVGLTU");
-
-            migrationBuilder.DropTable(
-                name: "layouts_testings",
                 schema: "TestingVGLTU");
 
             migrationBuilder.DropTable(
@@ -442,7 +439,11 @@ namespace TestingVGLTU.Infrastructure.Migrations
                 schema: "TestingVGLTU");
 
             migrationBuilder.DropTable(
-                name: "teachers",
+                name: "layouts_testings",
+                schema: "TestingVGLTU");
+
+            migrationBuilder.DropTable(
+                name: "Teacher",
                 schema: "TestingVGLTU");
 
             migrationBuilder.DropTable(
