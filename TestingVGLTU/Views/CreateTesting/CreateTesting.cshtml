@@ -8,6 +8,18 @@
 
 <div class="create-test-page2 container-card">
     <main>
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <script>
+
+                let errorMessage = "";
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    @:errorMessage += "@error.ErrorMessage\n";
+                }
+                alert(errorMessage);
+            </script>
+        }
         <form asp-action="CreateTesting" asp-controller="CreateTesting" method="post">
             <div class="create-test-panel test-settings">
 
@@ -21,10 +33,10 @@
                     </div>
                     <div class="comboBox">
                         <p>Тип</p>
-                        <select name="Type" asp-for=Type>
-                            @foreach(var item in Model.TypeTesting ?? new())
+                        <select name="TypeTestingId" asp-for=TypeTestingId>
+                            @foreach(var item in Model.TypeTestings)
                             {
-                                <option value="@item">@item</option>
+                                <option value="@item.Id">@item.Name</option>
                             }
                         </select>
                     </div>
@@ -32,7 +44,7 @@
                     <div class="comboBox2">
                         <p>Вывод результата</p>
                         <select name="OutputOfResult" asp-for=OutputOfResult>
-                            @foreach (var item in Model.TypeOutputOfResult ?? new())
+                            @foreach (var item in Model.TypesOutputOfResult)
                             {
                                 <option value="@item">@item</option>
                             }

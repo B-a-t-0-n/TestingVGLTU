@@ -18,26 +18,26 @@
                         <div class="top">
                             <div class="textBox">
                                 <p>Название</p>
-                                <input type="hidden" asp-for=Id value=Id />
-                                <textarea type="text" asp-for=Name
+                                <input type="hidden" asp-for=LayoutTestingId value=Id />
+                                <textarea type="text" asp-for=CreateTestingViewModel.Name
                                           placeholder="Введите название..."></textarea>
                             </div>
                         </div>
                         <div class="bottom">
                             <div class="comboBox">
                                 <p>Тип</p>
-                                <select name="Type" asp-for=Type>
-                                    @foreach (var item in Model.TypeTesting!)
+                                <select name="Type" asp-for=CreateTestingViewModel.TypeTestingId>
+                                    @foreach (var item in Model.CreateTestingViewModel.TypeTestings)
                                     {
-                                        <option value="@item">@item</option>
+                                        <option value="@item.Id">@item.Name</option>
                                     }
                                 </select>
                             </div>
 
                             <div class="comboBox2">
                                 <p>Вывод результата</p>
-                                <select name="OutputOfResult" asp-for=OutputOfResult>
-                                    @foreach (var item in Model.TypeOutputOfResult!)
+                                <select name="OutputOfResult" asp-for=CreateTestingViewModel.OutputOfResult>
+                                    @foreach (var item in Model.CreateTestingViewModel.TypesOutputOfResult)
                                     {
                                         <option value="@item">@item</option>
                                     }
@@ -49,7 +49,7 @@
                                     <button id="btn-minus" type="button">
                                         <img src="~/img/icons/-.svg" alt="-" />
                                     </button>
-                                    <input id="counter-input" type="number" value="1" step="1" min="1" max="99" maxlength="2" asp-for=Attempts />
+                                    <input id="counter-input" type="number" value="1" step="1" min="1" max="99" maxlength="2" asp-for=CreateTestingViewModel.Attempts />
                                     <button id="btn-plus" type="button">
                                         <img src="~/img/icons/+.svg" alt="+" />
                                     </button>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="textBox">
                                 <p>Время</p>
-                                <input type="number" placeholder="Время..." asp-for=Time />
+                                <input type="number" placeholder="Время..." asp-for=CreateTestingViewModel.Time />
                             </div>
                         </div>
                     </div>
@@ -123,11 +123,11 @@
                                 </div>
                             </div>
                             <div class="rows">
-                                @foreach(var item in new List<dynamic>())
+                                @foreach(var item in Model.Questions)
                                 {
                                     <div class="row row-qestion">
                                         <div class="colum-1">
-                                            <span>@item.Number</span>
+                                            <span>@item.SerialNumber</span>
                                         </div>
                                         <div class="colum-2">
                                             <span>@item.Text</span>

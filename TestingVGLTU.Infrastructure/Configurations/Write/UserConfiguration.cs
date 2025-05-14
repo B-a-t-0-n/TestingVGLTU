@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using TestingVGLTU.SharedKernel.ValueObjects.IDs;
 using TestingVGLTU.Accounts.Domain.Entity;
 using TestingVGLTU.SharedKernel;
-using TestingVGLTU.LayoutTestings.Domain.Entity.Questions;
 
 namespace TestingVGLTU.Infrastructure.Configurations.Write;
 

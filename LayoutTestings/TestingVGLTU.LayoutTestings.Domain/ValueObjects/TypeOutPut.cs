@@ -16,7 +16,7 @@ public class TypeOutPut : ValueObject
     public static readonly TypeOutPut QuestionAnswered = new(nameof(QuestionAnswered));
 
 
-    private static readonly TypeOutPut[] _all = [TestComplited!, TestFinalized!, QuestionAnswered!];
+    public static readonly TypeOutPut[] All = [TestComplited!, TestFinalized!, QuestionAnswered!];
 
     public string Value { get; } = default!;
 
@@ -27,7 +27,7 @@ public class TypeOutPut : ValueObject
 
         var valueInput = value.Trim().ToLower();
 
-        if (_all.Any(s => s.Value.ToLower() == valueInput) == false)
+        if (All.Any(s => s.Value.ToLower() == valueInput) == false)
             return Errors.General.ValueIsInvalid("TypeOutPut");
 
         var assistanceStatus = new TypeOutPut(valueInput);

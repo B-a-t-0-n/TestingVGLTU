@@ -4,7 +4,7 @@ namespace TestingVGLTU.SharedKernel.ValueObjects;
 
 public class Title : ValueObject
 {
-    public const int MAX_HIGHT_TITLE_LENGTH = 30;
+    public const int MAX_HIGHT_TITLE_LENGTH = 100;
 
     private Title() { }
     private Title(string? value)

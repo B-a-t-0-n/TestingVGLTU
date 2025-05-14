@@ -1,7 +1,8 @@
-﻿
+﻿@using TestingVGLTU.Models.ViewModel
+@model TestingEditorCardsViewModel
 @{
     ViewData["Title"] = "Тестирования";
-    ViewData["FullName"] = ViewBag.Message;
+    ViewData["FullName"] = Model.TeacherName;
     Layout = "~/Views/Shared/_LayoutCreator.cshtml";
 }
 
@@ -19,16 +20,16 @@
                 </svg>
             </a>
         </div>
-        @foreach (var testing in new int[1000])
+        @foreach (var testing in Model.LayoutTestings)
         {
             <div class="card card-info">
                 <div class="test-info">
                     <div class="top">
                         <div class="type">
-                            <span>ZZZZZZZZZZZZ</span>
+                            <span>@Model.TypeTestings.FirstOrDefault(t => t.Id == testing.TypeTestingId)!.Name</span>
                         </div>
                         <form asp-action="DeleteTesting" asp-controller="Cards" method="post">
-                            <input type="hidden" name="testingId" value="ZZZZZZ"/>
+                            <input type="hidden" name="testingId" value="@testing.Id"/>
                             <button class="delete-card" type="submit">
                                 <svg width="20"
                                      height="24"
@@ -44,23 +45,23 @@
                     </div>
                     <div class="center">
                         <div class="name">
-                            <span>ZZZZZZZ</span>
+                            <span>@testing.Title</span>
                         </div>
                         <div class="info">
                             <div class="item">
-                                <span>Преподаватель: ZZZZZZZZZZ</span>
+                                <span>Преподаватель: @Model.TeacherName</span>
                             </div>
                             <div class="item">
-                                <span>Время: 10  мин </span>
+                                <span>Время: @(testing.Time.Minute + testing.Time.Hour * 60)  мин </span>
                             </div>
                             <div class="item">
-                                <span>Попытки: 10 </span>
+                                <span>Попытки: @testing.Attemps </span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="bottom">
-                    <a class="btn-start" asp-area="" asp-controller="CreateTesting" asp-action="TestingEditor" asp-route-id="1">Перейти</a>
+                    <a class="btn-start" asp-area="" asp-controller="CreateTesting" asp-action="TestingEditor" asp-route-layoutTestingId="@testing.Id">Перейти</a>
                 </div>
             </div>
         }
