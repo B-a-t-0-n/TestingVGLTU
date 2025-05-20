@@ -4,10 +4,8 @@ using System.Linq.Expressions;
 using TestingVGLTU.Core.Abstractions;
 using TestingVGLTU.Core.Dtos;
 using TestingVGLTU.LayoutTestings.Domain.Entity;
-using TestingVGLTU.LayoutTestings.Domain.Entity.Questions;
-using TestingVGLTU.SharedKernel.ValueObjects.IDs;
 
-namespace TestingVGLTU.LayoutTestings.Application.Queries.TypeTestings.GetTypeTestingWithPagination;
+namespace TestingVGLTU.LayoutTestings.Application.Queries.TypeTestings.GetTypeTestingAll;
 
 public class GetTypeTestingsAllHandler 
     : IQueryHandler<List<TypeTestingDto>, GetTypeTestingsAllQuery>

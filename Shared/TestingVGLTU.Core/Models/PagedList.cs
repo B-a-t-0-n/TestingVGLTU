@@ -1,4 +1,4 @@
-﻿namespace PetFamily.Core.Models;
+﻿namespace TestingVGLTU.Core.Models;
 
 public class PagedList<T>
 {

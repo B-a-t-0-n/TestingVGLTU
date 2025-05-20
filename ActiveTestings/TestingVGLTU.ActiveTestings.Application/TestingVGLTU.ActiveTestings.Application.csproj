@@ -11,4 +11,15 @@
     <ProjectReference Include="..\TestingVGLTU.ActiveTestings.Domain\TestingVGLTU.ActiveTestings.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\ActiveTestings\Create\" />
+    <Folder Include="Commands\ActiveTestings\Complite\" />
+    <Folder Include="Commands\History\AddHistory\" />
+    <Folder Include="Commands\History\CompliteHistory\" />
+    <Folder Include="Commands\History\RestartHistory\" />
+    <Folder Include="Commands\History\StopHistory\" />
+    <Folder Include="Commands\UserResponse\AddUserResponce\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
 </Project>

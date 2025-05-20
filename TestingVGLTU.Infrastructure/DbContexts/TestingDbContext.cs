@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using TestingVGLTU.Accounts.Application;
 using TestingVGLTU.Accounts.Domain.Entity;
+using TestingVGLTU.ActiveTestings.Application;
 using TestingVGLTU.ActiveTestings.Domain.Entity;
 using TestingVGLTU.LayoutTestings.Application;
 using TestingVGLTU.LayoutTestings.Domain.Entity;
@@ -9,7 +10,7 @@ using TestingVGLTU.LayoutTestings.Domain.Entity.Questions;
 
 namespace TestingVGLTU.Infrastructure.DbContexts;
 
-public class TestingDbContext : DbContext, IReadLayoutTestingDbContext, IReadAccountDbContext
+public class TestingDbContext : DbContext, IReadLayoutTestingDbContext, IReadAccountDbContext, IReadActiveTestingDbContext
 {
     private readonly string _connectionString;
 
@@ -36,6 +37,12 @@ public class TestingDbContext : DbContext, IReadLayoutTestingDbContext, IReadAcc
     IQueryable<TypeTesting> IReadLayoutTestingDbContext.TypeTestings => TypeTestings;
 
     IQueryable<User> IReadAccountDbContext.Users => Users;
+
+    IQueryable<ActiveTesting> IReadActiveTestingDbContext.ActiveTestings => ActiveTestings;
+
+    IQueryable<History> IReadActiveTestingDbContext.Histories => Histories;
+
+    IQueryable<UserResponse> IReadActiveTestingDbContext.UserResponses => UserResponses;
 
     public TestingDbContext(string connectionString)
     {

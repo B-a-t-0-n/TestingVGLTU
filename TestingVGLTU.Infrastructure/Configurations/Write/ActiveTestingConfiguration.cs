@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using TestingVGLTU.SharedKernel.ValueObjects.IDs;
 using TestingVGLTU.ActiveTestings.Domain.Entity;
-using TestingVGLTU.Accounts.Domain.Entity;
 using TestingVGLTU.LayoutTestings.Domain.Entity;
+using TestingVGLTU.Core.Extentions;
 
 namespace TestingVGLTU.Infrastructure.Configurations.Write;
 
@@ -36,10 +36,11 @@ public class ActiveTestingConfiguration : IEntityTypeConfiguration<ActiveTesting
            .IsRequired()
            .HasForeignKey(v => v.ActiveTestingId);
 
-        builder.HasOne<Group>()
-            .WithMany()
-            .IsRequired()
-            .HasForeignKey(v => v.GroupId);
+        builder.Property(p => p.GroupsId)
+            .ValueObjectCollectionJsonConversion(
+                group => GroupId.Create(group.Value).Value,
+                GroupId.Create)
+            .HasColumnName("groups_id");
 
         builder.HasOne<LayoutTesting>()
             .WithMany()

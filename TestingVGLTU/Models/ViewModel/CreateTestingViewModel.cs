@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using TestingVGLTU.Core.Dtos;
+﻿using TestingVGLTU.Core.Dtos;
 
 namespace TestingVGLTU.Models.ViewModel;
 

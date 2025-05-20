@@ -6,6 +6,7 @@ using TestingVGLTU.LayoutTestings.Application;
 using TestingVGLTU.Accounts.Domain.Entity;
 using Serilog;
 using Serilog.Events;
+using TestingVGLTU.ActiveTestings.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 

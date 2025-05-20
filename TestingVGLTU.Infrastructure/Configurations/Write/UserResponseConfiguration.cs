@@ -29,7 +29,7 @@ public class UserResponseConfiguration : IEntityTypeConfiguration<UserResponse>
 
         builder.HasOne<Question>()
             .WithMany()
-            .IsRequired()
+            .IsRequired(false)
             .HasForeignKey(v => v.QuestionId);
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using TestingVGLTU.Accounts.Application;
 using TestingVGLTU.Accounts.Application.Providers;
+using TestingVGLTU.ActiveTestings.Application;
 using TestingVGLTU.Core.Abstractions;
 using TestingVGLTU.Core.Providers;
 using TestingVGLTU.Infrastructure.DbContexts;
@@ -29,6 +30,7 @@ public static class DependencyInjection
     {
         services.AddScoped<ILayoutTestingRepository, LayoutTestingRepository>();
         services.AddScoped<IAccountRepository, AccountRepository>();
+        services.AddScoped<IActiveTestingRepository, ActiveTestingRepository>();
 
         return services;
     }
@@ -46,6 +48,8 @@ public static class DependencyInjection
     {
         services.AddScoped<IReadLayoutTestingDbContext>(provider => provider.GetRequiredService<TestingDbContext>());
         services.AddScoped<IReadAccountDbContext>(provider => provider.GetRequiredService<TestingDbContext>());
+        services.AddScoped<IReadActiveTestingDbContext>(provider => provider.GetRequiredService<TestingDbContext>());
+
         services.AddScoped<TestingDbContext>(_ =>
             new TestingDbContext(configuration.GetConnectionString(Constants.DATABASE)!));
 

@@ -7,7 +7,7 @@ public class UserResponse : SharedKernel.Entity<UserResponseId>
     private UserResponse(UserResponseId id) : base(id) { }
     private UserResponse(
         UserResponseId id,
-        QuestionId questionId,
+        QuestionId? questionId,
         HistoryId historyId,
         string response,
         bool? isCorrect) : base(id)
@@ -19,7 +19,7 @@ public class UserResponse : SharedKernel.Entity<UserResponseId>
 
     public HistoryId HistoryId { get; private set; } = default!;
 
-    public QuestionId QuestionId { get; private set; } = default!;
+    public QuestionId? QuestionId { get; private set; } = default!;
 
     public string Response { get; private set; } = default!;
     
@@ -28,7 +28,7 @@ public class UserResponse : SharedKernel.Entity<UserResponseId>
     public static UserResponse Create(
         UserResponseId id,
         HistoryId historyId,
-        QuestionId questionId,
+        QuestionId? questionId,
         string response,
         bool? isCorrect)
     {

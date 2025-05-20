@@ -14,7 +14,7 @@ public class Attemps : ValueObject
 
     public static Result<Attemps, Error> Create(int value)
     {
-        if (value < 1)
+        if (value < 0)
             return Errors.General.ValueIsInvalid("attemps");
 
         var attemps = new Attemps(value);

@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
-using PetFamily.Core.Models;
 using System.Linq.Expressions;
 using TestingVGLTU.Core.Abstractions;
 using TestingVGLTU.Core.Dtos;
 using TestingVGLTU.Core.Extentions;
+using TestingVGLTU.Core.Models;
 using User = TestingVGLTU.Accounts.Domain.Entity.User;
 
 namespace TestingVGLTU.Accounts.Application.Queries.GerUserWithPagination;

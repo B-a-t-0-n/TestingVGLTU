@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TestingVGLTU.LayoutTestings.Application.Commands.LayoutTestings.Delete;
 using TestingVGLTU.LayoutTestings.Application.Queries.LayoutTestings.GetLayoutTestingsWithPaginationFiltration;
-using TestingVGLTU.LayoutTestings.Application.Queries.TypeTestings.GetTypeTestingWithPagination;
+using TestingVGLTU.LayoutTestings.Application.Queries.TypeTestings.GetTypeTestingAll;
 using TestingVGLTU.Models.ViewModel;
 
 namespace TestingVGLTU.Controllers;

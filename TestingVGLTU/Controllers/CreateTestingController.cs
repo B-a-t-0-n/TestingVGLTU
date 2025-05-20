@@ -4,7 +4,7 @@ using System.Security.Claims;
 using TestingVGLTU.LayoutTestings.Application.Commands.LayoutTestings.Create;
 using TestingVGLTU.LayoutTestings.Application.Queries.LayoutTestings.GetLayoutTestingsById;
 using TestingVGLTU.LayoutTestings.Application.Queries.Questions.GetQuestionsWithPaginationFiltration;
-using TestingVGLTU.LayoutTestings.Application.Queries.TypeTestings.GetTypeTestingWithPagination;
+using TestingVGLTU.LayoutTestings.Application.Queries.TypeTestings.GetTypeTestingAll;
 using TestingVGLTU.LayoutTestings.Domain.ValueObjects;
 using TestingVGLTU.Models.ViewModel;
 
